@@ -1,0 +1,1005 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Reddit Post Fetcher</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <style>
+
+      @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+
+   html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+    }
+
+    body {
+      background-color: black;
+      color: white;
+      font-family: 'Space Grotesk', sans-serif;
+      overflow:hidden;
+    }
+
+    .request-sent {
+      background-color: yellow;
+    }
+
+ #menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 95vh; /* Adjust the height to accommodate the clock */
+  width: 5vw;
+  background-color: black;
+  z-index: 9999;
+
+}
+
+
+
+.upright-text {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  width: 5vw;
+  height: 56.5vh;
+  transform: rotate(270deg);
+}
+
+.title_menubar {
+  font-weight: 500;
+  font-size: calc(3.9vh); /* Adjust the formula as desired */
+  letter-spacing: 5px;
+}
+
+
+
+
+#clock {
+  color: white;
+  position: relative; /* Change position to relative */
+  top: 40px;
+  left: 0;
+  transform: translateY(-50%); /* Add this line to center vertically */
+  margin-bottom: 5px;
+  font-size: 12px;
+  font-weight: 300;
+  text-align: center;
+  height: 5vh;
+  width: 5vw;
+  white-space: nowrap;
+}
+
+
+#displayed_information {
+  margin-left:25%;
+  width:75%;
+  background-color: black;
+  color: white;
+  padding: 20px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 14px;
+  overflow:hidden;
+}
+
+#displayed_information h2 {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+#displayed_information p {
+  margin: 0;
+  line-height: 1.5;
+}
+
+#displayed_information p.info-label {
+  font-weight: bold;
+}
+
+#displayed_information p.info-value {
+  margin-left: 10px;
+}
+
+#displayed_information .comment-section {
+  margin-top: 20px;
+}
+
+#displayed_information .comment-section h3 {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+#displayed_information .comment {
+  margin-bottom: 10px;
+}
+
+#displayed_information .comment .author {
+  font-weight: bold;
+}
+
+#displayed_information .comment .score {
+  margin-left: 10px;
+  color: #777;
+}
+
+#displayed_information .comment .content {
+  margin-top: 5px;
+  font-size: 14px;
+}
+
+
+
+#content-display {
+  position: fixed;
+  padding-left:5vw;
+  width: 19.35vw;
+  height: 98vh;
+  overflow: auto;
+  white-space: nowrap;
+  z-index:100;
+    box-shadow: inset 0 0 0 black, inset -1px 0 0 black, inset 0 0 0 white;
+
+}
+
+#content-display .typewriter {
+  animation: typing 3s steps(40, end);
+}
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+
+
+#content-display::-webkit-scrollbar {
+  width: 5px; /* Adjust the width as desired */
+}
+
+#content-display::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+#content-display::-webkit-scrollbar-thumb {
+  background-color: #888;
+}
+
+#content-display::-webkit-scrollbar-thumb:hover {
+  background-color: #555;
+}
+
+
+.toggle-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-grow: 1;
+  width: 5vw;
+  height: 5vh;
+  background-color: white;
+  color: black;
+  text-align: center;
+  cursor: pointer;
+  line-height: 1;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+.toggle-button:first-child {
+  margin-top: 200px;
+}
+
+
+
+.toggle-button:hover {
+  background-color: #e6e6e6;
+  color: #333333;
+}
+
+.toggle-button.inverted {
+  background-color: black;
+  color: white;
+  box-shadow: inset 0px -1px 0 white, inset 0px 1px 0 white;
+}
+
+
+.toggle-button.inverted:hover {
+  background-color: #333333;
+  color: #e6e6e6;
+}
+
+#archive-button {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 5vw;
+  height: 5vh;
+  background-color: white;
+  color: black;
+  text-align: center;
+  cursor: pointer;
+  border-top: 1px solid black;
+  z-index: 9998;
+  box-shadow: inset 0 0 0 black, inset -1px 0 0 black, inset 0 -1px 0 black, inset 0 0 0 white;
+}
+
+.archivestyle-button {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 5vw;
+  height: 5vh;
+  background-color: white;
+  color: black;
+  text-align: center;
+  cursor: pointer;
+box-shadow: inset 0 1px 0 white;
+
+}
+
+.archivestyle-button:hover {
+  background-color: #e6e6e6;
+  color: #333333;
+}
+
+
+
+    .sliding-div {
+      position: fixed;
+      top: 0;
+      left: 5%;
+      width: 20%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.8);
+      color: white;
+      transition: width 0.3s ease-out;
+      z-index: 9999;
+      overflow: hidden;
+      border-right: solid white 1px;
+    }
+
+    #pause.active,
+#play.active {
+  background-color: black;
+  color: white;
+  box-shadow: inset 0 -1px 0 white, inset 0 1px 0 white;
+}
+
+
+    .menu-toggle {
+  display: none; /* Add this line to hide the checkbox */
+}
+
+    .menu-toggle:checked ~ .sliding-div {
+      width: 20%;
+    }
+
+    .sliding-div-content {
+      padding: 20px;
+    }
+
+    /* Vertical line */
+    #menu::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 100%;
+      width: 1px;
+      height: 100%;
+      background-color: white;
+    }
+
+
+
+.post {
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid white;
+  display: block; /* Add this line to force the posts to display as blocks */
+}
+
+
+    h2,
+    p {
+      margin: 0;
+      padding: 0;
+    }
+
+    h2 {
+      font-size: 18px;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+
+    p {
+      font-size: 14px;
+    }
+
+#post-info .most-recent {
+  font-weight: bold;
+}
+
+
+#post-info {
+  position: fixed;
+  bottom: 0;
+  left: 3%; /* Updated left value */
+  width: 91%; /* Updated width calculation */
+  height: 5%;
+  background-color: white;
+  border-top: 1px solid black;
+  color:black;
+  padding-left: 20px;
+  display: flex;
+  flex-direction: column-reverse;
+  overflow: hidden;
+  z-index:9998;
+}
+
+
+
+#post-info.expanded {
+  height: 50%;
+  overflow: auto; /* Enable scrolling when expanded */
+   background-color: black;
+  border-top: 1px solid white;
+  color:white;
+}
+
+#post-info.expanded::-webkit-scrollbar {
+  width: 5px; /* Adjust the width as desired */
+}
+
+#post-info.expanded::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+#post-info.expanded::-webkit-scrollbar-thumb {
+  background-color: #888;
+}
+
+#post-info.expanded::-webkit-scrollbar-thumb:hover {
+  background-color: #555;
+}
+
+.post {
+  margin-bottom: 10px; /* Adjust the margin as desired */
+}
+
+#post-info-content {
+  white-space: nowrap; /* Display post info in one line */
+}
+
+#expand-button {
+  height: 5%;
+  background-color: white;
+  color: black;
+  text-align: center;
+  cursor: pointer;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  line-height: 40px;
+    border-top: 1px solid black;
+  width: 5%; /* Updated width to fill the remaining space */
+  z-index: 9998;
+   box-shadow: inset 0px 0 0 black, inset -1px 0 0 black, inset 0 -1px 0 black, inset 0 0px 0 white;
+}
+
+
+#blackroom{
+  background-color: black;
+}
+
+
+#expand-button.expanded {
+  bottom: 45%; /* Move the button up by 50% */
+    background-color: black;
+  color: white;
+  border-top:1px solid white;
+ box-shadow: inset 1px 0 0 white, inset -1px 0 0 white, inset 0 -1px 0 white, inset 0 0px 0 white;
+}
+
+.post-container.active {
+  font-weight: bold;
+}
+
+  #hashtag {
+    position: fixed;
+    top: 0px;
+    right: 0px;
+    width: 600px;
+    height: 80px;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 15px;
+  }
+
+  #hashtag h1,
+  #hashtag p {
+    color: white;
+    text-align: center;
+    margin: 0;
+    padding: 20px;
+  }
+
+  #hashtag-input {
+    width: auto; /* Adjust the width based on the text content */
+    height: 130px;
+    margin-top: 10px;
+    margin-right:100px;
+    background-color: transparent;
+    color: white;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 55px;
+    outline: none;
+    border: none;
+    text-align: right;
+      position: relative;
+  border-right: 1px solid white;
+  animation: blink 1s infinite;
+  }
+
+
+@keyframes blink {
+  0% {
+    border-color: transparent;
+  }
+  50% {
+    border-color: white;
+  }
+  100% {
+    border-color: transparent;
+  }
+}
+
+  #hashtag-input::placeholder {
+    color: white;
+    opacity: 0.7;
+    text-align: right;
+  }
+
+#trending-names {
+  position: fixed;
+  top: 170px;
+  right: 20px;
+  width: 600px;
+  height: 100px;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end; /* Updated: Align items to the right */
+  justify-content: center;
+  padding: 10px;
+}
+
+
+
+#trending-names h1,
+#trending-names p {
+  color: white;
+  font-size: 20px;
+  margin: 3px 0;
+}
+
+/* Hover effect with smooth transition */
+#trending-names h1,
+#trending-names p {
+  transition: letter-spacing 0.3s ease;
+}
+
+#trending-names h1:hover,
+#trending-names p:hover {
+  letter-spacing: 2px;
+}
+
+
+.post-info {
+  display: flex;
+  width: 100%;
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+}
+
+.post-info.expanded {
+  background-color: black;
+  border-top: 1px solid white;
+  color: white;
+}
+
+.post-info.expanded .post-info-cell:not(:last-child)::after {
+  background-color: white;
+}
+
+
+.post-info-cell {
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  height: 5vh;
+  position: relative;
+  margin-left:1%;
+}
+
+.time {
+  width: 5%;
+  font-size: 12px;
+  font-weight: 300;
+  text-align: center;
+}
+
+.author {
+  width: 15.5%;
+  font-size: 12px;
+  font-weight: 300;
+  text-align: center;
+}
+
+.title {
+  width: 74%;
+}
+
+.link {
+  width: 5.5%;
+  margin-right: 10px;
+  font-size: 12px;
+  font-weight: 300;
+  text-align: center;
+  text-decoration: underline;
+  color: inherit; /* Inherit the color from the parent element */
+}
+
+
+.post-info-cell:after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: 1px;
+  background-color: black;
+  margin-left: 10px;
+}
+
+.table-layout {
+  display: flex;
+  flex-direction: column;
+}
+
+.table-row {
+  display: flex;
+}
+
+.table-cell {
+  flex: 1;
+  padding: 5px;
+  border: 1px solid white;
+}
+
+.checkbox-wrapper {
+  display: inline-block;
+  position: relative;
+  width: 5vw;
+  height: 20px;
+  margin-bottom: 5px;
+}
+
+.checkbox-wrapper {
+  display: inline-flex;
+  justify-content: center;
+  font-size: 1.5vh;
+  position: relative;
+  width: 5vw;
+  height: 20px;
+  margin-bottom: 5px;
+}
+
+.checkbox-wrapper input[type="checkbox"] {
+  display: none;
+}
+
+.checkbox-wrapper span {
+  display: inline-block;
+  color: black;
+  content: "NSFW"; /* Replace "NSFW" with the desired text */
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 5vw;
+  height: 20px;
+  transition: background-color 0.3s ease;
+  text-align: center;
+  line-height: 1.5;
+  border-top: 1px solid #ccc; /* Add top border */
+  border-bottom: 1px solid #ccc; /* Add bottom border */
+}
+
+.checkbox-wrapper input:checked + span {
+  background-color: white; /* Set the background color to white */
+  color: black; /* Set the text color to black */
+  border-color: black;
+}
+
+.checkbox-wrapper input + span::after {
+  color: black; /* Set the text color to black */
+  content: "NSFW"; /* Replace "NSFW" with the desired text */
+  display: inline-block;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 5vw;
+  height: 20px;
+}
+
+.checkbox-wrapper input:not(:checked) + span::after {
+  color: white; /* Set the text color to white */
+}
+
+.checkbox2-wrapper {
+  display: inline-flex;
+  justify-content: center;
+font-size: 1.5vh;
+  position: relative;
+  width: 5vw;
+  height: 20px;
+  margin-bottom: 5px;
+}
+
+.checkbox2-wrapper input[type="checkbox"] {
+  display: none;
+}
+
+.checkbox2-wrapper span {
+  display: inline-block;
+  color: black;
+  content: "TRENDING"; /* Replace "TRENDING" with the desired text */
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 5vw;
+  height: 20px;
+  transition: background-color 0.3s ease;
+  text-align: center;
+  line-height: 1.5;
+  border-top: 1px solid #ccc; /* Add top border */
+  border-bottom: 1px solid #ccc; /* Add bottom border */
+}
+
+.checkbox2-wrapper input:checked + span {
+  background-color: white; /* Set the background color to white */
+  color: black; /* Set the text color to black */
+  border-color: black;
+}
+
+.checkbox2-wrapper input + span::after {
+  color: black; /* Set the text color to black */
+  content: "TRENDING"; /* Replace "TRENDING" with the desired text */
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 5vw;
+  height: 2.5vh;
+}
+
+.checkbox2-wrapper input:not(:checked) + span::after {
+  color: white; /* Set the text color to white */
+}
+
+.checkboxrefresh-wrapper {
+  display: inline-flex;
+  justify-content: center;
+  font-size: 1.5vh;
+  position: relative;
+  width: 5vw;
+  height: 20px;
+  margin-bottom: 5px;
+}
+
+.checkboxrefresh-wrapper input[type="checkbox"] {
+  display: none;
+}
+
+.checkboxrefresh-wrapper span {
+  display: inline-block;
+  color: black;
+  content: "REFRESH"; /* Replace "TRENDING" with the desired text */
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 5vw;
+  height: 20px;
+  transition: background-color 0.3s ease;
+  text-align: center;
+  line-height: 1.5;
+  border-top: 1px solid #ccc; /* Add top border */
+  border-bottom: 1px solid #ccc; /* Add bottom border */
+}
+
+.checkboxrefresh-wrapper input:checked + span {
+  background-color: white; /* Set the background color to white */
+  color: black; /* Set the text color to black */
+  border-color: black;
+}
+
+.checkboxrefresh-wrapper input + span::after {
+  color: black; /* Set the text color to black */
+  content: "REFRESH"; /* Replace "TRENDING" with the desired text */
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 5vw;
+  height: 2.5vh;
+}
+
+.checkboxrefresh-wrapper input:not(:checked) + span::after {
+  color: white; /* Set the text color to white */
+}
+
+
+#sliding-div1 {
+  /* Add your custom styles here */
+  background-color: rgba(0, 0, 0, 0.80);
+  color: #FFFFFF;
+  /* ... */
+  z-index:9999;
+}
+
+#sliding-div2 {
+  /* Add your custom styles here */
+ background-color: rgba(0, 0, 0, 0.95);
+  color: white;
+  z-index:9999;
+  border-left:0.5px solid white;
+}
+
+#iframe-container {
+  width: 90vw;
+  height: 95vh;
+}
+
+#iframe-container iframe {
+  width: 100%;
+  height: 100%;
+  border: 1px solid white; /* Remove iframe border if desired */
+  background-color:black;
+}
+
+
+
+  </style>
+
+  <script src="compromise.js"></script>
+
+
+</head>
+
+<body>
+
+ <div id="hashtag">
+  <label for="hashtag-input"></label>
+  <input type="text" id="hashtag-input" placeholder=".. #CancelTheCulture">
+</div>
+
+
+<div id="trending-names">
+  <h1>CURRENTLY TRENDING NAMES</h1>
+  <p id="modified-name1"></p>
+  <p id="modified-name2"></p>
+  <p id="modified-name3"></p>
+  <p id="modified-name4"></p>
+  <br>
+  <h1>2022/23 MOST CANCELED</h1>
+  <p id="modified-name5"></p>
+  <p id="modified-name6"></p>
+
+</div>
+
+  <div id="menu">
+
+      <label for="refresh-site-toggle" class="checkboxrefresh-wrapper">
+  <input type="checkbox" id="refresh-site-toggle" >
+  <span class="checkbox"></span>
+</label>
+    <div id="clock"></div>
+      <div class="toggle-button sliding-button" id="information"><i class="fas fa-info-circle fa-1x"></i></div>
+    <div class="toggle-button sliding-button" id="button1"><i class="fas fa-book"></i></div>
+
+
+
+
+<div class="upright-text">
+    <span class="title_menubar">#CancelTheCulture</span>
+  </div>
+
+  <label for="nsfw-toggle" class="checkbox-wrapper">
+  <input type="checkbox" id="nsfw-toggle" checked>
+  <span class="checkbox"></span>
+</label>
+<br>
+
+<label for="high-upvotes-toggle" class="checkbox2-wrapper">
+  <input type="checkbox" id="high-upvotes-toggle">
+  <span class="checkbox"></span>
+</label>
+
+    <div class="toggle-button" id="pause">&#10074;&#10074;</div>
+    <div class="toggle-button" id="play">&#9654;</div>
+
+    <div class="archivestyle-button" id="archive-button">
+  <i class="fas fa-archive"></i>
+</div>
+    
+  </div>
+
+  <div id="content-display" class="typewriter">
+    <!-- Content -->
+  </div>
+
+  <div id="displayed_information">
+    ... scraping Reddit ..
+  </div>
+
+
+  <div class="sliding-div" id="sliding-div1">
+    <div class="sliding-div-content">
+      <p>Content for Button 1</p>
+    </div>
+  </div>
+
+  <div class="sliding-div" id="sliding-div2">
+    <div class="sliding-div-content">
+      <div id="iframe-container">
+  <iframe src="prozessdoku/index.html" sandbox="allow-same-origin"></iframe></div>
+</div>
+
+    </div>
+  </div>
+
+
+  <div id="post-info">
+    <div id="post-info-content"></div>
+  </div>
+
+<div id="blackroom"><div id="expand-button">&#9650;</div></div>
+
+  <script src="script.js"></script>
+ <script>
+const expandButton = document.getElementById('expand-button');
+const informationButton = document.getElementById('information');
+
+const postInfo = document.getElementById('post-info');
+
+expandButton.addEventListener('click', () => {
+  postInfo.classList.toggle('expanded');
+  expandButton.classList.toggle('expanded');
+
+  if (expandButton.classList.contains('expanded')) {
+    expandButton.innerHTML = '&#9660;';
+  } else {
+    expandButton.innerHTML = '&#9650;';
+  }
+});
+
+const buttons = document.querySelectorAll('#button1, #information');
+const slidingDivs = document.querySelectorAll('.sliding-div');
+const slidingDivContent = document.querySelectorAll('.sliding-div-content');
+
+slidingDivs.forEach((div, index) => {
+  div.style.width = '0';
+  slidingDivContent[index].style.display = 'none';
+});
+
+slidingDivs.forEach((div, index) => {
+  div.addEventListener('transitionend', () => {
+    const associatedButton = index === 0 ? button1 : informationButton;
+    associatedButton.style.pointerEvents = 'auto';
+  });
+});
+
+buttons.forEach((button, index) => {
+  button.addEventListener('click', () => {
+    const isActive = button.classList.contains('active');
+    buttons.forEach(btn => {
+      btn.classList.remove('active');
+      btn.classList.remove('inverted');
+    });
+    slidingDivs.forEach((div, divIndex) => {
+      div.style.width = '0';
+      slidingDivContent[divIndex].style.display = 'none';
+    });
+
+    if (!isActive) {
+      button.classList.add('active');
+      button.classList.add('inverted');
+      if (index === 0) {
+        slidingDivs[index].style.width = '100%';
+      } else {
+        slidingDivs[index].style.width = '100%';
+      }
+      slidingDivContent[index].style.display = 'block';
+    }
+  });
+});
+
+
+// Rest of your code...
+
+
+// Function to update the clock every second
+function updateClock() {
+  const clock = document.getElementById('clock');
+  const now = new Date();
+  const hours = String(now.getHours()).padStart(2, '0');
+  const minutes = String(now.getMinutes()).padStart(2, '0');
+  const seconds = String(now.getSeconds()).padStart(2, '0');
+  clock.textContent = `${hours}:${minutes}:${seconds}`;
+}
+
+// Call the updateClock function initially
+updateClock();
+
+// Update the clock every second
+setInterval(updateClock, 1000);
+
+// Add event listeners to update the filter variables
+nsfwToggle.addEventListener('change', () => {
+  includeNSFW = nsfwToggle.checked;
+});
+
+upvoteToggle.addEventListener('change', () => {
+  includeUpvoteFilter = upvoteToggle.checked;
+});
+
+archiveButton.addEventListener('click', () => {
+  // Generate the JSON file and initiate the download
+  generateJSONFile();
+});
+
+function generateJSONFile() {
+  const jsonContent = JSON.stringify(alreadyShownPosts, null, 2);
+  const blob = new Blob([jsonContent], { type: 'application/json' });
+  const url = URL.createObjectURL(blob);
+
+  const currentDateTime = new Date().toISOString().replace(/[:-]/g, ''); // Format: YYYYMMDDTHHMMSS
+  const fileName = `CancelTheCulture_Archive_${currentDateTime}.json`;
+
+  const downloadButton = document.createElement('a');
+  downloadButton.href = url;
+  downloadButton.download = fileName;
+  downloadButton.click();
+  URL.revokeObjectURL(url);
+}
+
+const refreshSiteToggle = document.getElementById('refresh-site-toggle');
+
+refreshSiteToggle.addEventListener('change', () => {
+  if (refreshSiteToggle.checked) {
+    location.reload(); // Refresh the page
+  }
+});
+
+
+
+</script>
+
+</body>
+</html>
