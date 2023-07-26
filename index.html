@@ -1,1005 +1,1881 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="UTF-8">
-  <title>Reddit Post Fetcher</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-  <style>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="new_css.css">
 
-      @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+ <!-- Für Apple-Geräte -->
+        <link rel="apple-touch-icon" sizes="180x180" href="data/favicon/apple-touch-icon-180x180.png">
+        <!-- Für Browser -->
+        <link rel="shortcut icon" type="image/x-icon" href="data/favicon/favicon-32x32.ico">
+        <link rel="icon" type="image/png" sizes="96x96" href="data/favicon/favicon-96x96.png">
+      <!-- SCRIPT FOR ACTIVATING BUTTONS -->
 
-   html, body {
-      margin: 0;
-      padding: 0;
-      height: 100%;
+      <!-- Vimeo Player -->
+      <script src="https://player.vimeo.com/api/player.js"></script>
+
+<!-- P5 SKETCH -->
+	<script src="https://cdn.jsdelivr.net/npm/p5@1.3.1/lib/p5.js"></script>
+	<script src="cubes.js"></script>
+
+<!-- P5 LOAD JQUERY -->
+	<script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+<!-- PRELOAD SITE -->
+
+ <script>$(window).on('load', function() { // makes sure the whole site is loaded 
+  $('#status').fadeOut(); // will first fade out the loading animation 
+  $('#preloader').delay(500).fadeOut('slow'); // will fade out the white DIV that covers the website. 
+  $('body').delay(350).css({'overflow':'hidden'});
+})</script> 
+
+ <script>$(document).on("keydown", "form", function(event) { 
+    return event.key != "Enter";
+});</script>  
+
+<!-- LIGHTBOY -->
+
+<script>
+  function openLightbox(url) {
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    const lightboxVideo = document.getElementById('lightbox-video');
+
+    if (url.endsWith('.mp4') || url.endsWith('.webm') || url.endsWith('.mov') || url.endsWith('.ogg')) {
+        // If the URL ends with a video file extension, display the video
+        lightboxImg.style.display = 'none';
+        lightboxVideo.style.display = 'block';
+        lightboxVideo.src = url;
+        lightboxVideo.play();
+    } else {
+        // Otherwise, display the image
+        lightboxImg.style.display = 'block';
+        lightboxVideo.style.display = 'none';
+        lightboxImg.src = url;
     }
 
-    body {
-      background-color: black;
-      color: white;
-      font-family: 'Space Grotesk', sans-serif;
-      overflow:hidden;
-    }
-
-    .request-sent {
-      background-color: yellow;
-    }
-
- #menu {
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 95vh; /* Adjust the height to accommodate the clock */
-  width: 5vw;
-  background-color: black;
-  z-index: 9999;
-
-}
-
-
-
-.upright-text {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  width: 5vw;
-  height: 56.5vh;
-  transform: rotate(270deg);
-}
-
-.title_menubar {
-  font-weight: 500;
-  font-size: calc(3.9vh); /* Adjust the formula as desired */
-  letter-spacing: 5px;
-}
-
-
-
-
-#clock {
-  color: white;
-  position: relative; /* Change position to relative */
-  top: 40px;
-  left: 0;
-  transform: translateY(-50%); /* Add this line to center vertically */
-  margin-bottom: 5px;
-  font-size: 12px;
-  font-weight: 300;
-  text-align: center;
-  height: 5vh;
-  width: 5vw;
-  white-space: nowrap;
-}
-
-
-#displayed_information {
-  margin-left:25%;
-  width:75%;
-  background-color: black;
-  color: white;
-  padding: 20px;
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: 14px;
-  overflow:hidden;
-}
-
-#displayed_information h2 {
-  font-size: 18px;
-  font-weight: bold;
-  margin-bottom: 10px;
-}
-
-#displayed_information p {
-  margin: 0;
-  line-height: 1.5;
-}
-
-#displayed_information p.info-label {
-  font-weight: bold;
-}
-
-#displayed_information p.info-value {
-  margin-left: 10px;
-}
-
-#displayed_information .comment-section {
-  margin-top: 20px;
-}
-
-#displayed_information .comment-section h3 {
-  font-size: 16px;
-  margin-bottom: 10px;
-}
-
-#displayed_information .comment {
-  margin-bottom: 10px;
-}
-
-#displayed_information .comment .author {
-  font-weight: bold;
-}
-
-#displayed_information .comment .score {
-  margin-left: 10px;
-  color: #777;
-}
-
-#displayed_information .comment .content {
-  margin-top: 5px;
-  font-size: 14px;
-}
-
-
-
-#content-display {
-  position: fixed;
-  padding-left:5vw;
-  width: 19.35vw;
-  height: 98vh;
-  overflow: auto;
-  white-space: nowrap;
-  z-index:100;
-    box-shadow: inset 0 0 0 black, inset -1px 0 0 black, inset 0 0 0 white;
-
-}
-
-#content-display .typewriter {
-  animation: typing 3s steps(40, end);
-}
-
-@keyframes typing {
-  from {
-    width: 0;
-  }
-  to {
-    width: 100%;
-  }
-}
-
-
-
-#content-display::-webkit-scrollbar {
-  width: 5px; /* Adjust the width as desired */
-}
-
-#content-display::-webkit-scrollbar-track {
-  background-color: transparent;
-}
-
-#content-display::-webkit-scrollbar-thumb {
-  background-color: #888;
-}
-
-#content-display::-webkit-scrollbar-thumb:hover {
-  background-color: #555;
-}
-
-
-.toggle-button {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-grow: 1;
-  width: 5vw;
-  height: 5vh;
-  background-color: white;
-  color: black;
-  text-align: center;
-  cursor: pointer;
-  line-height: 1;
-  margin-bottom: 10px;
-  margin-top: 10px;
-}
-
-.toggle-button:first-child {
-  margin-top: 200px;
-}
-
-
-
-.toggle-button:hover {
-  background-color: #e6e6e6;
-  color: #333333;
-}
-
-.toggle-button.inverted {
-  background-color: black;
-  color: white;
-  box-shadow: inset 0px -1px 0 white, inset 0px 1px 0 white;
-}
-
-
-.toggle-button.inverted:hover {
-  background-color: #333333;
-  color: #e6e6e6;
-}
-
-#archive-button {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 5vw;
-  height: 5vh;
-  background-color: white;
-  color: black;
-  text-align: center;
-  cursor: pointer;
-  border-top: 1px solid black;
-  z-index: 9998;
-  box-shadow: inset 0 0 0 black, inset -1px 0 0 black, inset 0 -1px 0 black, inset 0 0 0 white;
-}
-
-.archivestyle-button {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 5vw;
-  height: 5vh;
-  background-color: white;
-  color: black;
-  text-align: center;
-  cursor: pointer;
-box-shadow: inset 0 1px 0 white;
-
-}
-
-.archivestyle-button:hover {
-  background-color: #e6e6e6;
-  color: #333333;
-}
-
-
-
-    .sliding-div {
-      position: fixed;
-      top: 0;
-      left: 5%;
-      width: 20%;
-      height: 100%;
-      background-color: rgba(0, 0, 0, 0.8);
-      color: white;
-      transition: width 0.3s ease-out;
-      z-index: 9999;
-      overflow: hidden;
-      border-right: solid white 1px;
-    }
-
-    #pause.active,
-#play.active {
-  background-color: black;
-  color: white;
-  box-shadow: inset 0 -1px 0 white, inset 0 1px 0 white;
-}
-
-
-    .menu-toggle {
-  display: none; /* Add this line to hide the checkbox */
-}
-
-    .menu-toggle:checked ~ .sliding-div {
-      width: 20%;
-    }
-
-    .sliding-div-content {
-      padding: 20px;
-    }
-
-    /* Vertical line */
-    #menu::after {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 100%;
-      width: 1px;
-      height: 100%;
-      background-color: white;
-    }
-
-
-
-.post {
-  border: 1px solid #ccc;
-  padding: 10px;
-  margin-bottom: 10px;
-  padding-bottom: 10px;
-  border-bottom: 1px solid white;
-  display: block; /* Add this line to force the posts to display as blocks */
-}
-
-
-    h2,
-    p {
-      margin: 0;
-      padding: 0;
-    }
-
-    h2 {
-      font-size: 18px;
-      font-weight: bold;
-      margin-bottom: 5px;
-    }
-
-    p {
-      font-size: 14px;
-    }
-
-#post-info .most-recent {
-  font-weight: bold;
-}
-
-
-#post-info {
-  position: fixed;
-  bottom: 0;
-  left: 3%; /* Updated left value */
-  width: 91%; /* Updated width calculation */
-  height: 5%;
-  background-color: white;
-  border-top: 1px solid black;
-  color:black;
-  padding-left: 20px;
-  display: flex;
-  flex-direction: column-reverse;
-  overflow: hidden;
-  z-index:9998;
-}
-
-
-
-#post-info.expanded {
-  height: 50%;
-  overflow: auto; /* Enable scrolling when expanded */
-   background-color: black;
-  border-top: 1px solid white;
-  color:white;
-}
-
-#post-info.expanded::-webkit-scrollbar {
-  width: 5px; /* Adjust the width as desired */
-}
-
-#post-info.expanded::-webkit-scrollbar-track {
-  background-color: transparent;
-}
-
-#post-info.expanded::-webkit-scrollbar-thumb {
-  background-color: #888;
-}
-
-#post-info.expanded::-webkit-scrollbar-thumb:hover {
-  background-color: #555;
-}
-
-.post {
-  margin-bottom: 10px; /* Adjust the margin as desired */
-}
-
-#post-info-content {
-  white-space: nowrap; /* Display post info in one line */
-}
-
-#expand-button {
-  height: 5%;
-  background-color: white;
-  color: black;
-  text-align: center;
-  cursor: pointer;
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  line-height: 40px;
-    border-top: 1px solid black;
-  width: 5%; /* Updated width to fill the remaining space */
-  z-index: 9998;
-   box-shadow: inset 0px 0 0 black, inset -1px 0 0 black, inset 0 -1px 0 black, inset 0 0px 0 white;
-}
-
-
-#blackroom{
-  background-color: black;
-}
-
-
-#expand-button.expanded {
-  bottom: 45%; /* Move the button up by 50% */
-    background-color: black;
-  color: white;
-  border-top:1px solid white;
- box-shadow: inset 1px 0 0 white, inset -1px 0 0 white, inset 0 -1px 0 white, inset 0 0px 0 white;
-}
-
-.post-container.active {
-  font-weight: bold;
-}
-
-  #hashtag {
-    position: fixed;
-    top: 0px;
-    right: 0px;
-    width: 600px;
-    height: 80px;
-    z-index: 9999;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 15px;
-  }
-
-  #hashtag h1,
-  #hashtag p {
-    color: white;
-    text-align: center;
-    margin: 0;
-    padding: 20px;
-  }
-
-  #hashtag-input {
-    width: auto; /* Adjust the width based on the text content */
-    height: 130px;
-    margin-top: 10px;
-    margin-right:100px;
-    background-color: transparent;
-    color: white;
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: 55px;
-    outline: none;
-    border: none;
-    text-align: right;
-      position: relative;
-  border-right: 1px solid white;
-  animation: blink 1s infinite;
-  }
-
-
-@keyframes blink {
-  0% {
-    border-color: transparent;
-  }
-  50% {
-    border-color: white;
-  }
-  100% {
-    border-color: transparent;
-  }
-}
-
-  #hashtag-input::placeholder {
-    color: white;
-    opacity: 0.7;
-    text-align: right;
-  }
-
-#trending-names {
-  position: fixed;
-  top: 170px;
-  right: 20px;
-  width: 600px;
-  height: 100px;
-  z-index: 9999;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end; /* Updated: Align items to the right */
-  justify-content: center;
-  padding: 10px;
+    lightbox.style.display = 'flex';
 }
 
+function closeLightbox() {
+    const lightbox = document.getElementById('lightbox');
+    const lightboxVideo = document.getElementById('lightbox-video');
 
-
-#trending-names h1,
-#trending-names p {
-  color: white;
-  font-size: 20px;
-  margin: 3px 0;
-}
-
-/* Hover effect with smooth transition */
-#trending-names h1,
-#trending-names p {
-  transition: letter-spacing 0.3s ease;
-}
-
-#trending-names h1:hover,
-#trending-names p:hover {
-  letter-spacing: 2px;
-}
-
-
-.post-info {
-  display: flex;
-  width: 100%;
-  border-top: 1px solid black;
-  border-bottom: 1px solid black;
-}
-
-.post-info.expanded {
-  background-color: black;
-  border-top: 1px solid white;
-  color: white;
-}
-
-.post-info.expanded .post-info-cell:not(:last-child)::after {
-  background-color: white;
-}
-
-
-.post-info-cell {
-  display: flex;
-  align-items: center;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  height: 5vh;
-  position: relative;
-  margin-left:1%;
-}
-
-.time {
-  width: 5%;
-  font-size: 12px;
-  font-weight: 300;
-  text-align: center;
-}
-
-.author {
-  width: 15.5%;
-  font-size: 12px;
-  font-weight: 300;
-  text-align: center;
-}
-
-.title {
-  width: 74%;
-}
-
-.link {
-  width: 5.5%;
-  margin-right: 10px;
-  font-size: 12px;
-  font-weight: 300;
-  text-align: center;
-  text-decoration: underline;
-  color: inherit; /* Inherit the color from the parent element */
-}
-
-
-.post-info-cell:after {
-  content: '';
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  right: 0;
-  width: 1px;
-  background-color: black;
-  margin-left: 10px;
-}
-
-.table-layout {
-  display: flex;
-  flex-direction: column;
-}
-
-.table-row {
-  display: flex;
-}
-
-.table-cell {
-  flex: 1;
-  padding: 5px;
-  border: 1px solid white;
-}
-
-.checkbox-wrapper {
-  display: inline-block;
-  position: relative;
-  width: 5vw;
-  height: 20px;
-  margin-bottom: 5px;
-}
-
-.checkbox-wrapper {
-  display: inline-flex;
-  justify-content: center;
-  font-size: 1.5vh;
-  position: relative;
-  width: 5vw;
-  height: 20px;
-  margin-bottom: 5px;
-}
-
-.checkbox-wrapper input[type="checkbox"] {
-  display: none;
-}
-
-.checkbox-wrapper span {
-  display: inline-block;
-  color: black;
-  content: "NSFW"; /* Replace "NSFW" with the desired text */
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 5vw;
-  height: 20px;
-  transition: background-color 0.3s ease;
-  text-align: center;
-  line-height: 1.5;
-  border-top: 1px solid #ccc; /* Add top border */
-  border-bottom: 1px solid #ccc; /* Add bottom border */
-}
-
-.checkbox-wrapper input:checked + span {
-  background-color: white; /* Set the background color to white */
-  color: black; /* Set the text color to black */
-  border-color: black;
-}
-
-.checkbox-wrapper input + span::after {
-  color: black; /* Set the text color to black */
-  content: "NSFW"; /* Replace "NSFW" with the desired text */
-  display: inline-block;
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 5vw;
-  height: 20px;
-}
-
-.checkbox-wrapper input:not(:checked) + span::after {
-  color: white; /* Set the text color to white */
-}
-
-.checkbox2-wrapper {
-  display: inline-flex;
-  justify-content: center;
-font-size: 1.5vh;
-  position: relative;
-  width: 5vw;
-  height: 20px;
-  margin-bottom: 5px;
-}
-
-.checkbox2-wrapper input[type="checkbox"] {
-  display: none;
-}
-
-.checkbox2-wrapper span {
-  display: inline-block;
-  color: black;
-  content: "TRENDING"; /* Replace "TRENDING" with the desired text */
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 5vw;
-  height: 20px;
-  transition: background-color 0.3s ease;
-  text-align: center;
-  line-height: 1.5;
-  border-top: 1px solid #ccc; /* Add top border */
-  border-bottom: 1px solid #ccc; /* Add bottom border */
-}
-
-.checkbox2-wrapper input:checked + span {
-  background-color: white; /* Set the background color to white */
-  color: black; /* Set the text color to black */
-  border-color: black;
-}
-
-.checkbox2-wrapper input + span::after {
-  color: black; /* Set the text color to black */
-  content: "TRENDING"; /* Replace "TRENDING" with the desired text */
-  display: block;
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 5vw;
-  height: 2.5vh;
-}
-
-.checkbox2-wrapper input:not(:checked) + span::after {
-  color: white; /* Set the text color to white */
-}
-
-.checkboxrefresh-wrapper {
-  display: inline-flex;
-  justify-content: center;
-  font-size: 1.5vh;
-  position: relative;
-  width: 5vw;
-  height: 20px;
-  margin-bottom: 5px;
-}
-
-.checkboxrefresh-wrapper input[type="checkbox"] {
-  display: none;
-}
-
-.checkboxrefresh-wrapper span {
-  display: inline-block;
-  color: black;
-  content: "REFRESH"; /* Replace "TRENDING" with the desired text */
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 5vw;
-  height: 20px;
-  transition: background-color 0.3s ease;
-  text-align: center;
-  line-height: 1.5;
-  border-top: 1px solid #ccc; /* Add top border */
-  border-bottom: 1px solid #ccc; /* Add bottom border */
-}
-
-.checkboxrefresh-wrapper input:checked + span {
-  background-color: white; /* Set the background color to white */
-  color: black; /* Set the text color to black */
-  border-color: black;
-}
-
-.checkboxrefresh-wrapper input + span::after {
-  color: black; /* Set the text color to black */
-  content: "REFRESH"; /* Replace "TRENDING" with the desired text */
-  display: block;
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 5vw;
-  height: 2.5vh;
+    lightbox.style.display = 'none';
+    // Pause the video when closing the lightbox
+    lightboxVideo.pause();
 }
-
-.checkboxrefresh-wrapper input:not(:checked) + span::after {
-  color: white; /* Set the text color to white */
-}
-
-
-#sliding-div1 {
-  /* Add your custom styles here */
-  background-color: rgba(0, 0, 0, 0.80);
-  color: #FFFFFF;
-  /* ... */
-  z-index:9999;
-}
-
-#sliding-div2 {
-  /* Add your custom styles here */
- background-color: rgba(0, 0, 0, 0.95);
-  color: white;
-  z-index:9999;
-  border-left:0.5px solid white;
-}
-
-#iframe-container {
-  width: 90vw;
-  height: 95vh;
-}
-
-#iframe-container iframe {
-  width: 100%;
-  height: 100%;
-  border: 1px solid white; /* Remove iframe border if desired */
-  background-color:black;
-}
-
-
-
-  </style>
-
-  <script src="compromise.js"></script>
-
-
-</head>
-
-<body>
-
- <div id="hashtag">
-  <label for="hashtag-input"></label>
-  <input type="text" id="hashtag-input" placeholder=".. #CancelTheCulture">
-</div>
-
-
-<div id="trending-names">
-  <h1>CURRENTLY TRENDING NAMES</h1>
-  <p id="modified-name1"></p>
-  <p id="modified-name2"></p>
-  <p id="modified-name3"></p>
-  <p id="modified-name4"></p>
-  <br>
-  <h1>2022/23 MOST CANCELED</h1>
-  <p id="modified-name5"></p>
-  <p id="modified-name6"></p>
-
-</div>
-
-  <div id="menu">
-
-      <label for="refresh-site-toggle" class="checkboxrefresh-wrapper">
-  <input type="checkbox" id="refresh-site-toggle" >
-  <span class="checkbox"></span>
-</label>
-    <div id="clock"></div>
-      <div class="toggle-button sliding-button" id="information"><i class="fas fa-info-circle fa-1x"></i></div>
-    <div class="toggle-button sliding-button" id="button1"><i class="fas fa-book"></i></div>
-
-
-
-
-<div class="upright-text">
-    <span class="title_menubar">#CancelTheCulture</span>
-  </div>
-
-  <label for="nsfw-toggle" class="checkbox-wrapper">
-  <input type="checkbox" id="nsfw-toggle" checked>
-  <span class="checkbox"></span>
-</label>
-<br>
-
-<label for="high-upvotes-toggle" class="checkbox2-wrapper">
-  <input type="checkbox" id="high-upvotes-toggle">
-  <span class="checkbox"></span>
-</label>
-
-    <div class="toggle-button" id="pause">&#10074;&#10074;</div>
-    <div class="toggle-button" id="play">&#9654;</div>
-
-    <div class="archivestyle-button" id="archive-button">
-  <i class="fas fa-archive"></i>
-</div>
-    
-  </div>
-
-  <div id="content-display" class="typewriter">
-    <!-- Content -->
-  </div>
-
-  <div id="displayed_information">
-    ... scraping Reddit ..
-  </div>
-
-
-  <div class="sliding-div" id="sliding-div1">
-    <div class="sliding-div-content">
-      <p>Content for Button 1</p>
-    </div>
-  </div>
-
-  <div class="sliding-div" id="sliding-div2">
-    <div class="sliding-div-content">
-      <div id="iframe-container">
-  <iframe src="prozessdoku/index.html" sandbox="allow-same-origin"></iframe></div>
-</div>
-
-    </div>
-  </div>
-
-
-  <div id="post-info">
-    <div id="post-info-content"></div>
-  </div>
-
-<div id="blackroom"><div id="expand-button">&#9650;</div></div>
-
-  <script src="script.js"></script>
- <script>
-const expandButton = document.getElementById('expand-button');
-const informationButton = document.getElementById('information');
-
-const postInfo = document.getElementById('post-info');
-
-expandButton.addEventListener('click', () => {
-  postInfo.classList.toggle('expanded');
-  expandButton.classList.toggle('expanded');
-
-  if (expandButton.classList.contains('expanded')) {
-    expandButton.innerHTML = '&#9660;';
-  } else {
-    expandButton.innerHTML = '&#9650;';
-  }
-});
-
-const buttons = document.querySelectorAll('#button1, #information');
-const slidingDivs = document.querySelectorAll('.sliding-div');
-const slidingDivContent = document.querySelectorAll('.sliding-div-content');
-
-slidingDivs.forEach((div, index) => {
-  div.style.width = '0';
-  slidingDivContent[index].style.display = 'none';
-});
-
-slidingDivs.forEach((div, index) => {
-  div.addEventListener('transitionend', () => {
-    const associatedButton = index === 0 ? button1 : informationButton;
-    associatedButton.style.pointerEvents = 'auto';
-  });
-});
-
-buttons.forEach((button, index) => {
-  button.addEventListener('click', () => {
-    const isActive = button.classList.contains('active');
-    buttons.forEach(btn => {
-      btn.classList.remove('active');
-      btn.classList.remove('inverted');
-    });
-    slidingDivs.forEach((div, divIndex) => {
-      div.style.width = '0';
-      slidingDivContent[divIndex].style.display = 'none';
-    });
-
-    if (!isActive) {
-      button.classList.add('active');
-      button.classList.add('inverted');
-      if (index === 0) {
-        slidingDivs[index].style.width = '100%';
-      } else {
-        slidingDivs[index].style.width = '100%';
-      }
-      slidingDivContent[index].style.display = 'block';
-    }
-  });
-});
-
-
-// Rest of your code...
-
-
-// Function to update the clock every second
-function updateClock() {
-  const clock = document.getElementById('clock');
-  const now = new Date();
-  const hours = String(now.getHours()).padStart(2, '0');
-  const minutes = String(now.getMinutes()).padStart(2, '0');
-  const seconds = String(now.getSeconds()).padStart(2, '0');
-  clock.textContent = `${hours}:${minutes}:${seconds}`;
-}
-
-// Call the updateClock function initially
-updateClock();
-
-// Update the clock every second
-setInterval(updateClock, 1000);
-
-// Add event listeners to update the filter variables
-nsfwToggle.addEventListener('change', () => {
-  includeNSFW = nsfwToggle.checked;
-});
-
-upvoteToggle.addEventListener('change', () => {
-  includeUpvoteFilter = upvoteToggle.checked;
-});
-
-archiveButton.addEventListener('click', () => {
-  // Generate the JSON file and initiate the download
-  generateJSONFile();
-});
-
-function generateJSONFile() {
-  const jsonContent = JSON.stringify(alreadyShownPosts, null, 2);
-  const blob = new Blob([jsonContent], { type: 'application/json' });
-  const url = URL.createObjectURL(blob);
-
-  const currentDateTime = new Date().toISOString().replace(/[:-]/g, ''); // Format: YYYYMMDDTHHMMSS
-  const fileName = `CancelTheCulture_Archive_${currentDateTime}.json`;
-
-  const downloadButton = document.createElement('a');
-  downloadButton.href = url;
-  downloadButton.download = fileName;
-  downloadButton.click();
-  URL.revokeObjectURL(url);
-}
-
-const refreshSiteToggle = document.getElementById('refresh-site-toggle');
-
-refreshSiteToggle.addEventListener('change', () => {
-  if (refreshSiteToggle.checked) {
-    location.reload(); // Refresh the page
-  }
-});
-
-
 
 </script>
 
+
+<!-- MOVABLE DIVS -->
+
+<script>
+  $( function() {
+    $( "#Div_Alpina" ).draggable({  scroll: false });
+  }
+  );
+  </script>
+
+     <script>
+  $( function() {
+    $( "#Div_Portfolio" ).draggable({  scroll: false });
+  }
+  );
+  </script>
+
+    <script>
+  $( function() {
+    $( "#Div_AboutMe" ).draggable({  scroll: false });
+  } );
+  </script>
+
+     <script>
+  $( function() {
+    $( "#Div_Contact" ).draggable({  scroll: false });
+  } );
+  </script>
+
+       <script>
+  $( function() {
+    $( "#Div_SemI" ).draggable({  scroll: false });
+  } );
+  </script>
+
+        <script>
+  $( function() {
+    $( "#Div_SemII" ).draggable({  scroll: false });
+  } );
+  </script>
+
+          <script>
+  $( function() {
+    $( "#Div_GrafFormI" ).draggable({  scroll: false });
+  } );
+  </script>
+
+            <script>
+  $( function() {
+    $( "#Div_GrafFormII" ).draggable({  scroll: false });
+  } );
+  </script>
+
+              <script>
+  $( function() {
+    $( "#Div_ZeichnenI" ).draggable({  scroll: false });
+  } );
+  </script>
+
+              <script>
+  $( function() {
+    $( "#Div_ZeichnenII" ).draggable({  scroll: false });
+  } );
+  </script>
+
+                <script>
+  $( function() {
+    $( "#Div_ZeichnenII_2" ).draggable({  scroll: false });
+  } );
+  </script>
+
+   <script>
+  $( function() {
+    $( "#Div_ArchPos" ).draggable({  scroll: false });
+  } );
+  </script>
+
+         <script>
+  $( function() {
+    $( "#Div_InteractiveDesign" ).draggable({  scroll: false });
+  } );
+  </script>
+
+           <script>
+  $( function() {
+    $( "#Div_Moving_Horror" ).draggable({  scroll: false });
+  } );
+  </script>
+
+             <script>
+  $( function() {
+    $( "#Div_Illus" ).draggable({  scroll: false });
+  } );
+  </script>
+
+               <script>
+  $( function() {
+    $( "#Div_Photo_1" ).draggable({  scroll: false });
+  } );
+  </script>
+
+      <script>
+  $( function() {
+    $( "#Div_Photo2" ).draggable({  scroll: false });
+  } );
+  </script>
+
+<script>
+  $( function() {
+    $( "#Div_IntoTheVoid" ).draggable({  scroll: false });
+  } );
+  </script>
+
+  <script>
+  $( function() {
+    $( "#Div_TrashGold" ).draggable({  scroll: false });
+  } );
+  </script>
+
+    <script>
+  $( function() {
+    $( "#Div_InteractiveDesign_Vid1" ).draggable({  scroll: false });
+  } );
+  </script>
+
+      <script>
+  $( function() {
+    $( "#Div_InteractiveDesign_Vid2" ).draggable({  scroll: false });
+  } );
+  </script>
+
+        <script>
+  $( function() {
+    $( "#Div_Chesa" ).draggable({  scroll: false });
+  } );
+  </script>
+
+          <script>
+  $( function() {
+    $( "#Div_Posterslam_1" ).draggable({  scroll: false });
+  } );
+  </script>
+
+            <script>
+  $( function() {
+    $( "#Div_PAX_1" ).draggable({  scroll: false });
+  } );
+  </script>
+
+            <script>
+  $( function() {
+    $( "#Div_PAX_2" ).draggable({  scroll: false });
+  } );
+  </script>
+
+            <script>
+  $( function() {
+    $( "#Div_PAX_3" ).draggable({  scroll: false });
+  } );
+  </script>
+
+              <script>
+  $( function() {
+    $( "#myDIV25" ).draggable({  scroll: false });
+  } );
+  </script>
+
+  <script>
+  $( function() {
+    $( "#Div_CancelCulture" ).draggable({  scroll: false });
+  } );
+  </script>
+
+  <script>
+  $( function() {
+    $( "#Div_OAB2023" ).draggable({  scroll: false });
+  } );
+  </script>
+
+   <script>
+  $( function() {
+    $( "#Div_ISM" ).draggable({  scroll: false });
+  } );
+  </script>
+
+     <script>
+  $( function() {
+    $( "#Div_Eerie" ).draggable({  scroll: false });
+  } );
+  </script>
+
+    <script>
+  $( function() {
+    $( "#Div_JustDont" ).draggable({  scroll: false });
+  } );
+  </script>
+
+    <script>
+  $( function() {
+    $( "#Div_Rentner" ).draggable({  scroll: false });
+  } );
+  </script>
+
+  <script>
+  $( function() {
+    $( "#Div_CantBreathe" ).draggable({  scroll: false });
+  } );
+  </script>
+
+<script>
+  $( function() {
+    $( "#Div_Midnight" ).draggable({  scroll: false });
+  } );
+  </script>
+
+ <!--  SCRIPT URL -->
+
+<script>function gobutterfly(){
+window.open('butterfly.html', '_blank','toolbar:no');
+}
+</script>
+
+<title>VISUAL BONSAI</title>
+
+
+
+</head>
+<body>
+
+
+
+  <!-- <div id="preloader"> -->
+  <div id="status">&nbsp;</div>
+</div>
+
+
+  <div class="titleDIV">andri bonsai stoisser</div>
+
+  <div class="social"><a href="https://www.instagram.com/visual.bonsai/" target="_blank"><img class="two" src="data/insta.png" style="display:inline-block; margin-left: auto; margin-right: auto; width: 60%; "></img></a>
+<a href="https://ch.linkedin.com/in/andri-stoisser-2180a71b7" target="_blank"><img class="two" src="data/linkedin.png"  style="display:inline-block; margin-left: auto; margin-right: auto; width: 60%;vertical-align: center;"></img></a></div>
+
+  <!-- MENU BAR -->
+
+  <button id="portfoliobutton" class="button_black" onclick="portfolio()" style="top:72px; left:0px;z-index:1;">portfolio</button>
+  <button id="aboutmebutton" class="button_black" onclick="aboutme()" style="top:121px; left:0px;z-index:1;">about_me</button>
+  <button id="contactbutton" class="button_black" onclick="contact()" style="top:170px; left:0px;z-index:1;">contact</button>
+
+  <button class="button_black" onClick="window.location.reload();" style="top:219px; left:0px;z-index:10; font-size:9px;height:20px;z-index:1;">refresh_</button>
+
+
+<!-- PORTFOLIO -->
+
+<div onclick="showport()" id="Div_Portfolio" class="ui-widget-content">
+
+<div id="blackbars"><button class="button_close" onclick="closeport()" style="left:0;position: absolute;">X</button>PORTFOLIO</div>
+
+<!-- ARBEITEN IMAGES SINGLE
+
+<p><div onclick="FUNCTIONNAME()" class="tooltip">TITLE
+  <span class="tooltiptext" style="font-size:12px;"><div id="informationtext">WHAT IS IT<br>USED TOOLS</div><p>TOOLTIP TEXT</span>
+</div></p><br> 
+
+
+DIVIDER HERE
+
+<div class="notooltip">/</div>
+
+-->
+
+
+
+
+<div class="textstyle2">
+
+   <div style="text-align: left;"><h2>WORK</h2></div>
+
+     <p><div onclick="oab2023()" class="tooltip">> OPEN AIR BIVIO 2023
+  <span class="tooltiptext" style="font-size:12px;"><div id="informationtext">INTERACTIVE<br>bachelor-thesis</div><p>ABC</span>
+</div></p> 
+
+ <p><div onclick="alpinaevents()" class="tooltip">> ALPINA EVENTS
+  <span class="tooltiptext" style="font-size:12px;"><div id="informationtext">INTERACTIVE<br>bachelor-thesis</div><p>ABC</span>
+</div></p> 
+
+    <p><div onclick="interstellarmusic()" class="tooltip">> INTERSTELLAR MUSIC GMBH
+  <span class="tooltiptext"><div id="informationtext">INTERACTIVE DESIGN<br>generative book / basil.js</div><div class="textstyle4"><p>Curse like your favourite artist.<p>An autogenerated bookdesign with reversed censorship.</p></div></span>
+</div></p>
+
+<br>
+<div style="clear:both"></div>
+
+<br>
+
+    <div style="text-align: left;"><h2>INTERACTIVE & DIGITAL MEDIA</h2></div>
+
+     <p><div onclick="cancelculture()" class="tooltip">> #CANCELTHECULTURE
+  <span class="tooltiptext" style="font-size:12px;"><div id="informationtext">INTERACTIVE<br>bachelor-thesis</div><p>ABC</span>
+</div></p> 
+
+    <p><div onclick="interdesign()" class="tooltip">> PARENTAL ADVISORY EXPLICIT CONTENT
+  <span class="tooltiptext" style="font-size:12px;"><div id="informationtext">INTERACTIVE DESIGN<br>generative book / basil.js</div><p>Curse like your favourite artist.<p>An autogenerated bookdesign with reversed censorship.</span>
+</div></p>
+
+
+<p><div onclick="eerie()" class="tooltip">> EERIE
+  <span class="tooltiptext" style="font-size:12px;"><div id="informationtext">VIRTUAL REALITY<br>touch designer</div><p>TOOLTIP TEXT</span>
+</div></p>
+
+<p><div class="tooltip" onclick="gobutterfly()">> SCHMETTERLING
+  <span class="tooltiptext" style="font-size:12px;"><div id="informationtext">INTERACTIVE DESIGN<br>p5.js / audio visualizer</div>
+    <br><b>INTERACTIVE DESIGN I</b><p>An audiovisual tool playing right in <br>your browser.<p>Enjoy and visualize your music in a different way.</div></span></p>
+<p><div class="tooltip" onclick="p5_1()">I</div></p>
+<p><div class="tooltip" onclick="p5_1()" >II</div></p>
+<p><div class="tooltip" onclick="p5_1()">III</div></p>
+
+</p>
+
+<br>
+<div style="clear:both"></div>
+
+<br>
+
+<div style="text-align: left;"><h2>PRINTS & BOOKS</h2></div>
+
+<p><div onclick="cantbreathe()"class="tooltip">> I CAN'T BREATHE
+  <span class="tooltiptext" style="font-size:12px;"><div id="informationtext">moving media<br>information-video</div><p>Art stands with refugees.<br>
+  HGK meets UNHCR.</span>
+</div></p>
+
+<p><div onclick="tbm()"class="tooltip">> DREAMS & NIGHTMARES
+  <span class="tooltiptext" style="font-size:12px;"><div id="informationtext">moving media<br>video</div><p>A visual experimentation of a stockphoto.</span></div></p>
+
+<br>
+
+<div style="clear:both"></div>
+
+<br>
+
+
+
+   <div style="text-align: left;"><h2>VIDEO & ANIMATION</h2></div>
+
+      <p><div onclick="midnight()"class="tooltip">> INTRO 'MIDNIGHT MASS'
+  <span class="tooltiptext" style="font-size:12px;"><div id="informationtext">moving media<br>information-video</div><p>Art stands with refugees.<br>
+  HGK meets UNHCR.</span>
+</div></p>
+
+   <p><div onclick="rentner()"class="tooltip">> RENTNER FÄHRT MIT TÖFF IN KIRCHE
+  <span class="tooltiptext" style="font-size:12px;"><div id="informationtext">moving media<br>information-video</div><p>Art stands with refugees.<br>
+  HGK meets UNHCR.</span>
+</div></p>
+
+<p><div onclick="achesa()"class="tooltip">> A CHESA
+  <span class="tooltiptext" style="font-size:12px;"><div id="informationtext">moving media<br>information-video</div><p>Art stands with refugees.<br>
+  HGK meets UNHCR.</span>
+</div></p>
+
+
+<p><div onclick="tbm()"class="tooltip">> HORROR
+  <span class="tooltiptext" style="font-size:12px;"><div id="informationtext">moving media<br>video</div><p>A visual experimentation of a stockphoto.</span>
+</div></p>
+
+<br>
+<div style="clear:both"></div>
+
+<br>
+
+   <div style="text-align: left;"><h2>PHOTOGRAPHY</h2></div>
+
+ <div onclick="phot2()"class="tooltip">> DREAMLIKE SOLITUDE
+ <span class="tooltiptext" style="font-size:12px;"><div id="informationtext">photography<br>analogue / conceptual</div><p>Engadin. Nothing else to say.</span></div>
+
+<p><div onclick="intovoid()"class="tooltip">> INTO THE VOID
+  <span class="tooltiptext" style="font-size:12px;"><div id="informationtext">PRINT<br>ZINE</div><p>A zine created with images taken over the last couple of  years.</span>
+</div> </p>
+  <br>
+<div style="clear:both"></div>
+
+  <br>
+
+
+   <div style="text-align: left;"><h2>MIXED MEDIA</h2></div>
+
+  <p> <div onclick="apos()"class="tooltip">> ARCHITEKTONISCHE POSITIONEN BASEL
+  <span class="tooltiptext" style="font-size:12px;"><div id="informationtext">mixed media<br>poster & videotrailer</div><p>Posterdesign in combination with a teaser.</b><p>Collaboration with Jacqueline Mueller</span>
+</div></p>
+
+
+   <p><div onclick="ttg()"class="tooltip">> TRASH TO GOLD
+  <span class="tooltiptext" style="font-size:12px;"><div id="informationtext">mixed media<br>drawing, newspaper & video</div><b>An artistic take on an overwhelming world of news.</b><p>Collaboration with Robbie Lang</span>
+</div></p><br>
+
+
+
+<div style="clear:both"></div>
+<br>
+
+ <div style="text-align: left;"><h2>ILLUSTRATIONS, DRAWINGS & GRAPHICS</h2></div>
+
+
+<p> <div onclick="gfI()"class="tooltip">> CASA SPERIMENTALE
+  <span class="tooltiptext" style="font-size:12px;"><b>GRAPHICAL FORMULATION I</b><p>An visual examination/experimentation of how to use a photography as a 'root' image for illustrations.</p></span>
+</div> </p>
+
+<p><div onclick="illus()"class="tooltip">> ILL(U)STRATIONS
+  <span class="tooltiptext" style="font-size:12px;"><b>PERSONAL</b><p>A compilation of personal illustrations and drawings.</span></p>
+</div>
+
+<p><div onclick="semII()"class="tooltip">> ALCHEMY
+  <span class="tooltiptext" style="font-size:12px;"><b>SEMIOTICS II</b><p>Study. Interpretation.</span>
+</div></p> 
+
+ <p><div onclick="gfII()"class="tooltip">> HOW NOT TO MAKE TEA
+  <span class="tooltiptext" style="font-size:12px;"><b>GRAPHICAL FORMULATION II</b><p>A handdrawn visualization of how NOT <br>to make tea.</span>
+</div> </p>
+
+<p> <div onclick="zeichII();"class="tooltip">> GIF NEEN
+  <span class="tooltiptext" style="font-size:12px;"><b>DRAWING II</b><p>GIFs created for the course with<br>Leander Eisenmann.</span>
+</div>
+<div class="tooltip" onclick="zeichII_2()" style=" padding-left:5px;padding-right:5px;">GIF SELFIE
+</div></p>
+
+
+ 
+<br>
+
+<div style="clear:both"></div>
+<br>
+
+
+
+ <div style="text-align: left;"><h2>POSTERSDESIGN</h2></div>
+
+ <p><div onclick="justdont()"class="tooltip">> JUST DON'T DO IT
+  <span class="tooltiptext" style="font-size:12px;"><b>PERSONAL</b><p>Posters created for different music genres.</span>
+</div>
+
+ <p><div onclick="posterslam22()"class="tooltip">> POSTERSLAM
+  <span class="tooltiptext" style="font-size:12px;"><b>PERSONAL</b><p>Topic: 7.</span>
+</div></p>
+
+ <p><div onclick="pax1()"class="tooltip">> PAX MUSIC
+  <span class="tooltiptext" style="font-size:12px;"><b>PERSONAL</b><p>Posters created for different music genres.</span>
+</div>
+
+<br>
+
+<div style="clear:both"></div>
+
+<br>
+
+   <div style="text-align: left;"><h2>WEBSITES</h2></div>
+
+ <div onclick="linkfunktion()"class="tooltip">ANDRISTOISSER.CH
+  <span class="tooltiptext" style="font-size:12px;"><b>WEBDESIGN</b><p>This very website.</span>
+</div>
+
+
+<div style="clear:both"></div>
+
+<div style="clear:both"></div>
+
+<br>
+
+   <div style="text-align: left;"><h2>OTHER</h2></div>
+
+ <p> <div onclick="semI()"class="tooltip">> BAHNHOF DELSBERG
+  <span class="tooltiptext" style="font-size:12px;"><b>SEMIOTICS I</b><p>Study. Interpretation.</span>
+</div> </p> 
+
+
+
+</div>
+<br><br><br>
+</div>
+
+
+
+
+
+<!-- ARBEITEN BIG HERE -->
+
+<!-- ARBEIT ARCHITEKTONISCHE POSITIONEN -->
+
+ <div id="Div_ArchPos">
+<div id="blackbars"><button class="button_close" onclick="apos()" style="z-index:11;left:1px;position: absolute;">X</button>ARCHITEKTONISCHE_POSITIONEN (2021)</div>
+
+
+
+<div class="textstyle2" style="text-align: center;"><br><br>
+
+  <h2>POSTER.TEASER</h2>
+<h1>ARCHITEKTONISCHE POSITIONEN</h1>
+
+  <div style="float: left;width:40%;  position: relative;
+  transform: translateX(20%);padding-top:8%"><video width="100%" height="100%" autoplay loop muted controls onclick="openLightbox('data/ap/teaser.mov')">
+  <source src="data/ap/teaser.mov" type="video/mp4">
+Your browser does not support the video tag.
+</video></div>
+<div><img style="width: 28%;border:1px solid black" src="data/ap/poster.jpg" onclick="openLightbox('data/ap/poster.jpg')"></img></div><br><br>
+
+<p>The poster and teaser have been created for an imaginary exhibition. <br>Collaboration with Jacqueline Mueller</p>
+
+<br><br><br>
+
+ <button class="button_black" onclick="window.open('data/ap/ap_prozess.pdf');" style="z-index:111;position: sticky;">PROCESS DOCUMENTATION.PDF</button><p></p>
+
+</div>
+
+</div>
+
+
+<!-- OAB 2023 -->
+<div id="Div_OAB2023">
+<div id="blackbars"><button class="button_close" onclick="oab2023()" style="z-index:11;left:1px;position: absolute;">X</button>OPEN AIR BIVIO 2023 (2022 - 2023)</div>
+
+
+
+<div class="textstyle2" style="text-align: center;">
+
+  -
+
+</div>
+</div>
+
+<!-- ALPINA -->
+<div id="Div_Alpina">
+<div id="blackbars"><button class="button_close" onclick="alpinaevents()" style="z-index:11;left:1px;position: absolute;">X</button>ALPINA EVENTS (2020 - 2023)</div>
+
+<div class="textstyle2" style="text-align: center;">
+
+      <div class="video-container">
+        <div class="video-wrapper">
+            <video class="video" autoplay loop muted onclick="openLightbox('data/alpina/SunWeek.mp4')">
+                <source src="data/alpina/SunWeek.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+        <div class="video-wrapper">
+            <video class="video" autoplay loop muted onclick="openLightbox('data/alpina/Cesare_720p.mov')">
+                <source src="data/alpina/Cesare_720p.mov" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+        <div class="video-wrapper">
+            <video class="video" autoplay loop muted onclick="openLightbox('data/alpina/Flyer_February.mp4')">
+                <source src="data/alpina/Flyer_February.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+    </div>
+
+<div class="image-gallery">
+        <div class="image-item-two">
+            <img src="data/alpina/AlpinaEvents_Tanz.jpg" onclick="openLightbox('data/alpina/AlpinaEvents_Tanz.jpg')">
+        </div>
+        <div class="image-item-two">
+            <img src="data/alpina/AlpinaEvents_Change.jpg" onclick="openLightbox('data/alpina/AlpinaEvents_Change.jpg')">
+        </div>
+    </div>
+<br>
+</div>
+</div>
+
+<!-- INTERSTELLAR MUSIC ISM -->
+<div id="Div_ISM">
+<div id="blackbars"><button class="button_close" onclick="interstellarmusic()" style="z-index:11;left:1px;position: absolute;">X</button>INTERSTELLAR MUSIC (2022)</div>
+
+
+
+<div class="textstyle2" style="text-align: center;">
+
+  <h1>EXPLORE #CANCELTHECULTURE</h1>
+
+</div>
+</div>
+
+<!-- CANCEL THE CULTURE -->
+<div id="Div_CancelCulture">
+<div id="blackbars"><button class="button_close" onclick="cancelculture()" style="z-index:11;left:1px;position: absolute;">X</button>#CANCELTHECULTURE (2023)</div>
+
+
+
+<div class="textstyle2" style="text-align: center;">
+
+  <a href="http://canceltheculture.github.io" target="_blank"><h1>EXPLORE #CANCELTHECULTURE</h1></a>
+
+</div>
+</div>
+
+
+<!-- ARBEIT INTERACTIVE DESIGN -->
+<div id="Div_InteractiveDesign">
+<div id="blackbars"><button class="button_close" onclick="interdesign()" style="z-index:11;left:1px;position: absolute;">X</button>PARENTAL ADVISORY EXPLICIT CONTENT (2021)</div>
+
+<div class="textstyle3" style="text-align: center;">
+
+  <h2>THIS BOOK IS AUTO GENERATED WITH BASIL.JS IN INDESIGN.</h2>
+<h1>PARENTAL ADVISORY EXPLICIT CONTENT</h1>
+
+</div>
+<div class="centered-container">
+  <img style="width: 60%; justify-items: center;" src="data/ID/book.png"></img></div>
+  <br>
+
+<div class="textstyle3" style="text-align: center;">
+  <div style="word-wrap:break-word;"><b>var filterWords = ['fuck', 'shit', 'ass', 'dick', 'hoe', 'bitch', 'c*ck', 'pu**y', 'gun','weed','joint','blunt','death','bastard','butt','sex','c*nt','satan']</b></div>
+  
+<P>
+What happens if you reverse the censorship within lyrics of famous artists. How much do they curse, how much do the actually swear in their songs?
+<br>
+The script censors everything but the swear-words. It can be used to check your favourite artists and create a book of "bad mouthing". </p>
+</div>
+
+<br>
+<div class="textstyle2" style="text-align: center;">
+
+<img style="width: 100%;border: 0.5px solid black;" src="data/ID/code.png"></img>
+</div>
+  <br><br>
+
+
+
+<div class="textstyle3" style="text-align: center;">
+  <br>
+<b>PAGE EXAMPLES</b>
+</div>
+<br>
+<div class="textstyle2" style="text-align: center;">
+
+  <img style="width: 100%;border: 0.5px solid black;" src="data/ID/page_1.jpg"></img>
+  <img style="width: 100%;border: 0.5px solid black;" src="data/ID/page_2.jpg"></img>
+</div>
+<div class="textstyle3" style="text-align: center;">
+<p> <button class="button_black" onclick="window.open('data/ID/book.pdf');" style="z-index:111;position:sticky">OPEN BOOK</button></p><br></div>
+
+</div>
+
+
+<!-- CANT BREATHE -->
+<div id="Div_CantBreathe">
+<div id="blackbars"><button class="button_close" onclick="cantbreathe()" style="z-index:11;left:1px;position: absolute;">X</button>I CAN'T BREATHE (2022)</div>
+
+<div class="textstyle2" style="text-align: center;"><br><br>
+
+  <h2 style="text-transform: uppercase;"><p>a book about how musicians treat racism in their lyrics</p><p>2022</p></h2>
+<h1>I CAN'T BREATHE</h1>
+
+
+
+
+<img style="width: 99%;" src="data/cb/cover.jpg" onclick="openLightbox('data/cb/cover.jpg')"></img>
+
+<table style="width: 100%;">
+        <tr>
+            <td style="width: 49.5%; padding-right: 0.25%;">
+                <img style="width: 100%;" src="data/cb/site_1.jpg" onclick="openLightbox('data/cb/site_1.jpg')">
+            </td>
+            <td style="width: 49.5%;">
+                <img style="width: 100%;" src="data/cb/site_2.jpg" onclick="openLightbox('data/cb/site_2.jpg')">
+            </td>
+        </tr>
+    </table>
+<img style="width: 99%;" src="data/cb/flip.jpg" onclick="openLightbox('data/cb/flip.jpg')">
+<table style="width: 100%;">
+        <tr>
+            <td style="width: 49.5%; padding-right: 0.25%">
+                <img style="width: 100%;" src="data/cb/binding.jpg" onclick="openLightbox('data/cb/binding.jpg')">
+            </td>
+            <td style="width: 49.5%;">
+                <img style="width: 100%;" src="data/cb/stack.jpg" onclick="openLightbox('data/cb/stack.jpg')">
+            </td>
+        </tr>
+    </table>
+</div>
+<br><br>
+
+  <div style="padding:56.25% 0 0 0;position:relative;">
+    <iframe src="https://player.vimeo.com/video/848629396?h=de9a69969c" style="position:absolute;top:0;left:0;width:100%;height:100%;" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+</div>
+<script src="https://player.vimeo.com/api/player.js"></script>
+
+<br><br>
+<div>
+ <video class="video" autoplay loop muted onclick="openLightbox('data/cb/BIGGIE_720p.mov')">
+                <source src="data/cb/BIGGIE_720p.mov" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+</div>
+</div>
+
+
+
+</div>
+
+<!-- RENTNER -->
+
+ <div id="Div_Rentner">
+    <div id="blackbars">
+        <button class="button_close" onclick="rentner()" style="z-index:11;left:1px;position: absolute;">X</button>
+          RENTNER FÄHRT MIT TÖFF IN KIRCHE (2022)</div>
+
+<div style="padding:69.49% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/848496268?h=81f5b697f7" style="position:absolute;top:0;left:0;width:100%;height:100%;" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>
+
+
+</div>
+
+<!-- MIDNIGHT MASS -->
+
+<div id="Div_Midnight">
+    <div id="blackbars">
+        <button class="button_close" onclick="midnight()" style="z-index:11;left:1px;position: absolute;">X</button>
+          MIDNIGHT MASS INTRO (2022)</div>
+
+<div style="padding:56.25% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/664747526?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;" title="Midnight Mass Intro"></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>
+
+</div>
+
+<!-- TBM 1 HORROR-->
+
+ <div id="Div_Moving_Horror">
+   <div id="blackbars">
+        <button class="button_close" onclick="tbm()" style="z-index:11;left:1px;position: absolute;">X</button>
+          HORROR (2021)</div>
+
+  <div><video style="height: 25%; width: 100%;" controls>
+  <source src="data/tbm1/horror.mov" type="video/mp4">
+Your browser does not support the video tag.
+</video></div>
+
+</div>
+
+
+<!-- SEMIOTIK I -->
+
+ <div id="Div_SemI">
+    <div id="blackbars">
+        <button class="button_close" onclick="semI()" style="z-index:11;left:1px;position: absolute;">X</button>
+          PORT DU (2021)</div>
+
+
+
+  <div class="textstyle2" style="text-align: center;"><br><br>
+
+      <h2>SEMIOTICS</h2>
+      <h1>BAHNHOF DELSBERG</h1>
+
+<h3>Reference photography</h3>
+
+      <img style="width: 40%;height:40%" src="data/sem1/ref.jpg"></img>
+
+<h3>FORMAL INTERVENTIONS</h3>
+      <p><b>Series I</b></p>
+
+
+         <div>
+      <img style="width: 20%;height:20%" src="data/sem1/form/F1.jpg"></img>
+      <img style="width: 20%;height:20%" src="data/sem1/form/F2.jpg"></img>
+      <img style="width: 20%;height:20%" src="data/sem1/form/F3.jpg"></img>
+      <img style="width: 20%;height:20%" src="data/sem1/form/F4.jpg"></img>
+      <img style="width: 20%;height:20%" src="data/sem1/form/F5.jpg"></img>
+      <img style="width: 20%;height:20%" src="data/sem1/form/F6.jpg"></img>
+      <img style="width: 20%;height:20%" src="data/sem1/form/F7.jpg"></img>
+      <img style="width: 20%;height:20%" src="data/sem1/form/F8.jpg"></img>
+     </div>
+      
+            <p><b>Series II</b></p>
+
+         <div>
+      <img style="width: 20%;height:20%" src="data/sem1/form/F9.jpg"></img>
+      <img style="width: 20%;height:20%" src="data/sem1/form/F10.jpg"></img>
+      <img style="width: 20%;height:20%" src="data/sem1/form/F11.jpg"></img>
+      <img style="width: 20%;height:20%" src="data/sem1/form/F12.jpg"></img>
+      <img style="width: 20%;height:20%" src="data/sem1/form/F13.jpg"></img>
+      <img style="width: 20%;height:20%" src="data/sem1/form/F14.jpg"></img>
+      <img style="width: 20%;height:20%" src="data/sem1/form/F15.jpg"></img>
+      <img style="width: 20%;height:20%" src="data/sem1/form/F16.jpg"></img>
+     </div><br>
+
+     <h3>CONTEXTUAL INTERVENTIONS</h3>
+      <p><b>Series I</b></p>
+
+               <div>
+      <img style="width: 38%;height:38%" src="data/sem1/kontext/2.jpg"></img>
+      <img style="width: 38%;height:38%" src="data/sem1/kontext/3.jpg"></img>
+      <img style="width: 38%;height:38%" src="data/sem1/kontext/4.jpg"></img>
+      <img style="width: 38%;height:38%" src="data/sem1/kontext/5.jpg"></img>
+      <img style="width: 38%;height:38%" src="data/sem1/kontext/6.jpg"></img>
+      <img style="width: 38%;height:38%" src="data/sem1/kontext/7.jpg"></img>
+      <img style="width: 38%;height:38%" src="data/sem1/kontext/8.jpg"></img>
+      <img style="width: 38%;height:38%" src="data/sem1/kontext/9.jpg"></img>
+     </div><br>
+
+           <p><b>Series II</b></p>
+
+               <div>
+      <img style="width: 38%;height:38%" src="data/sem1/kontext/11.jpg"></img>
+      <img style="width: 38%;height:38%" src="data/sem1/kontext/12.jpg"></img>
+      <img style="width: 38%;height:38%" src="data/sem1/kontext/13.jpg"></img>
+      <img style="width: 38%;height:38%" src="data/sem1/kontext/14.jpg"></img>
+      <img style="width: 38%;height:38%" src="data/sem1/kontext/15.jpg"></img>
+      <img style="width: 38%;height:38%" src="data/sem1/kontext/16.jpg"></img>
+      <img style="width: 38%;height:38%" src="data/sem1/kontext/17.jpg"></img>
+      <img style="width: 38%;height:38%" src="data/sem1/kontext/18.jpg"></img>
+     </div><br>
+
+                <p><b>Series III</b></p>
+
+               <div>
+      <img style="width: 38%;height:38%" src="data/sem1/kontext/20.jpg"></img>
+      <img style="width: 38%;height:38%" src="data/sem1/kontext/21.jpg"></img>
+      <img style="width: 38%;height:38%" src="data/sem1/kontext/22.jpg"></img>
+      <img style="width: 38%;height:38%" src="data/sem1/kontext/23.jpg"></img>
+      <img style="width: 38%;height:38%" src="data/sem1/kontext/24.jpg"></img>
+      <img style="width: 38%;height:38%" src="data/sem1/kontext/25.jpg"></img>
+      <img style="width: 38%;height:38%" src="data/sem1/kontext/26.jpg"></img>
+      <img style="width: 38%;height:38%" src="data/sem1/kontext/27.jpg"></img>
+     </div><br>
+
+     <button class="button_black" onclick="window.open('data/sem1/pd_sem1.pdf');" style="z-index:111;position: sticky;">PROCESS DOCUMENTATION.PDF</button><p></p>
+
+
+
+  </div>
+</div>
+
+<!-- SEMIOTIK II -->
+
+ <div id="Div_SemII">
+    <div id="blackbars">
+        <button class="button_close" onclick="semII()" style="z-index:11;left:1px;position: absolute;">X</button>
+          ALCHEMY (2021)</div>
+
+
+  <div class="textstyle2" style="text-align: center;"><br><br>
+
+      <h2>SEMIOTICS</h2>
+      <h1>ALCHEMY_</h1>
+
+      <b>ART, TECHNOLOGY AND NATURE</b><br>
+edited by Camilla Skovbjerg Paldam and Jacob Wamberg, 2015
+
+<p>William Newman states that alchemy historically originated in the workshop practices of decorative arts in the antique period, and furthermore, that the practitioners of decorative arts and alchemy were united in their desire to replicate rather then represent nature.
+Despite rejection of alchemy by artists in the Renaissance period (for instance, Leonardo da Vinci and Bernard Palissy) by period's workshop activities of manufacturing art, drugs and pigments can be difficult to separate from alchemical production. To be 'made by alchemy' could simply mean to be made artificially.</p><br><br><br>
+
+
+
+<p><b>Illustrations drawn by hand and digitalized in Adobe Illustrator.</b></p>
+
+      <img style="width: 100%;" src="data/sem2/all.jpg"></img><br><br>
+
+        <button class="button_black" onclick="window.open('data/sem2/pd_sem2.pdf');" style="z-index:111;position: sticky;">PROCESS DOCUMENTATION.PDF</button><p></p>
+
+
+
+  </div>
+</div>
+
+<!-- GRAFISCHES FORMULIEREN I -->
+
+ <div id="Div_GrafFormI">
+   <div id="blackbars">
+        <button class="button_close" onclick="gfI()" style="z-index:11;left:1px;position: absolute;">X</button>
+          CASA SPERIMENTALE (2021)</div>
+
+
+
+  <div class="textstyle2" style="text-align: center;"><br><br>
+
+      <h2>GRAPHICAL.FORMULATION</h2>
+      <h1>CASA SPERIMENTALE_</h1>
+
+      <p><h3>Reference photography</h3></p>
+
+      <img style="width: 40%;height:40%" src="data/gf1/ref.jpg"></img>
+      <p><b>"Casa Sperimentale" by Giuseppe Perugini, Raynaldo Perugini & Uga De Plaisant.</b></p>
+
+      <img style="width: 100%;height:100%" src="data/gf1/1.jpg" onclick="openLightbox('data/gf1/1.jpg')"></img>
+
+           <div style="padding-top: 20px">
+      <img style="width: 70%;height:70%" src="data/gf1/2.jpg" onclick="openLightbox('data/gf1/2.jpg')"></img>
+      <img style="width: 70%;height:70%" src="data/gf1/7.jpg" onclick="openLightbox('data/gf1/7.jpg')"></img>
+    <img style="width: 34%;height:34%" src="data/gf1/3.jpg" onclick="openLightbox('data/gf1/3.jpg')"></img>
+  <img style="width: 34%;height:34%" src="data/gf1/4.jpg" onclick="openLightbox('data/gf1/4.jpg')"></img>
+<img style="width: 70%;height:70%" src="data/gf1/6.jpg" onclick="openLightbox('data/gf1/6.jpg')"></img></div>
+<br><br>
+
+  </div>
+</div>
+
+<!-- GRAFISCHES FORMULIEREN II -->
+
+ <div id="Div_GrafFormII">
+    <div id="blackbars">
+        <button class="button_close" onclick="gfII()" style="z-index:11;left:1px;position: absolute;">X</button>
+          HOW NOT TO MAKE TEA (2021)</div>
+
+
+
+  <div class="textstyle2" style="text-align: center;"><br><br>
+
+
+     <div>
+      <img style="width: 100%;" src="data/gf2/1.jpg"></img><br>
+      <img style="width: 100%;"  src="data/gf2/2.jpg"></img><br>
+    <img style="width: 100%;"  src="data/gf2/3.jpg"></img><br>
+  <img style="width: 100%;"  src="data/gf2/4.jpg"></img><br>
+<img style="width: 100%;"  src="data/gf2/5.jpg"></img></div>
+
+
+  </div>
+</div>
+
+
+<!-- ZEICHNEN II -->
+
+ <div id="Div_ZeichnenII">
+  <div id="blackbars">
+        <button class="button_close" onclick="zeichII()" style="z-index:11;left:1px;position: absolute;">X</button>
+          GIF NEEN (2021)</div>
+
+<div style="width: 100%"><img style="width:100%" src="data/zn2/neen.gif"></img></div>
+
+</div>
+
+<!-- ZEICHNEN II -->
+
+ <div id="Div_ZeichnenII_2">
+    <div id="blackbars">
+        <button class="button_close" onclick="zeichII_2()" style="z-index:11;left:1px;position: absolute;">X</button>
+          GIF SELFIE (2021)</div>
+   
+
+<div style="width: 100%"><img style="width:100%" src="data/zn2/selfie.gif"></img></div>
+
+
+</div>
+
+
+<!-- ILLUSTRATION -->
+
+ <div id="Div_Illus">
+   <div id="blackbars">
+        <button class="button_close" onclick="illus()" style="z-index:11;left:1px;position: absolute;">X</button>
+          ILL(U)STRATIONS (2018 - 2021)</div>
+
+<div><img style="width:100%" src="data/illus/big.jpg" onclick="openLightbox('data/illus/big.jpg')"></img></div>
+
+</div>
+
+<!-- PHOTO 2 -->
+
+ <div id="Div_Photo2">
+   <div id="blackbars">
+        <button class="button_close" onclick="phot2()" style="z-index:11;left:1px;position: absolute;">X</button>
+          DREAMLIKE SOLITUDE (2021)</div>
+
+  <div class="textstyle2" style="text-align: center;"><br><br>
+
+      <h2>PHOTOGRAPHY</h2>
+      <h1>DREAMLIKE SOLITUDE</h1>
+
+      <p>The feeling of solitude is a constant companion when touring through the Alps by yourself or with a partner.<br>
+
+The pictures in this series have been shot on film during splitboarding in the spring in March in the Engadiner mountains, enjoying a silence which equally can't be found anywhere else.<br><br>
+
+In a conceptual fashion, the photographs have been scanned, repeated and mirrored to create a 
+kaleidoscope-esque effect, which ultimately creates a new, dreamlike world. 
+This new world can be seen and interpreted by each viewer differently, as everyone finds a new way to see and interpret the pictures.</p>
+<br><br>
+
+               <div>
+      <img style="width: 80%;" src="data/photo2/1.jpg"></img><br><br> 
+      <img style="width: 80%;" src="data/photo2/2.jpg"></img><br><br> 
+      <img style="width: 80%;" src="data/photo2/3.jpg"></img><br><br> 
+      <img style="width: 80%;" src="data/photo2/4.jpg"></img><br> <br> 
+      <img style="width: 80%;" src="data/photo2/5.jpg"></img><br><br> 
+      <img style="width: 80%;" src="data/photo2/6.jpg"></img><br><br> 
+      <img style="width: 80%;" src="data/photo2/7.jpg"></img><br><br> 
+      <img style="width: 80%;" src="data/photo2/8.jpg"></img><br><br> 
+      <img style="width: 80%;" src="data/photo2/9.jpg"></img><br><br> 
+      <img style="width: 80%;" src="data/photo2/10.jpg"></img><br><br> 
+     </div><br>
+
+
+  </div>
+</div>
+
+<!-- INTO THE VOID -->
+
+<div id="Div_IntoTheVoid">
+   <div id="blackbars">
+        <button class="button_close" onclick="intovoid()" style="z-index:11;left:1px;position: absolute;">X</button>
+          INTO THE VOID (2020)</div>
+
+  <div class="textstyle2" style="text-align: center;"><br><br>
+
+      <h2>PHOTOGRAPHY.ZINE</h2>
+      <h1>INTO THE VOID_</h1>
+
+                 <div style="padding-top: 20px">
+      <img style="width: 49%;height:49%;border: 1px solid black;" src="data/void/1.jpg"></img><br>
+      <img style="width: 90%;height:90;border: 1px solid black;" src="data/void/2.jpg"></img><br>
+    <img style="width: 90%;height:90%;border: 1px solid black;" src="data/void/3.jpg"></img><br>
+  <img style="width: 90%;height:90%;border: 1px solid black;" src="data/void/4.jpg"></img><br>
+<img style="width: 90%;height:90%;border: 1px solid black;" src="data/void/5.jpg"></img><br>
+<img style="width: 90%;height:90%;border: 1px solid black;" src="data/void/6.jpg"></img><br>
+<img style="width: 90%;height:90%;border: 1px solid black;" src="data/void/7.jpg"></img><br>
+<img style="width: 90%;height:90%;border: 1px solid black;" src="data/void/8.jpg"></img><br>
+<img style="width: 90%;height:90%;border: 1px solid black;" src="data/void/9.jpg"></img><br>
+<img style="width: 90%;height:90%;border: 1px solid black;" src="data/void/10.jpg"></img><br>
+<img style="width: 90%;height:90%;border: 1px solid black;" src="data/void/11.jpg"></img><br>
+<img style="width: 90%;height:90%;border: 1px solid black;" src="data/void/12.jpg"></img><br>
+<img style="width: 90%;height:90%;border: 1px solid black;" src="data/void/13.jpg"></img><br>
+<img style="width: 90%;height:90%;border: 1px solid black;" src="data/void/14.jpg"></img><br>
+<img style="width: 90%;height:90%;border: 1px solid black;" src="data/void/15.jpg"></img><br>
+<img style="width: 90%;height:90%;border: 1px solid black;" src="data/void/16.jpg"></img><br>
+      <img style="width: 49%;height:49%;border: 1px solid black;" src="data/void/17.jpg"></img><br>
+</div>
+<br><br>
+
+  </div>
+</div>
+
+
+  </div>
+</div>
+
+<!-- TRASH TO GOLD -->
+
+<div id="Div_TrashGold">
+    <div id="blackbars">
+        <button class="button_close" onclick="ttg()" style="z-index:11;left:1px;position: absolute;">X</button>
+          TRASH TO GOLD (2019)</div>
+
+
+  <div class="textstyle2" style="text-align: center;"><br><br>
+
+      <h2>SHORTMOVIE.DRAWING.NEWSPAPER</h2>
+      <h1>TRASH TO GOLD_</h1>
+
+      <iframe style="border: 1px solid white;" src="https://player.vimeo.com/video/347774985" width="70%" height="480px" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+
+      <br><br>
+
+     &laquo;'Trash to Gold' ist ein Einblick in die Gedanken zweier unterschiedlicher Menschen, welche aber die selbe Leidenschaft teilen: das Skizzieren, Zeichnen und Malen.
+<br>Es dokumentiert einen sozialkritischen, duesteren und wohl eher pessimistischen Verarbeitungsprozess und dessen Wandel durch unsere Koepfe auf das Papier.&raquo;
+<br><br>
+               <div>
+      <img style="width: 70%;height:70%" src="data/ttg/1.png"></img><br>
+      <img style="width: 70%;height:70%" src="data/ttg/2.png"></img><br>
+     </div><br><br>
+
+      <button class="button_black" onclick="window.open('data/ttg/newspaper.pdf');" style="z-index:1;position: sticky;">PROCESS "NEWSPAPER"</button>
+
+    <br><br>
+
+  </div>
+</div>
+
+
+<!-- EERIE -->
+
+ <div id="Div_Eerie">
+    <div id="blackbars">
+        <button class="button_close" onclick="eerie()" style="z-index:11;left:1px;position: absolute;">X</button>
+          EERIE (2022)</div>
+
+
+      <div style="padding:56.25% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/720544902?h=37d10705b8" style="position:absolute;top:0;left:0;width:100%;height:100%;" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>
+
+
+</div>
+
+<!-- P5 1 VIDEO -->
+
+<div id="Div_InteractiveDesign_Vid1">
+  <div id="blackbars">
+        <button class="button_close" onclick="p5_1()" style="z-index:11;left:1px;position: absolute;">X</button>
+          WOODKID - GOLIATH_</div>
+
+  <div style="padding-top:20px"><video width="100%" height="100%" controls>
+  <source src="data/p5/goliath.mov" type="video/mp4">
+Your browser does not support the video tag.
+</video></div>
+
+</div>
+
+<!-- A CHESA -->
+
+<div id="Div_Chesa">
+ <div id="blackbars">
+        <button class="button_close" onclick="achesa()" style="z-index:11;left:1px;position: absolute;">X</button>
+          A CHESA (2021)</div>
+  
+
+<div class="textstyle2" style="text-align: center;">
+
+      <h2>MOVING INFOGRAPHIC FOR ART STANDS WITH REFUGEES</h2>
+
+        <h1>A CHESA</h1>
+
+      <iframe style="border: 1px solid white;" src="https://player.vimeo.com/video/566626035" height="600px" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+
+      <h3>A moving infographic for the <br>"Art stands with refugees" project.</h3>
+
+          
+
+      This work has been shown in the Foyer Public of the Theater Basel <br>from 13.06 - 24.06.21.<br><br><br>
+
+    </div>
+
+</div>
+
+<!-- PS22 -->
+
+<div id="Div_JustDont">
+  <div id="blackbars">
+        <button class="button_close" onclick="justdont()" style="z-index:11;left:1px;position: absolute;">X</button>
+          JUST DON'T DO IT (2022)</div>
+
+
+<div class="textstyle2" style="text-align: center;">
+
+   <div class="video-container">
+        <div class="video-wrapper">
+            <video class="video" autoplay loop muted onclick="openLightbox('data/justdont/dont_1.mov')">
+                <source src="data/justdont/dont_1.mov" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+        <div class="video-wrapper">
+            <video class="video" autoplay loop muted onclick="openLightbox('data/justdont/dont_2.mov')">
+                <source src="data/justdont/dont_2.mov" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+        <div class="video-wrapper">
+            <video class="video" autoplay loop muted onclick="openLightbox('data/justdont/dont_3.mov')">
+                <source src="data/justdont/dont_3.mov" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+      </div>
+
+</div>
+</div>
+
+<!-- PS22 -->
+
+<div id="Div_Posterslam_1">
+  <div id="blackbars">
+        <button class="button_close" onclick="posterslam22()" style="z-index:11;left:1px;position: absolute;">X</button>
+          POSTERSLAM (2021 - 2023)</div>
+
+
+ <div class="image-gallery">
+  <div class="image-item-two">
+            <video class="video" autoplay loop muted onclick="openLightbox('data/posters/pushxps_2.mp4')">
+        <source src="data/posters/pushxps_2.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+        </div>
+        <div class="image-item-two">
+            <img src="data/posters/pushxps.jpg" onclick="openLightbox('data/posters/pushxps.jpg')">
+        </div>
+        <div class="image-item-two">
+            <img src="data/posters/pushxps_2.jpg" onclick="openLightbox('data/posters/pushxps_2.jpg')">
+        </div>
+        <div class="image-item-two">
+            <img src="data/posters/ps22.jpg" onclick="openLightbox('data/posters/ps22.jpg')">
+        </div>
+        <div class="image-item-two">
+            <img src="data/posters/ps23.jpg" onclick="openLightbox('data/posters/ps23.jpg')">
+        </div>
+         <div class="image-item-two">
+            <video class="video" autoplay loop muted onclick="openLightbox('data/posters/ps24_2.mp4')">
+        <source src="data/posters/ps24_2.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+    </div>
+
+    
+       
+</div>
+
+</div>
+
+<!-- PAX I -->
+
+<div id="Div_PAX_1">
+   <div id="blackbars">
+        <button class="button_close" onclick="pax1()" style="z-index:11;left:1px;position: absolute;">X</button>
+          PAX MUSIC (2019)</div>
+ <div class="image-gallery">
+        <div class="image-item-three">
+            <img src="data/posters/pax2.jpg" onclick="openLightbox('data/posters/pax2.jpg')">
+        </div>
+        <div class="image-item-three">
+            <img src="data/posters/pax1.jpg" onclick="openLightbox('data/posters/pax1.jpg')">
+        </div>
+        <div class="image-item-three">
+             <img src="data/posters/pax3.jpg" onclick="openLightbox('data/posters/pax3.jpg')">
+        </div>
+    </div>
+</div>
+
+
+<!-- End PORTFOLIO DIV ^^ ADD WORK ABOVE -->
+
+</div>
+
+<!-- END ARBEITEN -->
+
+
+<!-- ABOUT ME -->
+
+<div onclick="showaboutme()" id=Div_AboutMe class="ui-widget-content">
+
+  <div id="blackbars">ABOUT ME<button class="button_close" onclick="closeabout()">X</button></div>
+ <div style="height: 100%; width: 50%; float: left; overflow:hidden;"><img class="one" src="data/selfie.jpg"></img></div>
+      <div class="textstyle" style="overflow:scroll;text-align: center; padding-top:20px;margin-left:30px;"><h2>I haven't got a clue.</h2><b>And that's alright.</b><p>Born in the Engadin in 1990, living in Samedan & Basel.<p>Heavely influenced by music & snowboarding culture.<p>
+        <b>Probably a little trashy.</b><p>
+        ____
+        <p>
+        September 2020<br><b>Visual Communication</b><br> FHNW Basel<p><p>
+          2019-20<br><b>Internship Graphics Designer</b><br> Si-De Concept & Design Silvaplana<p>
+        2018-19<br><b>Vocational school-leaving certificate</b><br> GBM Chur<p></div>
+        
+        
+</div>
+
+
+<!-- CONTACT ME -->
+
+<div onclick="showcontact()" id="Div_Contact" class="ui-widget-content">
+
+   <div id="blackbars">CONTACT ME<button class="button_close" onclick="showcontact()">X</button></div>
+<div class="textstyle" style="padding-top: 20px"><h2>Andri Stoisser</h2>
+    andri.stoisser@gmx.ch
+<p>
+  <form action="https://getform.io/f/b6f7f022-aa8e-4fa2-89d8-93a10d0f10cf" method="POST">
+
+Name<br>
+  <input type="text" name="name"><br>
+E-Mail<br>
+  <input type="email" name="email"><br>
+  Message<br>
+  <input type="text" name="message" rows="5" style="height:60px"><br>
+  <button class="button_black" type="submit" style="z-index:10; font-size:9px;height:20px;position:sticky;left:20%;">Drop in</button></div>
+
+
+</form>
+</div>
+  <br>
+
+<div id="lightbox" class="lightbox" onclick="closeLightbox()">
+    <div class="lightbox-content">
+        <img id="lightbox-img" class="lightbox-img" src="" alt="Lightbox Image">
+        <video id="lightbox-video" class="lightbox-video" controls>
+            <!-- Video source will be set dynamically -->
+            Your browser does not support the video tag.
+        </video>
+    </div>
+</div>
+
+
+<!-- MENU SCRIPTS -->
+
+<script>
+function portfolio() {
+  const button = document.getElementById("portfoliobutton");
+  button.classList.toggle('active');
+
+  var x = document.getElementById("Div_Portfolio");
+  if (x.style.display === "block") {
+    x.style.display = "none";
+  } else {
+    x.style.display = "block";
+  }
+  x.style.zIndex = "1";
+  document.getElementById(Div_AboutMe).style.zIndex = "0";
+  document.getElementById("Div_Contact").style.zIndex = "0";
+}
+</script>
+
+
+<script>
+function aboutme() {
+
+    const button = document.getElementById("aboutmebutton");
+  button.classList.toggle('active');
+
+  var x = document.getElementById("Div_AboutMe");
+  if (x.style.display === "block") {
+    x.style.display = "none";
+  } else {
+    x.style.display = "block";
+  }
+  x.style.zIndex = "5";
+  document.getElementById("Div_Portfolio").style.zIndex = "0";
+  document.getElementById("Div_Contact").style.zIndex = "0";
+}
+</script>
+
+<script>
+function contact() {
+
+    const button = document.getElementById("contactbutton");
+  button.classList.toggle('active');
+
+  var x = document.getElementById("Div_Contact");
+  if (x.style.display === "block") {
+    x.style.display = "none";
+  } else {
+    x.style.display = "block";
+  }
+  x.style.zIndex = "1";
+  document.getElementById("Div_Portfolio").style.zIndex = "0";
+  document.getElementById("Div_AboutMe").style.zIndex = "0";
+}
+</script>
+
+<!-- ARBEITEN SCRIPTS -->
+
+<script>
+function eerie() {
+  var x = document.getElementById("Div_Eerie");
+  if (x.style.display === "block") {
+    x.style.display = "none";
+  } else {
+    x.style.display = "block";
+  }
+}
+</script>
+
+<script>
+function oab2023() {
+  var x = document.getElementById("Div_OAB2023");
+  if (x.style.display === "block") {
+    x.style.display = "none";
+  } else {
+    x.style.display = "block";
+  }
+}
+</script>
+
+<script>
+function interstellarmusic() {
+  var x = document.getElementById("Div_ISM");
+  if (x.style.display === "block") {
+    x.style.display = "none";
+  } else {
+    x.style.display = "block";
+  }
+}
+</script>
+
+
+<script>
+function semI() {
+  var x = document.getElementById("Div_SemI");
+  if (x.style.display === "block") {
+    x.style.display = "none";
+  } else {
+    x.style.display = "block";
+  }
+}
+</script>
+
+<script>
+function alpinaevents() {
+  var x = document.getElementById("Div_Alpina");
+  if (x.style.display === "block") {
+    x.style.display = "none";
+  } else {
+    x.style.display = "block";
+  }
+}
+</script>
+
+<script>
+function semII() {
+  var x = document.getElementById("Div_SemII");
+  if (x.style.display === "block") {
+    x.style.display = "none";
+  } else {
+    x.style.display = "block";
+  }
+}
+</script>
+
+<script>
+function gfI() {
+  var x = document.getElementById("Div_GrafFormI");
+  if (x.style.display === "block") {
+    x.style.display = "none";
+  } else {
+    x.style.display = "block";
+  }
+}
+</script>
+
+<script>
+function gfII() {
+  var x = document.getElementById("Div_GrafFormII");
+  if (x.style.display === "block") {
+    x.style.display = "none";
+  } else {
+    x.style.display = "block";
+  }
+}
+</script>
+
+<script>
+function zeichI() {
+  var x = document.getElementById("Div_ZeichnenI");
+  if (x.style.display === "block") {
+    x.style.display = "none";
+  } else {
+    x.style.display = "block";
+  }
+}
+</script>
+
+<script>
+function zeichII() {
+  var x = document.getElementById("Div_ZeichnenII");
+  if (x.style.display === "block") {
+    x.style.display = "none";
+  } else {
+    x.style.display = "block";
+  }
+}
+</script>
+
+<script>
+function zeichII_2() {
+  var x = document.getElementById("Div_ZeichnenII_2");
+  if (x.style.display === "block") {
+    x.style.display = "none";
+  } else {
+    x.style.display = "block";
+  }
+}
+</script>
+
+
+
+<script>
+function apos() {
+  var x = document.getElementById("Div_ArchPos");
+  if (x.style.display === "block") {
+    x.style.display = "none";
+  } else {
+    x.style.display = "block";
+  }
+}
+</script>
+
+
+<script>
+function interdesign() {
+  var x = document.getElementById("Div_InteractiveDesign");
+  if (x.style.display === "block") {
+    x.style.display = "none";
+  } else {
+    x.style.display = "block";
+  }
+}
+</script>
+
+<script>
+function cancelculture() {
+  var x = document.getElementById("Div_CancelCulture");
+  if (x.style.display === "block") {
+    x.style.display = "none";
+  } else {
+    x.style.display = "block";
+  }
+}
+</script>
+
+<script>
+function tbm() {
+  var x = document.getElementById("Div_Moving_Horror");
+  if (x.style.display === "block") {
+    x.style.display = "none";
+  } else {
+    x.style.display = "block";
+  }
+}
+</script>
+
+<script>
+function rentner() {
+  var x = document.getElementById("Div_Rentner");
+  if (x.style.display === "block") {
+    x.style.display = "none";
+  } else {
+    x.style.display = "block";
+  }
+}
+</script>
+
+<script>
+function midnight() {
+  var x = document.getElementById("Div_Midnight");
+  if (x.style.display === "block") {
+    x.style.display = "none";
+  } else {
+    x.style.display = "block";
+  }
+}
+</script>
+
+<script>
+function illus() {
+  var x = document.getElementById("Div_Illus");
+  if (x.style.display === "block") {
+    x.style.display = "none";
+  } else {
+    x.style.display = "block";
+  }
+}
+</script>
+
+
+<script>
+function phot1() {
+  var x = document.getElementById("Div_Photo_1");
+  if (x.style.display === "block") {
+    x.style.display = "none";
+  } else {
+    x.style.display = "block";
+  }
+}
+</script>
+
+<script>
+function phot2() {
+  var x = document.getElementById("Div_Photo2");
+  if (x.style.display === "block") {
+    x.style.display = "none";
+  } else {
+    x.style.display = "block";
+  }
+}
+</script>
+
+<script>
+function intovoid() {
+  var x = document.getElementById("Div_IntoTheVoid");
+  if (x.style.display === "block") {
+    x.style.display = "none";
+  } else {
+    x.style.display = "block";
+  }
+}
+</script>
+
+<script>
+function ttg() {
+  var x = document.getElementById("Div_TrashGold");
+  if (x.style.display === "block") {
+    x.style.display = "none";
+  } else {
+    x.style.display = "block";
+  }
+}
+</script>
+
+<script>
+function typo2() {
+  var x = document.getElementById("Div_Typo2");
+  if (x.style.display === "block") {
+    x.style.display = "none";
+  } else {
+    x.style.display = "block";
+  }
+}
+</script>
+
+<script>
+function achesa() {
+  var x = document.getElementById("Div_Chesa");
+  if (x.style.display === "block") {
+    x.style.display = "none";
+  } else {
+    x.style.display = "block";
+  }
+}
+</script>
+
+<script>
+function posterslam22() {
+  var x = document.getElementById("Div_Posterslam_1");
+  if (x.style.display === "block") {
+    x.style.display = "none";
+  } else {
+    x.style.display = "block";
+  }
+}
+</script>
+
+<script>
+function justdont() {
+  var x = document.getElementById("Div_JustDont");
+  if (x.style.display === "block") {
+    x.style.display = "none";
+  } else {
+    x.style.display = "block";
+  }
+}
+</script>
+
+<script>
+function pax1() {
+  var x = document.getElementById("Div_PAX_1");
+  if (x.style.display === "block") {
+    x.style.display = "none";
+  } else {
+    x.style.display = "block";
+  }
+}
+</script>
+
+<script>
+function pax2() {
+  var x = document.getElementById("Div_PAX_2");
+  if (x.style.display === "block") {
+    x.style.display = "none";
+  } else {
+    x.style.display = "block";
+  }
+}
+</script>
+
+<script>
+function pax3() {
+  var x = document.getElementById("Div_PAX_3");
+  if (x.style.display === "block") {
+    x.style.display = "none";
+  } else {
+    x.style.display = "block";
+  }
+}
+</script>
+
+
+<script>
+function p5_1() {
+  var x = document.getElementById("Div_InteractiveDesign_Vid1");
+  if (x.style.display === "block") {
+    x.style.display = "none";
+  } else {
+    x.style.display = "block";
+  }
+}
+</script>
+
+<script>
+function thesis() {
+  var x = document.getElementById("myDIV25");
+  if (x.style.display === "block") {
+    x.style.display = "none";
+  } else {
+    x.style.display = "block";
+  }
+}
+</script>
+
+<!-- MENU BUTTONS -->
+
+<script>
+  function showport(){
+  var x = document.getElementById("Div_Portfolio");
+      x.style.zIndex++;
+  document.getElementById("Div_AboutMe").style.zIndex= "0";
+  document.getElementById("Div_Contact").style.zIndex= "0";
+}
+;</script>
+
+<script>
+function showaboutme() {
+  var x = document.getElementById("Div_AboutMe");
+  x.style.zIndex++;
+    document.getElementById("Div_Portfolio").style.zIndex = "0";
+  document.getElementById("Div_Contact").style.zIndex= "0";
+}
+</script>
+
+<script>
+function showcontact() {
+  var x = document.getElementById("Div_Contact");
+  x.style.zIndex++;
+  document.getElementById("Div_Portfolio").style.zIndex= "0";
+  document.getElementById("Div_AboutMe").style.zIndex= "0";
+}
+</script>
+
+<!-- CLOSING MENU -->
+
+<script>
+function closeport() {
+  const button = document.getElementById("portfoliobutton");
+  button.classList.toggle('active');
+
+  var x = document.getElementById("Div_Portfolio");
+  if (x.style.display === "block") {
+    x.style.display = "none";
+  } else {
+    x.style.display = "block";
+  }
+  }
+</script>
+
+<script>
+function closeabout() {
+ const button = document.getElementById("aboutmebutton");
+  button.classList.toggle('active');
+
+  var x = document.getElementById("Div_AboutMe");
+  if (x.style.display === "block") {
+    x.style.display = "none";
+  } else {
+    x.style.display = "block";
+  }
+  }
+</script>
+
+<script>
+function closecontact() {
+ const button = document.getElementById("contactbutton");
+  button.classList.toggle('active');
+
+  var x = document.getElementById("Div_Contact");
+     if (x.style.display === "block") {
+    x.style.display = "none";
+  } else {
+    x.style.display = "block";
+  }
+  }
+</script>
+
+<!-- CLOSING ARBEITEN -->
+
+<script>
+function closesemI() {
+  var x = document.getElementById("Div_SemI");
+     if (x.style.display === "block") {
+    x.style.display = "none";
+  } else {
+    x.style.display = "block";
+  }
+  }
+</script>
+
+<script>
+function closesemII() {
+  var x = document.getElementById("Div_SemII");
+     if (x.style.display === "block") {
+    x.style.display = "none";
+  } else {
+    x.style.display = "block";
+  }
+  }
+</script>
+
+<script>
+function closegfI() {
+  var x = document.getElementById("Div_GrafFormI");
+     if (x.style.display === "block") {
+    x.style.display = "none";
+  } else {
+    x.style.display = "block";
+  }
+  }
+</script>
+
+<script>
+function closegfII() {
+  var x = document.getElementById("Div_GrafFormII");
+     if (x.style.display === "block") {
+    x.style.display = "none";
+  } else {
+    x.style.display = "block";
+  }
+  }
+</script>
+
+<script>
+function cantbreathe() {
+  var x = document.getElementById("Div_CantBreathe");
+     if (x.style.display === "block") {
+    x.style.display = "none";
+  } else {
+    x.style.display = "block";
+  }
+  }
+</script>
+
+
+
 </body>
 </html>
+
+

@@ -1,0 +1,1456 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="new_css.css">
+
+ <!-- Für Apple-Geräte -->
+        <link rel="apple-touch-icon" sizes="180x180" href="data/favicon/apple-touch-icon-180x180.png">
+        <!-- Für Browser -->
+        <link rel="shortcut icon" type="image/x-icon" href="data/favicon/favicon-32x32.ico">
+        <link rel="icon" type="image/png" sizes="96x96" href="data/favicon/favicon-96x96.png">
+      <!-- SCRIPT FOR ACTIVATING BUTTONS -->
+
+<!-- P5 SKETCH -->
+	<script src="https://cdn.jsdelivr.net/npm/p5@1.3.1/lib/p5.js"></script>
+	<script src="cubes.js"></script>
+
+<!-- P5 LOAD JQUERY -->
+	<script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+<!-- PRELOAD SITE -->
+
+ <script>$(window).on('load', function() { // makes sure the whole site is loaded 
+  $('#status').fadeOut(); // will first fade out the loading animation 
+  $('#preloader').delay(500).fadeOut('slow'); // will fade out the white DIV that covers the website. 
+  $('body').delay(350).css({'overflow':'hidden'});
+})</script> 
+
+ <script>$(document).on("keydown", "form", function(event) { 
+    return event.key != "Enter";
+});</script>  
+
+
+<!-- MOVABLE DIVS -->
+
+     <script>
+  $( function() {
+    $( "#Div_Portfolio" ).draggable({  scroll: false });
+  }
+  );
+  </script>
+
+    <script>
+  $( function() {
+    $( "#Div_AboutMe" ).draggable({  scroll: false });
+  } );
+  </script>
+
+     <script>
+  $( function() {
+    $( "#Div_Contact" ).draggable({  scroll: false });
+  } );
+  </script>
+
+       <script>
+  $( function() {
+    $( "#Div_SemI" ).draggable({  scroll: false });
+  } );
+  </script>
+
+        <script>
+  $( function() {
+    $( "#Div_SemII" ).draggable({  scroll: false });
+  } );
+  </script>
+
+          <script>
+  $( function() {
+    $( "#Div_GrafFormI" ).draggable({  scroll: false });
+  } );
+  </script>
+
+            <script>
+  $( function() {
+    $( "#Div_GrafFormII" ).draggable({  scroll: false });
+  } );
+  </script>
+
+              <script>
+  $( function() {
+    $( "#Div_ZeichnenI" ).draggable({  scroll: false });
+  } );
+  </script>
+
+              <script>
+  $( function() {
+    $( "#Div_ZeichnenII" ).draggable({  scroll: false });
+  } );
+  </script>
+
+                <script>
+  $( function() {
+    $( "#Div_ZeichnenII_2" ).draggable({  scroll: false });
+  } );
+  </script>
+
+   <script>
+  $( function() {
+    $( "#Div_ArchPos" ).draggable({  scroll: false });
+  } );
+  </script>
+
+         <script>
+  $( function() {
+    $( "#Div_InteractiveDesign" ).draggable({  scroll: false });
+  } );
+  </script>
+
+           <script>
+  $( function() {
+    $( "#Div_Moving_Horror" ).draggable({  scroll: false });
+  } );
+  </script>
+
+             <script>
+  $( function() {
+    $( "#Div_Illus" ).draggable({  scroll: false });
+  } );
+  </script>
+
+               <script>
+  $( function() {
+    $( "#Div_Photo_1" ).draggable({  scroll: false });
+  } );
+  </script>
+
+      <script>
+  $( function() {
+    $( "#Div_Photo2" ).draggable({  scroll: false });
+  } );
+  </script>
+
+<script>
+  $( function() {
+    $( "#Div_IntoTheVoid" ).draggable({  scroll: false });
+  } );
+  </script>
+
+  <script>
+  $( function() {
+    $( "#Div_TrashGold" ).draggable({  scroll: false });
+  } );
+  </script>
+
+    <script>
+  $( function() {
+    $( "#Div_InteractiveDesign_Vid1" ).draggable({  scroll: false });
+  } );
+  </script>
+
+      <script>
+  $( function() {
+    $( "#Div_InteractiveDesign_Vid2" ).draggable({  scroll: false });
+  } );
+  </script>
+
+        <script>
+  $( function() {
+    $( "#Div_Chesa" ).draggable({  scroll: false });
+  } );
+  </script>
+
+          <script>
+  $( function() {
+    $( "#Div_Posterslam_1" ).draggable({  scroll: false });
+  } );
+  </script>
+
+            <script>
+  $( function() {
+    $( "#Div_PAX_1" ).draggable({  scroll: false });
+  } );
+  </script>
+
+            <script>
+  $( function() {
+    $( "#Div_PAX_2" ).draggable({  scroll: false });
+  } );
+  </script>
+
+            <script>
+  $( function() {
+    $( "#Div_PAX_3" ).draggable({  scroll: false });
+  } );
+  </script>
+
+              <script>
+  $( function() {
+    $( "#myDIV25" ).draggable({  scroll: false });
+  } );
+  </script>
+
+  <script>
+  $( function() {
+    $( "#Div_CancelCulture" ).draggable({  scroll: false });
+  } );
+  </script>
+
+ <!--  SCRIPT URL -->
+
+<script>function gobutterfly(){
+window.open('butterfly.html', '_blank','toolbar:no');
+}
+</script>
+
+<title>VISUAL BONSAI</title>
+
+
+
+</head>
+<body>
+
+  <!-- <div id="preloader"> -->
+  <div id="status">&nbsp;</div>
+</div>
+
+
+  <div class="titleDIV">andri bonsai stoisser</div>
+
+  <div class="social"><a href="https://www.instagram.com/visual.bonsai/" target="_blank"><img class="two" src="data/insta.png" style="display:inline-block; margin-left: auto; margin-right: auto; width: 60%; "></img></a>
+<a href="https://ch.linkedin.com/in/andri-stoisser-2180a71b7" target="_blank"><img class="two" src="data/linkedin.png"  style="display:inline-block; margin-left: auto; margin-right: auto; width: 60%;vertical-align: center;"></img></a></div>
+
+  <!-- MENU BAR -->
+
+  <button id="portfoliobutton" class="button_black" onclick="portfolio()" style="top:72px; left:0px;z-index:1;">portfolio</button>
+  <button id="aboutmebutton" class="button_black" onclick="aboutme()" style="top:121px; left:0px;z-index:1;">about_me</button>
+  <button id="contactbutton" class="button_black" onclick="contact()" style="top:170px; left:0px;z-index:1;">contact</button>
+
+  <button class="button_black" onClick="window.location.reload();" style="top:219px; left:0px;z-index:10; font-size:9px;height:20px;z-index:1;">refresh_</button>
+
+
+<!-- PORTFOLIO -->
+
+<div onclick="showport()" id="Div_Portfolio" class="ui-widget-content">
+
+<div id="blackbars"><button class="button_close" onclick="closeport()" style="left:0;position: absolute;">X</button>PORTFOLIO</div>
+
+<!-- ARBEITEN IMAGES SINGLE
+
+<p><div onclick="FUNCTIONNAME()" class="tooltip">TITLE
+  <span class="tooltiptext" style="font-size:12px;"><div id="informationtext">WHAT IS IT<br>USED TOOLS</div><p>TOOLTIP TEXT</span>
+</div></p><br> 
+
+
+DIVIDER HERE
+
+<div class="notooltip">/</div>
+
+-->
+
+
+
+
+<div class="textstyle2">
+
+    <!-- P5 -->
+
+     <div style="text-align: left;"><h2>WORK</h2></div>
+
+     <p><div onclick="cancelculture()" class="tooltip">> OPEN AIR BIVIO 2023
+  <span class="tooltiptext" style="font-size:12px;"><div id="informationtext">INTERACTIVE<br>bachelor-thesis</div><p>ABC</span>
+</div></p> 
+
+    <p><div onclick="interdesign()" class="tooltip">> INTERSTELLAR MUSIC GMBH
+  <span class="tooltiptext" style="font-size:12px;"><div id="informationtext">INTERACTIVE DESIGN<br>generative book / basil.js</div><p>Curse like your favourite artist.<p>An autogenerated bookdesign with reversed censorship.</span>
+</div></p>
+
+<br><br>
+
+    <div style="text-align: left;"><h2>PROJECTS</h2></div>
+
+     <p><div onclick="cancelculture()" class="tooltip">> #CANCELTHECULTURE
+  <span class="tooltiptext" style="font-size:12px;"><div id="informationtext">INTERACTIVE<br>bachelor-thesis</div><p>ABC</span>
+</div></p> 
+
+    <p><div onclick="interdesign()" class="tooltip">> PARENTAL ADVISORY EXPLICIT CONTENT
+  <span class="tooltiptext" style="font-size:12px;"><div id="informationtext">INTERACTIVE DESIGN<br>generative book / basil.js</div><p>Curse like your favourite artist.<p>An autogenerated bookdesign with reversed censorship.</span>
+</div></p>
+
+
+
+
+<p><div onclick="FUNCTIONNAME()" class="tooltip">> EERIE
+  <span class="tooltiptext" style="font-size:12px;"><div id="informationtext">VIRTUAL REALITY<br>touch designer</div><p>TOOLTIP TEXT</span>
+</div></p>
+
+<p><div><div class="tooltip" onclick="gobutterfly()">> SCHMETTERLING
+  <span class="tooltiptext" style="font-size:12px;"><div id="informationtext">INTERACTIVE DESIGN<br>p5.js / audio visualizer</div><br><b>INTERACTIVE DESIGN I</b><p>An audiovisual tool playing right in <br>your browser.<p>Enjoy and visualize your music in a different way.</span></div>
+<div class="tooltip" onclick="p5_1()">I</div>
+<div class="tooltip" onclick="p5_1()" >II</div>
+<div class="tooltip" onclick="p5_1()">III</div></div>
+</p>
+
+
+<p><div onclick="achesa()"class="tooltip">> I CAN'T BREATHE
+  <span class="tooltiptext" style="font-size:12px;"><div id="informationtext">moving media<br>information-video</div><p>Art stands with refugees.<br>
+  HGK meets UNHCR.</span>
+</div></p>
+
+<p><div onclick="tbm()"class="tooltip">> DREAMS & NIGHTMARES
+  <span class="tooltiptext" style="font-size:12px;"><div id="informationtext">moving media<br>video</div><p>A visual experimentation of a stockphoto.</span></div></p>
+
+<p><div onclick="intovoid()"class="tooltip">> INTO THE VOID
+  <span class="tooltiptext" style="font-size:12px;"><div id="informationtext">PRINT<br>ZINE</div><p>A zine created with images taken over the last couple of  years.</span>
+</div> </p>
+
+<p><div onclick="achesa()"class="tooltip">> A CHESA
+  <span class="tooltiptext" style="font-size:12px;"><div id="informationtext">moving media<br>information-video</div><p>Art stands with refugees.<br>
+  HGK meets UNHCR.</span>
+</div></p>
+
+
+<p><div onclick="tbm()"class="tooltip">> HORROR
+  <span class="tooltiptext" style="font-size:12px;"><div id="informationtext">moving media<br>video</div><p>A visual experimentation of a stockphoto.</span>
+</div></p>
+
+
+ <div onclick="phot2()"class="tooltip">> DREAMLIKE SOLITUDE
+ <span class="tooltiptext" style="font-size:12px;"><div id="informationtext">photography<br>analogue / conceptual</div><p>Engadin. Nothing else to say.</span></div>
+
+
+ <div onclick="phot1()"class="tooltip">> HAZY
+ <span class="tooltiptext" style="font-size:12px;"><div id="informationtext">photography<br>digital / iphone</div><p>Coronavibes series for IG.</span></div>
+
+
+  <p> <div onclick="apos()"class="tooltip">> ARCHITEKTONISCHE POSITIONEN BASEL
+  <span class="tooltiptext" style="font-size:12px;"><div id="informationtext">mixed media<br>poster & videotrailer</div><p>Posterdesign in combination with a teaser.</b><p>Collaboration with Jacqueline Mueller</span>
+</div></p>
+
+
+   <p><div onclick="ttg()"class="tooltip">> TRASH TO GOLD
+  <span class="tooltiptext" style="font-size:12px;"><div id="informationtext">mixed media<br>drawing, newspaper & video</div><b>An artistic take on an overwhelming world of news.</b><p>Collaboration with Robbie Lang</span>
+</div></p>
+
+
+<p> <div onclick="gfI()"class="tooltip">> CASA SPERIMENTALE
+  <span class="tooltiptext" style="font-size:12px;"><b>GRAPHICAL FORMULATION I</b><p>An visual examination/experimentation of how to use a photography as a 'root' image for illustrations.</p></span>
+</div> </p>
+
+<p><div onclick="illus()"class="tooltip">> ILL(U)STRATIONS
+  <span class="tooltiptext" style="font-size:12px;"><b>PERSONAL</b><p>A compilation of personal illustrations and drawings.</span></p>
+</div>
+
+<p><div onclick="semII()"class="tooltip">> ALCHEMY
+  <span class="tooltiptext" style="font-size:12px;"><b>SEMIOTICS II</b><p>Study. Interpretation.</span>
+</div></p> 
+
+<p> <div onclick="semI()"class="tooltip">> BAHNHOF DELSBERG
+  <span class="tooltiptext" style="font-size:12px;"><b>SEMIOTICS I</b><p>Study. Interpretation.</span>
+</div> </p> 
+
+ <p><div onclick="gfII()"class="tooltip">> HOW NOT TO MAKE TEA
+  <span class="tooltiptext" style="font-size:12px;"><b>GRAPHICAL FORMULATION II</b><p>A handdrawn visualization of how NOT <br>to make tea.</span>
+</div> </p>
+
+<p> <div onclick="zeichII();"class="tooltip">> GIF NEEN
+  <span class="tooltiptext" style="font-size:12px;"><b>DRAWING II</b><p>GIFs created for the course with<br>Leander Eisenmann.</span>
+</div>
+<div class="tooltip" onclick="zeichII_2()" style=" padding-left:5px;padding-right:5px;">GIF SELFIE
+</div></p>
+
+ <p><div onclick="posterslam22()"class="tooltip">> PS 22
+  <span class="tooltiptext" style="font-size:12px;"><b>PERSONAL</b><p>Topic: 7.</span>
+</div></p>
+
+<p><div onclick="posterslam22()"class="tooltip">> PS 23
+  <span class="tooltiptext" style="font-size:12px;"><b>PERSONAL</b><p>Topic: 7.</span>
+</div></p>
+
+<p><div onclick="posterslam22()"class="tooltip">> PS 24
+  <span class="tooltiptext" style="font-size:12px;"><b>PERSONAL</b><p>Topic: 7.</span>
+</div></p>
+
+<p><div onclick="posterslam22()"class="tooltip">> PUSHxPS
+  <span class="tooltiptext" style="font-size:12px;"><b>PERSONAL</b><p>Topic: 7.</span>
+</div></p>
+
+ <p><div onclick="pax1()"class="tooltip">> PAX I
+  <span class="tooltiptext" style="font-size:12px;"><b>PERSONAL</b><p>Posters created for different music genres.</span>
+</div>
+
+<div class="tooltip" onclick="pax2()" style=" padding-left:5px;padding-right:5px;">II
+</div> 
+
+<div class="tooltip" onclick="pax3()" style=" padding-left:5px;padding-right:5px;">III
+</div> </p>
+
+
+ <div onclick="linkfunktion()"class="tooltip">ANDRISTOISSER.CH
+  <span class="tooltiptext" style="font-size:12px;"><b>WEBDESIGN</b><p>This very website.</span>
+</div>
+
+
+<div style="clear:both"></div>
+
+<br><br>
+
+</div>
+
+</div>
+
+
+
+
+
+<!-- ARBEITEN BIG HERE -->
+
+<!-- ARBEIT ARCHITEKTONISCHE POSITIONEN -->
+
+ <div id="Div_ArchPos">
+<div id="blackbars"><button class="button_close" onclick="apos()" style="z-index:11;left:1px;position: absolute;">X</button>ARCHITEKTONISCHE_POSITIONEN_</div>
+
+
+
+<div class="textstyle2" style="text-align: center;"><br><br>
+
+  <h2>POSTER.TEASER</h2>
+<h1>ARCHITEKTONISCHE POSITIONEN_</h1>
+
+  <div style="float: left;width:40%;  position: relative;
+  transform: translateX(20%);padding-top:8%"><video width="100%" height="100%" controls>
+  <source src="data/ap/teaser.mov" type="video/mp4">
+Your browser does not support the video tag.
+</video></div>
+<div><a href="data/ap/poster.jpg"><img style="width: 28%;border:1px solid black" src="data/ap/poster.jpg"></img></a></div><br><br>
+
+<p>The poster and teaser have been created for an imaginary exhibition. <br>Collaboration with Jacqueline Mueller</p>
+
+<br><br><br>
+
+ <button class="button_black" onclick="window.open('data/ap/ap_prozess.pdf');" style="z-index:111;position: sticky;">PROCESS DOCUMENTATION.PDF</button><p></p>
+
+</div>
+
+</div>
+
+
+<!-- ARBEIT INTERACTIVE DESIGN -->
+<div id="Div_CancelCulture">
+<div id="blackbars"><button class="button_close" onclick="cancelculture()" style="z-index:11;left:1px;position: absolute;">X</button>#CANCELTHECULTURE</div>
+
+
+
+<div class="textstyle2" style="text-align: center;">
+
+  <h1>EXPLORE #CANCELTHECULTURE</h1>
+
+</div>
+</div>
+
+
+<!-- ARBEIT INTERACTIVE DESIGN -->
+<div id="Div_InteractiveDesign">
+<div id="blackbars"><button class="button_close" onclick="interdesign()" style="z-index:11;left:1px;position: absolute;">X</button>PARENTAL ADVISORY EXPLICIT CONTENT_</div>
+
+
+
+<div class="textstyle2" style="text-align: center;"><br><br>
+
+  <h2>INTERAKTIVE.BOOKDESIGN</h2>
+<h1>PARENTAL ADVISORY EXPLICIT CONTENT_</h1>
+
+  <div style="word-wrap:break-word;"><h3>var filterWords = ['fuck', 'shit', 'ass','dick','hoe','bitch','cock','pussy','gun','ni**','weed',<br>'joint','blunt','death','bastard','butt','sex','cunt', 'satan']</h3></div>
+
+  <img style="width: 60%" src="data/ID/book.png"></img><br>
+  
+  <b>THIS BOOK IS AUTO GENERATED WITH BASIL.JS.</b><p>
+
+What happens if you reverse the censorship within lyrics of famous artists. How much do they curse, how much do the actually swear in their songs?
+<br>
+The script censors everything but the swear-words. It can be used to check your favourite artists and create a book of "bad mouthing". <p>
+<img style="width: 100%;border: 0.5px solid black;" src="data/ID/code.png"></img>
+
+  <br><br><br><br><br><br>
+
+
+
+
+<b>PAGE EXAMPLES</b><p>
+
+  <img style="width: 100%;border: 0.5px solid black;" src="data/ID/page_1.jpg"></img><p>
+  <img style="width: 100%;border: 0.5px solid black;" src="data/ID/page_2.jpg"></img>
+
+
+<p> <button class="button_black" onclick="window.open('data/ID/book.pdf');" style="z-index:111;position:sticky">OPEN BOOK</button></p><br>
+</div>
+
+
+
+</div>
+
+<!-- TBM 1 HORROR-->
+
+ <div id="Div_Moving_Horror">
+   <div id="blackbars">
+        <button class="button_close" onclick="tbm()" style="z-index:11;left:1px;position: absolute;">X</button>
+          HORROR_</div>
+
+  <div style="padding-top:20px"><video width="100%" height="100%" controls>
+  <source src="data/tbm1/horror.mov" type="video/mp4">
+Your browser does not support the video tag.
+</video></div>
+
+</div>
+
+
+<!-- SEMIOTIK I -->
+
+ <div id="Div_SemI">
+    <div id="blackbars">
+        <button class="button_close" onclick="semI()" style="z-index:11;left:1px;position: absolute;">X</button>
+          PORT DU_</div>
+
+
+
+  <div class="textstyle2" style="text-align: center;"><br><br>
+
+      <h2>SEMIOTICS</h2>
+      <h1>BAHNHOF DELSBERG</h1>
+
+<h3>Reference photography</h3>
+
+      <img style="width: 40%;height:40%" src="data/sem1/ref.jpg"></img>
+
+<h3>FORMAL INTERVENTIONS</h3>
+      <p><b>Series I</b></p>
+
+
+         <div>
+      <img style="width: 20%;height:20%" src="data/sem1/form/F1.jpg"></img>
+      <img style="width: 20%;height:20%" src="data/sem1/form/F2.jpg"></img>
+      <img style="width: 20%;height:20%" src="data/sem1/form/F3.jpg"></img>
+      <img style="width: 20%;height:20%" src="data/sem1/form/F4.jpg"></img>
+      <img style="width: 20%;height:20%" src="data/sem1/form/F5.jpg"></img>
+      <img style="width: 20%;height:20%" src="data/sem1/form/F6.jpg"></img>
+      <img style="width: 20%;height:20%" src="data/sem1/form/F7.jpg"></img>
+      <img style="width: 20%;height:20%" src="data/sem1/form/F8.jpg"></img>
+     </div>
+      
+            <p><b>Series II</b></p>
+
+         <div>
+      <img style="width: 20%;height:20%" src="data/sem1/form/F9.jpg"></img>
+      <img style="width: 20%;height:20%" src="data/sem1/form/F10.jpg"></img>
+      <img style="width: 20%;height:20%" src="data/sem1/form/F11.jpg"></img>
+      <img style="width: 20%;height:20%" src="data/sem1/form/F12.jpg"></img>
+      <img style="width: 20%;height:20%" src="data/sem1/form/F13.jpg"></img>
+      <img style="width: 20%;height:20%" src="data/sem1/form/F14.jpg"></img>
+      <img style="width: 20%;height:20%" src="data/sem1/form/F15.jpg"></img>
+      <img style="width: 20%;height:20%" src="data/sem1/form/F16.jpg"></img>
+     </div><br>
+
+     <h3>CONTEXTUAL INTERVENTIONS</h3>
+      <p><b>Series I</b></p>
+
+               <div>
+      <img style="width: 38%;height:38%" src="data/sem1/kontext/2.jpg"></img>
+      <img style="width: 38%;height:38%" src="data/sem1/kontext/3.jpg"></img>
+      <img style="width: 38%;height:38%" src="data/sem1/kontext/4.jpg"></img>
+      <img style="width: 38%;height:38%" src="data/sem1/kontext/5.jpg"></img>
+      <img style="width: 38%;height:38%" src="data/sem1/kontext/6.jpg"></img>
+      <img style="width: 38%;height:38%" src="data/sem1/kontext/7.jpg"></img>
+      <img style="width: 38%;height:38%" src="data/sem1/kontext/8.jpg"></img>
+      <img style="width: 38%;height:38%" src="data/sem1/kontext/9.jpg"></img>
+     </div><br>
+
+           <p><b>Series II</b></p>
+
+               <div>
+      <img style="width: 38%;height:38%" src="data/sem1/kontext/11.jpg"></img>
+      <img style="width: 38%;height:38%" src="data/sem1/kontext/12.jpg"></img>
+      <img style="width: 38%;height:38%" src="data/sem1/kontext/13.jpg"></img>
+      <img style="width: 38%;height:38%" src="data/sem1/kontext/14.jpg"></img>
+      <img style="width: 38%;height:38%" src="data/sem1/kontext/15.jpg"></img>
+      <img style="width: 38%;height:38%" src="data/sem1/kontext/16.jpg"></img>
+      <img style="width: 38%;height:38%" src="data/sem1/kontext/17.jpg"></img>
+      <img style="width: 38%;height:38%" src="data/sem1/kontext/18.jpg"></img>
+     </div><br>
+
+                <p><b>Series III</b></p>
+
+               <div>
+      <img style="width: 38%;height:38%" src="data/sem1/kontext/20.jpg"></img>
+      <img style="width: 38%;height:38%" src="data/sem1/kontext/21.jpg"></img>
+      <img style="width: 38%;height:38%" src="data/sem1/kontext/22.jpg"></img>
+      <img style="width: 38%;height:38%" src="data/sem1/kontext/23.jpg"></img>
+      <img style="width: 38%;height:38%" src="data/sem1/kontext/24.jpg"></img>
+      <img style="width: 38%;height:38%" src="data/sem1/kontext/25.jpg"></img>
+      <img style="width: 38%;height:38%" src="data/sem1/kontext/26.jpg"></img>
+      <img style="width: 38%;height:38%" src="data/sem1/kontext/27.jpg"></img>
+     </div><br>
+
+     <button class="button_black" onclick="window.open('data/sem1/pd_sem1.pdf');" style="z-index:111;position: sticky;">PROCESS DOCUMENTATION.PDF</button><p></p>
+
+
+
+  </div>
+</div>
+
+<!-- SEMIOTIK II -->
+
+ <div id="Div_SemII">
+    <div id="blackbars">
+        <button class="button_close" onclick="semII()" style="z-index:11;left:1px;position: absolute;">X</button>
+          ALCHEMY_</div>
+
+
+  <div class="textstyle2" style="text-align: center;"><br><br>
+
+      <h2>SEMIOTICS</h2>
+      <h1>ALCHEMY_</h1>
+
+      <b>ART, TECHNOLOGY AND NATURE</b><br>
+edited by Camilla Skovbjerg Paldam and Jacob Wamberg, 2015
+
+<p>William Newman states that alchemy historically originated in the workshop practices of decorative arts in the antique period, and furthermore, that the practitioners of decorative arts and alchemy were united in their desire to replicate rather then represent nature.
+Despite rejection of alchemy by artists in the Renaissance period (for instance, Leonardo da Vinci and Bernard Palissy) by period's workshop activities of manufacturing art, drugs and pigments can be difficult to separate from alchemical production. To be 'made by alchemy' could simply mean to be made artificially.</p><br><br><br>
+
+
+
+<p><b>Illustrations drawn by hand and digitalized in Adobe Illustrator.</b></p>
+
+      <img style="width: 100%;" src="data/sem2/all.jpg"></img><br><br>
+
+        <button class="button_black" onclick="window.open('data/sem2/pd_sem2.pdf');" style="z-index:111;position: sticky;">PROCESS DOCUMENTATION.PDF</button><p></p>
+
+
+
+  </div>
+</div>
+
+<!-- GRAFISCHES FORMULIEREN I -->
+
+ <div id="Div_GrafFormI">
+   <div id="blackbars">
+        <button class="button_close" onclick="gfI()" style="z-index:11;left:1px;position: absolute;">X</button>
+          CASA SPERIMENTALE_</div>
+
+
+
+  <div class="textstyle2" style="text-align: center;"><br><br>
+
+      <h2>GRAPHICAL.FORMULATION</h2>
+      <h1>CASA SPERIMENTALE_</h1>
+
+      <p><h3>Reference photography</h3></p>
+
+      <img style="width: 40%;height:40%" src="data/gf1/ref.jpg"></img>
+      <p><b>"Casa Sperimentale" by Giuseppe Perugini, Raynaldo Perugini & Uga De Plaisant.</b></p>
+
+      <img style="width: 100%;height:100%" src="data/gf1/1.jpg"></img>
+
+           <div style="padding-top: 20px">
+      <img style="width: 70%;height:70%" src="data/gf1/2.jpg"></img>
+      <img style="width: 70%;height:70%" src="data/gf1/7.jpg"></img>
+    <img style="width: 34%;height:34%" src="data/gf1/3.jpg"></img>
+  <img style="width: 34%;height:34%" src="data/gf1/4.jpg"></img>
+<img style="width: 70%;height:70%" src="data/gf1/6.jpg"></img></div>
+<br><br>
+
+  </div>
+</div>
+
+<!-- GRAFISCHES FORMULIEREN II -->
+
+ <div id="Div_GrafFormII">
+    <div id="blackbars">
+        <button class="button_close" onclick="gfII()" style="z-index:11;left:1px;position: absolute;">X</button>
+          HOW NOT TO MAKE TEA_</div>
+
+
+
+  <div class="textstyle2" style="text-align: center;"><br><br>
+
+
+     <div>
+      <img style="width: 100%;" src="data/gf2/1.jpg"></img><br>
+      <img style="width: 100%;"  src="data/gf2/2.jpg"></img><br>
+    <img style="width: 100%;"  src="data/gf2/3.jpg"></img><br>
+  <img style="width: 100%;"  src="data/gf2/4.jpg"></img><br>
+<img style="width: 100%;"  src="data/gf2/5.jpg"></img></div>
+
+
+  </div>
+</div>
+
+
+<!-- ZEICHNEN II -->
+
+ <div id="Div_ZeichnenII">
+  <div id="blackbars">
+        <button class="button_close" onclick="zeichII()" style="z-index:11;left:1px;position: absolute;">X</button>
+          ZEICHNEN II / GIF NEEN_</div>
+
+<div style="width: 100%"><img style="width:100%" src="data/zn2/neen.gif"></img></div>
+
+</div>
+
+<!-- ZEICHNEN II -->
+
+ <div id="Div_ZeichnenII_2">
+    <div id="blackbars">
+        <button class="button_close" onclick="zeichII_2()" style="z-index:11;left:1px;position: absolute;">X</button>
+          ZEICHNEN II / SELFIE_</div>
+   
+
+<div style="width: 100%"><img style="width:100%" src="data/zn2/selfie.gif"></img></div>
+
+
+</div>
+
+
+<!-- ILLUSTRATION -->
+
+ <div id="Div_Illus">
+   <div id="blackbars">
+        <button class="button_close" onclick="illus()" style="z-index:11;left:1px;position: absolute;">X</button>
+          ILL(U)STRATIONS_</div>
+
+<div><img style="width:100%" src="data/illus/big.jpg"></img></div>
+
+</div>
+
+<!-- PHOTO 1 -->
+
+ <div id="Div_Photo_1">
+   <div id="blackbars">
+        <button class="button_close" onclick="phot1()" style="z-index:11;left:1px;position: absolute;">X</button>
+          HAZY_</div>
+
+
+      <div style="overflow: auto; height: 99.999%; width: 100%"><img class="one" style="width:200%" src="data/photo1/Series.jpg"></img></div>
+ 
+</div>
+
+<!-- PHOTO 2 -->
+
+ <div id="Div_Photo2">
+   <div id="blackbars">
+        <button class="button_close" onclick="phot2()" style="z-index:11;left:1px;position: absolute;">X</button>
+          SOLITUDE_</div>
+
+  <div class="textstyle2" style="text-align: center;"><br><br>
+
+      <h2>PHOTOGRAPHY</h2>
+      <h1>DREAMLIKE SOLITUDE_</h1>
+
+      <p>The feeling of solitude is a constant companion when touring through the Alps by yourself or with a partner.<br>
+
+The pictures in this series have been shot on film during splitboarding in the spring in March in the Engadiner mountains, enjoying a silence which equally can't be found anywhere else.<br><br>
+
+In a conceptual fashion, the photographs have been scanned, repeated and mirrored to create a 
+kaleidoscope-esque effect, which ultimately creates a new, dreamlike world. 
+This new world can be seen and interpreted by each viewer differently, as everyone finds a new way to see and interpret the pictures.</p>
+<br><br>
+
+               <div>
+      <img style="width: 80%;" src="data/photo2/1.jpg"></img><br><br> 
+      <img style="width: 80%;" src="data/photo2/2.jpg"></img><br><br> 
+      <img style="width: 80%;" src="data/photo2/3.jpg"></img><br><br> 
+      <img style="width: 80%;" src="data/photo2/4.jpg"></img><br> <br> 
+      <img style="width: 80%;" src="data/photo2/5.jpg"></img><br><br> 
+      <img style="width: 80%;" src="data/photo2/6.jpg"></img><br><br> 
+      <img style="width: 80%;" src="data/photo2/7.jpg"></img><br><br> 
+      <img style="width: 80%;" src="data/photo2/8.jpg"></img><br><br> 
+      <img style="width: 80%;" src="data/photo2/9.jpg"></img><br><br> 
+      <img style="width: 80%;" src="data/photo2/10.jpg"></img><br><br> 
+     </div><br>
+
+
+  </div>
+</div>
+
+<!-- INTO THE VOID -->
+
+<div id="Div_IntoTheVoid">
+   <div id="blackbars">
+        <button class="button_close" onclick="intovoid()" style="z-index:11;left:1px;position: absolute;">X</button>
+          INTO THE VOID_</div>
+
+  <div class="textstyle2" style="text-align: center;"><br><br>
+
+      <h2>PHOTOGRAPHY.ZINE</h2>
+      <h1>INTO THE VOID_</h1>
+
+                 <div style="padding-top: 20px">
+      <img style="width: 49%;height:49%;border: 1px solid black;" src="data/void/1.jpg"></img><br>
+      <img style="width: 90%;height:90;border: 1px solid black;" src="data/void/2.jpg"></img><br>
+    <img style="width: 90%;height:90%;border: 1px solid black;" src="data/void/3.jpg"></img><br>
+  <img style="width: 90%;height:90%;border: 1px solid black;" src="data/void/4.jpg"></img><br>
+<img style="width: 90%;height:90%;border: 1px solid black;" src="data/void/5.jpg"></img><br>
+<img style="width: 90%;height:90%;border: 1px solid black;" src="data/void/6.jpg"></img><br>
+<img style="width: 90%;height:90%;border: 1px solid black;" src="data/void/7.jpg"></img><br>
+<img style="width: 90%;height:90%;border: 1px solid black;" src="data/void/8.jpg"></img><br>
+<img style="width: 90%;height:90%;border: 1px solid black;" src="data/void/9.jpg"></img><br>
+<img style="width: 90%;height:90%;border: 1px solid black;" src="data/void/10.jpg"></img><br>
+<img style="width: 90%;height:90%;border: 1px solid black;" src="data/void/11.jpg"></img><br>
+<img style="width: 90%;height:90%;border: 1px solid black;" src="data/void/12.jpg"></img><br>
+<img style="width: 90%;height:90%;border: 1px solid black;" src="data/void/13.jpg"></img><br>
+<img style="width: 90%;height:90%;border: 1px solid black;" src="data/void/14.jpg"></img><br>
+<img style="width: 90%;height:90%;border: 1px solid black;" src="data/void/15.jpg"></img><br>
+<img style="width: 90%;height:90%;border: 1px solid black;" src="data/void/16.jpg"></img><br>
+      <img style="width: 49%;height:49%;border: 1px solid black;" src="data/void/17.jpg"></img><br>
+</div>
+<br><br>
+
+  </div>
+</div>
+
+
+  </div>
+</div>
+
+<!-- TRASH TO GOLD -->
+
+<div id="Div_TrashGold">
+    <div id="blackbars">
+        <button class="button_close" onclick="ttg()" style="z-index:11;left:1px;position: absolute;">X</button>
+          TRASH TO GOLD_</div>
+
+
+  <div class="textstyle2" style="text-align: center;"><br><br>
+
+      <h2>SHORTMOVIE.DRAWING.NEWSPAPER</h2>
+      <h1>TRASH TO GOLD_</h1>
+
+      <iframe style="border: 1px solid white;" src="https://player.vimeo.com/video/347774985" width="70%" height="480px" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+
+      <br><br>
+
+     &laquo;'Trash to Gold' ist ein Einblick in die Gedanken zweier unterschiedlicher Menschen, welche aber die selbe Leidenschaft teilen: das Skizzieren, Zeichnen und Malen.
+<br>Es dokumentiert einen sozialkritischen, duesteren und wohl eher pessimistischen Verarbeitungsprozess und dessen Wandel durch unsere Koepfe auf das Papier.&raquo;
+<br><br>
+               <div>
+      <img style="width: 70%;height:70%" src="data/ttg/1.png"></img><br>
+      <img style="width: 70%;height:70%" src="data/ttg/2.png"></img><br>
+     </div><br><br>
+
+      <button class="button_black" onclick="window.open('data/ttg/newspaper.pdf');" style="z-index:1;position: sticky;">PROCESS "NEWSPAPER"</button>
+
+    <br><br>
+
+  </div>
+</div>
+
+<!-- P5 1 VIDEO -->
+
+<div id="Div_InteractiveDesign_Vid1">
+  <div id="blackbars">
+        <button class="button_close" onclick="p5_1()" style="z-index:11;left:1px;position: absolute;">X</button>
+          WOODKID - GOLIATH_</div>
+
+  <div style="padding-top:20px"><video width="100%" height="100%" controls>
+  <source src="data/p5/goliath.mov" type="video/mp4">
+Your browser does not support the video tag.
+</video></div>
+
+</div>
+
+<!-- TYPO 2 -->
+
+<div id="Div_Typo2">
+   <div id="blackbars">
+        <button class="button_close" onclick="typo2()" style="z-index:11;left:1px;position: absolute;">X</button>
+          DOCUMENTATION TEXTBOOK_</div>
+
+<div class="textstyle2" style="text-align: center;"><br><br>
+
+      <h2>TYPOGRAPHY.DOCUMENTATION</h2>
+      <h1>"IM ZEICHEN VON ANKER UND DELPHIN"_</h1>
+
+      <h3>A short documentation of a textbook, analysing it's typographical values.</h3><br>
+
+      <button class="button_black" onclick="window.open('data/typo2/typobook.pdf');" style="z-index:111;position: sticky;">OPEN DOCUMENTATION</button><p></p>
+
+    </div>
+
+</div>
+
+<!-- A CHESA -->
+
+<div id="Div_Chesa">
+ <div id="blackbars">
+        <button class="button_close" onclick="achesa()" style="z-index:11;left:1px;position: absolute;">X</button>
+          A CHESA - MOVING INFOGRAPHIC FOR ART STANDS WITH REFUGEES</div>
+  
+
+<div class="textstyle2" style="text-align: center;"><br><br>
+
+      <h2>INFOGRAPHIC</h2>
+      <h1>A CHESA_</h1>
+
+      <p><iframe style="border: 1px solid white;" src="https://player.vimeo.com/video/566626035" width="60%" height="480px" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe></p>
+
+      <h3>A moving infographic for the <br>"Art stands with refugees" project.</h3>
+
+          
+
+      This work has been shown in the Foyer Public of the Theater Basel <br>from 13.06 - 24.06.21.<br><br><br>
+
+    </div>
+
+</div>
+
+<!-- PS22 -->
+
+<div id="Div_Posterslam_1">
+  <div id="blackbars">
+        <button class="button_close" onclick="posterslam22()" style="z-index:11;left:1px;position: absolute;">X</button>
+          7_</div>
+
+<div style="width: 100%"><img style="width:100%" src="data/posters/ps22.jpg"></img></div>
+</div>
+
+<!-- PAX I -->
+
+<div id="Div_PAX_1">
+   <div id="blackbars">
+        <button class="button_close" onclick="pax1()" style="z-index:11;left:1px;position: absolute;">X</button>
+          PAX I_</div>
+ 
+
+<div style="width: 100%"><img style="width:100%" src="data/posters/pax1.jpg"></img></div>
+
+</div>
+
+<!-- PAX II -->
+
+<div id="Div_PAX_2">
+  <div id="blackbars">
+        <button class="button_close" onclick="pax2()" style="z-index:11;left:1px;position: absolute;">X</button>
+          PAX II_</div>
+
+<div style="width: 100%"><img style="width:100%" src="data/posters/pax2.jpg"></img></div>
+
+</div>
+
+<!-- PAX III -->
+
+<div id="Div_PAX_3">
+<div id="blackbars">
+        <button class="button_close" onclick="pax3()" style="z-index:11;left:1px;position: absolute;">X</button>
+          PAX III_</div>
+
+
+<div style="width: 100%"><img style="width:100%" src="data/posters/pax3.jpg"></img></div>
+
+</div>
+
+
+<!-- End PORTFOLIO DIV ^^ ADD WORK ABOVE -->
+
+</div>
+
+<!-- END ARBEITEN -->
+
+
+<!-- ABOUT ME -->
+
+<div onclick="showaboutme()" id=Div_AboutMe class="ui-widget-content">
+
+  <div id="blackbars">ABOUT ME_<button class="button_close" onclick="closeabout()">X</button></div>
+ <div style="height: 100%; width: 50%; float: left; overflow:hidden;"><img class="one" src="data/selfie.jpg"></img></div>
+      <div class="textstyle" style="overflow:scroll;text-align: center; padding-top:20px;margin-left:30px;"><h2>I haven't got a clue.</h2><b>And that's alright.</b><p>Born in the Engadin in 1990, living in Samedan & Basel.<p>Heavely influenced by music & snowboarding culture.<p>
+        <b>Probably a little trashy.</b><p>
+        ____
+        <p>
+        September 2020<br><b>Visual Communication</b><br> FHNW Basel<p><p>
+          2019-20<br><b>Internship Graphics Designer</b><br> Si-De Concept & Design Silvaplana<p>
+        2018-19<br><b>Vocational school-leaving certificate</b><br> GBM Chur<p></div>
+        
+        
+</div>
+
+
+<!-- CONTACT ME -->
+
+<div onclick="showcontact()" id="Div_Contact" class="ui-widget-content">
+
+  <div style="color:white; background-color: black; position:absolute; width:100%; text-align:center; font-family: 'IBM Plex Mono', monospace;font-size: 14px; height:20px;border: 1px solid white; "><button class="button_close" onclick="closecontact()" style="z-index:11;left:0;position: absolute;">X</button>CONTACT_</div>
+<div class="textstyle" style="padding-top: 20px"><h2>Andri Stoisser</h2>
+    andri.stoisser@gmx.ch
+<p>
+  <form action="https://getform.io/f/b6f7f022-aa8e-4fa2-89d8-93a10d0f10cf" method="POST">
+
+Name<br>
+  <input type="text" name="name"><br>
+E-Mail<br>
+  <input type="email" name="email"><br>
+  Message<br>
+  <input type="text" name="message" rows="5" style="height:60px"><br>
+  <button class="button_black" type="submit" style="z-index:10; font-size:9px;height:20px;position:sticky;left:20%;">Drop in</button></div>
+
+
+</form>
+</div>
+  <br>
+
+
+
+<!-- MENU SCRIPTS -->
+
+<script>
+function portfolio() {
+  const button = document.getElementById("portfoliobutton");
+  button.classList.toggle('active');
+
+  var x = document.getElementById("Div_Portfolio");
+  if (x.style.display === "block") {
+    x.style.display = "none";
+  } else {
+    x.style.display = "block";
+  }
+  x.style.zIndex = "1";
+  document.getElementById(Div_AboutMe).style.zIndex = "0";
+  document.getElementById("Div_Contact").style.zIndex = "0";
+}
+</script>
+
+
+<script>
+function aboutme() {
+
+    const button = document.getElementById("aboutmebutton");
+  button.classList.toggle('active');
+
+  var x = document.getElementById("Div_AboutMe");
+  if (x.style.display === "block") {
+    x.style.display = "none";
+  } else {
+    x.style.display = "block";
+  }
+  x.style.zIndex = "5";
+  document.getElementById("Div_Portfolio").style.zIndex = "0";
+  document.getElementById("Div_Contact").style.zIndex = "0";
+}
+</script>
+
+<script>
+function contact() {
+
+    const button = document.getElementById("contactbutton");
+  button.classList.toggle('active');
+
+  var x = document.getElementById("Div_Contact");
+  if (x.style.display === "block") {
+    x.style.display = "none";
+  } else {
+    x.style.display = "block";
+  }
+  x.style.zIndex = "1";
+  document.getElementById("Div_Portfolio").style.zIndex = "0";
+  document.getElementById("Div_AboutMe").style.zIndex = "0";
+}
+</script>
+
+<!-- ARBEITEN SCRIPTS -->
+
+<script>
+function semI() {
+  var x = document.getElementById("Div_SemI");
+  if (x.style.display === "block") {
+    x.style.display = "none";
+  } else {
+    x.style.display = "block";
+  }
+}
+</script>
+
+<script>
+function semII() {
+  var x = document.getElementById("Div_SemII");
+  if (x.style.display === "block") {
+    x.style.display = "none";
+  } else {
+    x.style.display = "block";
+  }
+}
+</script>
+
+<script>
+function gfI() {
+  var x = document.getElementById("Div_GrafFormI");
+  if (x.style.display === "block") {
+    x.style.display = "none";
+  } else {
+    x.style.display = "block";
+  }
+}
+</script>
+
+<script>
+function gfII() {
+  var x = document.getElementById("Div_GrafFormII");
+  if (x.style.display === "block") {
+    x.style.display = "none";
+  } else {
+    x.style.display = "block";
+  }
+}
+</script>
+
+<script>
+function zeichI() {
+  var x = document.getElementById("Div_ZeichnenI");
+  if (x.style.display === "block") {
+    x.style.display = "none";
+  } else {
+    x.style.display = "block";
+  }
+}
+</script>
+
+<script>
+function zeichII() {
+  var x = document.getElementById("Div_ZeichnenII");
+  if (x.style.display === "block") {
+    x.style.display = "none";
+  } else {
+    x.style.display = "block";
+  }
+}
+</script>
+
+<script>
+function zeichII_2() {
+  var x = document.getElementById("Div_ZeichnenII_2");
+  if (x.style.display === "block") {
+    x.style.display = "none";
+  } else {
+    x.style.display = "block";
+  }
+}
+</script>
+
+
+
+<script>
+function apos() {
+  var x = document.getElementById("Div_ArchPos");
+  if (x.style.display === "block") {
+    x.style.display = "none";
+  } else {
+    x.style.display = "block";
+  }
+}
+</script>
+
+
+<script>
+function interdesign() {
+  var x = document.getElementById("Div_InteractiveDesign");
+  if (x.style.display === "block") {
+    x.style.display = "none";
+  } else {
+    x.style.display = "block";
+  }
+}
+</script>
+
+<script>
+function cancelculture() {
+  var x = document.getElementById("Div_CancelCulture");
+  if (x.style.display === "block") {
+    x.style.display = "none";
+  } else {
+    x.style.display = "block";
+  }
+}
+</script>
+
+<script>
+function tbm() {
+  var x = document.getElementById("Div_Moving_Horror");
+  if (x.style.display === "block") {
+    x.style.display = "none";
+  } else {
+    x.style.display = "block";
+  }
+}
+</script>
+
+<script>
+function illus() {
+  var x = document.getElementById("Div_Illus");
+  if (x.style.display === "block") {
+    x.style.display = "none";
+  } else {
+    x.style.display = "block";
+  }
+}
+</script>
+
+
+<script>
+function phot1() {
+  var x = document.getElementById("Div_Photo_1");
+  if (x.style.display === "block") {
+    x.style.display = "none";
+  } else {
+    x.style.display = "block";
+  }
+}
+</script>
+
+<script>
+function phot2() {
+  var x = document.getElementById("Div_Photo2");
+  if (x.style.display === "block") {
+    x.style.display = "none";
+  } else {
+    x.style.display = "block";
+  }
+}
+</script>
+
+<script>
+function intovoid() {
+  var x = document.getElementById("Div_IntoTheVoid");
+  if (x.style.display === "block") {
+    x.style.display = "none";
+  } else {
+    x.style.display = "block";
+  }
+}
+</script>
+
+<script>
+function ttg() {
+  var x = document.getElementById("Div_TrashGold");
+  if (x.style.display === "block") {
+    x.style.display = "none";
+  } else {
+    x.style.display = "block";
+  }
+}
+</script>
+
+<script>
+function typo2() {
+  var x = document.getElementById("Div_Typo2");
+  if (x.style.display === "block") {
+    x.style.display = "none";
+  } else {
+    x.style.display = "block";
+  }
+}
+</script>
+
+<script>
+function achesa() {
+  var x = document.getElementById("Div_Chesa");
+  if (x.style.display === "block") {
+    x.style.display = "none";
+  } else {
+    x.style.display = "block";
+  }
+}
+</script>
+
+<script>
+function posterslam22() {
+  var x = document.getElementById("Div_Posterslam_1");
+  if (x.style.display === "block") {
+    x.style.display = "none";
+  } else {
+    x.style.display = "block";
+  }
+}
+</script>
+
+<script>
+function pax1() {
+  var x = document.getElementById("Div_PAX_1");
+  if (x.style.display === "block") {
+    x.style.display = "none";
+  } else {
+    x.style.display = "block";
+  }
+}
+</script>
+
+<script>
+function pax2() {
+  var x = document.getElementById("Div_PAX_2");
+  if (x.style.display === "block") {
+    x.style.display = "none";
+  } else {
+    x.style.display = "block";
+  }
+}
+</script>
+
+<script>
+function pax3() {
+  var x = document.getElementById("Div_PAX_3");
+  if (x.style.display === "block") {
+    x.style.display = "none";
+  } else {
+    x.style.display = "block";
+  }
+}
+</script>
+
+
+<script>
+function p5_1() {
+  var x = document.getElementById("Div_InteractiveDesign_Vid1");
+  if (x.style.display === "block") {
+    x.style.display = "none";
+  } else {
+    x.style.display = "block";
+  }
+}
+</script>
+
+<script>
+function thesis() {
+  var x = document.getElementById("myDIV25");
+  if (x.style.display === "block") {
+    x.style.display = "none";
+  } else {
+    x.style.display = "block";
+  }
+}
+</script>
+
+<!-- MENU BUTTONS -->
+
+<script>
+  function showport(){
+  var x = document.getElementById("Div_Portfolio");
+      x.style.zIndex++;
+  document.getElementById("Div_AboutMe").style.zIndex= "0";
+  document.getElementById("Div_Contact").style.zIndex= "0";
+}
+;</script>
+
+<script>
+function showaboutme() {
+  var x = document.getElementById("Div_AboutMe");
+  x.style.zIndex++;
+    document.getElementById("Div_Portfolio").style.zIndex = "0";
+  document.getElementById("Div_Contact").style.zIndex= "0";
+}
+</script>
+
+<script>
+function showcontact() {
+  var x = document.getElementById("Div_Contact");
+  x.style.zIndex++;
+  document.getElementById("Div_Portfolio").style.zIndex= "0";
+  document.getElementById("Div_AboutMe").style.zIndex= "0";
+}
+</script>
+
+<!-- CLOSING MENU -->
+
+<script>
+function closeport() {
+  const button = document.getElementById("portfoliobutton");
+  button.classList.toggle('active');
+
+  var x = document.getElementById("Div_Portfolio");
+  if (x.style.display === "block") {
+    x.style.display = "none";
+  } else {
+    x.style.display = "block";
+  }
+  }
+</script>
+
+<script>
+function closeabout() {
+ const button = document.getElementById("aboutmebutton");
+  button.classList.toggle('active');
+
+  var x = document.getElementById("Div_AboutMe");
+  if (x.style.display === "block") {
+    x.style.display = "none";
+  } else {
+    x.style.display = "block";
+  }
+  }
+</script>
+
+<script>
+function closecontact() {
+ const button = document.getElementById("contactbutton");
+  button.classList.toggle('active');
+
+  var x = document.getElementById("Div_Contact");
+     if (x.style.display === "block") {
+    x.style.display = "none";
+  } else {
+    x.style.display = "block";
+  }
+  }
+</script>
+
+<!-- CLOSING ARBEITEN -->
+
+<script>
+function closesemI() {
+  var x = document.getElementById("Div_SemI");
+     if (x.style.display === "block") {
+    x.style.display = "none";
+  } else {
+    x.style.display = "block";
+  }
+  }
+</script>
+
+<script>
+function closesemII() {
+  var x = document.getElementById("Div_SemII");
+     if (x.style.display === "block") {
+    x.style.display = "none";
+  } else {
+    x.style.display = "block";
+  }
+  }
+</script>
+
+<script>
+function closegfI() {
+  var x = document.getElementById("Div_GrafFormI");
+     if (x.style.display === "block") {
+    x.style.display = "none";
+  } else {
+    x.style.display = "block";
+  }
+  }
+</script>
+
+<script>
+function closegfII() {
+  var x = document.getElementById("Div_GrafFormII");
+     if (x.style.display === "block") {
+    x.style.display = "none";
+  } else {
+    x.style.display = "block";
+  }
+  }
+</script>
+
+
+
+
+</body>
+</html>
+
+

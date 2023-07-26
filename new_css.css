@@ -1,0 +1,1001 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;700&family=Major+Mono+Display&display=swap');
+
+		* {
+   			cursor: crosshair;
+		}
+
+ body { 
+ 	padding: 0; 
+ 	margin: 0;
+ 	overflow: hidden;
+ } 
+
+a {
+  color: black; /* Set the link color to blue */
+  text-decoration: underline; /* Add an underline to the link */
+}
+
+/*TOOLTIP*/
+
+.notooltip {
+  position: relative;
+  float: left;
+  padding-left: 2px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-right: 2px;
+  font-size: 12px;
+  color: black;
+  display: flex;
+
+}
+
+.tooltip:hover {
+text-decoration: underline;
+color:black;
+background-color: white;
+box-shadow: 
+  inset 1px 0 0 0 black,   /* Left border */
+  inset -1px 0 0 0 black,  /* Right border */
+  inset 0 1px 0 0 black,   /* Top border */
+  inset 0 -1px 0 0 black;  /* Bottom border */
+}
+
+.tooltip {
+  position: static;
+  float: left;
+  color: white;
+  background-color: black;
+  padding:5px;
+  margin-top:3px;
+  margin-left:5px;
+}
+
+
+.tooltip .tooltiptext {
+	    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+     letter-spacing: 0px; /* You can adjust this value as needed */
+     font-weight:normal;
+border:1.5px solid black;
+  visibility: hidden;
+  background-color: white;
+  font-size: 12px;
+  color: black;
+  text-align: center;
+   word-wrap:break-word;
+   width: 30%;
+  /* Position the tooltip */
+  padding-left:0px;
+  padding-right:0px;
+  position: fixed;
+  bottom: 10px; /* Position the tooltip 10px from the bottom of the viewport */
+  right: 10px; /* Position the tooltip 10px from the right side of the viewport */
+  z-index: 99;
+}
+
+#informationtext {
+	font-size: 12px;
+	font-weight: bold;
+	position:relative;
+	color:white;
+	padding-left:0px;
+	padding-right:0px;
+	background-color: black;
+	text-transform: uppercase;
+}
+
+/* Styles for phones (up to 600px wide) */
+@media (max-width: 600px) {
+  .tooltip .tooltiptext {
+     width: 50%;
+  }
+  }
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}
+
+
+ /*PRELOAD*/
+
+ #preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: white;
+  /* change if the mask should have another color then white */
+  z-index: 2000;
+  /* makes sure it stays on top */
+}
+
+#status {
+  width: 300px;
+  height: 301px;
+  position: absolute;
+  left: 50%;
+  /* centers the loading animation horizontally one the screen */
+  top: 50%;
+  /* centers the loading animation vertically one the screen */
+  background-image: url("data/loading.gif");
+  /* path to your loading animation */
+  background-repeat: no-repeat;
+  background-position: center;
+  margin: -150px 0 0 -150.5px;
+  /* is width and height divided by two */
+}
+
+ /*SCROLLBAR STYLING*/
+
+::-webkit-scrollbar {
+  -webkit-appearance: none;
+  width: 10px;
+}
+/* Track */
+::-webkit-scrollbar-track {
+  background: #white; 
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: black; 
+  border: 1px solid white;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555; 
+}
+
+/*TITLE AND SOCIAL MEDIA*/
+
+.titleDIV {
+	height: 12%;
+	width: 100%;
+	left: 0px;
+ 	 background-color: black;
+ 	 border: 1px solid black;
+	  position: absolute;
+			text-align: center;
+			color:white;
+			font-size: 4vh;
+			font-family: 'Major Mono Display', monospace;
+			line-height: 75px;
+			height:  75px;
+			z-index: 0;
+}
+
+.social {
+background: white; 
+border: 1px solid black; 
+right:0px; 
+height: 35px; 
+width: 75px;
+text-align:center;
+top:76px; 
+position:absolute;
+font-family: 'IBM Plex Mono', monospace;
+font-size: 9px;
+        display: -ms-flexbox;
+      display: -webkit-flex;
+    display: flex;
+       -ms-flex-align: center;
+    -webkit-align-items: center;
+       -webkit-box-align: center;
+       align-items: center;
+       z-index: 0;
+}
+
+
+/*MENU DIVS*/
+
+#informationtext {
+	font-size: 12px;
+	font-weight: bold;
+	position:relative;
+	color:white;
+	background-color: black;
+	text-transform: uppercase;
+}
+
+h2 {
+  font-size: 14px; /* Adjust the font size as needed */
+  font-weight: bold; /* You can change the font-weight if desired */
+  color: #000; /* Set the text color, you can use named colors or HEX codes */
+}
+
+#blackbars {
+  color: white;
+  background-color: black;
+  width:100%;
+  position:sticky;
+  top:0px;
+  text-align: center;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 14px;
+  height: 20px;
+  border: 1px solid white;
+  z-index:10;
+  box-shadow: inset -2px 0 0 white; /* Creates an inside border on the right side */
+}
+
+/* Styles for phones (up to 600px wide) */
+@media (max-width: 600px) {
+  #blackbars {
+  box-shadow: inset -2px 0 0 white; /* Creates an inside border on the right side */
+  }
+  }
+
+#Div_Portfolio {
+	height: 80%;
+	width: 50%;
+	left: 10.5%;
+	right: 12.5%;
+	top: 13%;
+	bottom: 5%;
+ 	 background-color: white;
+ 	 border: 1px solid black;
+ 	 margin-top: 20px;
+	  position: fixed;
+ 	 display: none;
+ 	 z-index: 1;
+  overflow: auto;
+  overflow-x:hidden;
+}
+
+/* Styles for phones (up to 600px wide) */
+@media (max-width: 600px) {
+  #Div_Portfolio {
+    width: 90%; /* Adjust the width to take up 90% of the screen width */
+    height:80%;
+    left: 5%; /* Center the div horizontally by adjusting the left property */
+    right: 5%; /* Center the div horizontally by adjusting the right property */
+    top: 10%; /* Adjust the top position to better fit on smaller screens */
+  }
+  }
+
+#Div_AboutMe {
+	height: 60%;
+	width: 50%;
+	left: 40%;
+	top: 17%;
+	bottom: 5%;
+ 	 background-color: white;
+ 	 border: 1px solid black;
+ 	 margin-top: 20px;
+	  position: absolute;
+ 	 display: none;
+ 	 z-index: 1;
+ 	 overflow:auto;
+ 	 overflow-x: hidden;
+}
+
+#Div_Contact {
+	height: 40%;
+	width: 30%;
+	left: 5%;
+	bottom: 5%;
+ 	 background-color: white;
+ 	 border: 1px solid black;
+ 	 margin-top: 20px;
+	  position: absolute;
+ 	 display: none;
+ 	 z-index: 1;
+ 	 	 overflow:auto;
+ 	 overflow-x: hidden;
+}
+
+/*ARBEITEN DIVS*/
+
+#Div_SemI {
+	height: 90%;
+	width: 90%;
+	left: 5%;
+	right: 5%;
+	top: 2%;
+		bottom: 2%;
+ 	 background-color: white;
+ 	 border: 1px solid black;
+ 	 margin-top: 20px;
+	  position: absolute;
+ 	 z-index: 100;
+ 	 display: none;
+ 	 overflow: auto;
+}
+
+#Div_SemII {
+	height: 90%;
+	width: 90%;
+	left: 5%;
+	right: 5%;
+	top: 2%;
+		bottom: 2%;
+ 	 background-color: white;
+ 	 border: 1px solid black;
+ 	 margin-top: 20px;
+	  position: absolute;
+ 	 z-index: 100;
+ 	 display: none;
+ 	 overflow: auto;
+}
+
+#Div_GrafFormI {
+	height: 90%;
+	width: 90%;
+	left: 5%;
+	right: 5%;
+	top: 2%;
+		bottom: 2%;
+ 	 background-color: white;
+ 	 border: 1px solid black;
+ 	 margin-top: 20px;
+	  position: absolute;
+ 	 z-index: 100;
+ 	 display: none;
+ 	 overflow: auto;
+
+}
+
+#Div_GrafFormII {
+	height: 80%;
+	width: 25%;
+	left: 5%;
+	right: 5%;
+	top: 2%;
+		bottom: 2%;
+ 	 background-color: white;
+ 	 border: 1px solid black;
+ 	 margin-top: 20px;
+	  position: absolute;
+ 	 z-index: 100;
+ 	 display: none;
+ 	 overflow: auto;
+ 	 overflow-x: hidden;
+}
+
+/* Styles for phones (up to 600px wide) */
+@media (max-width: 600px) {
+  #Div_GrafFormII {
+    width: 50%; /* Adjust the width to take up 90% of the screen width */
+	height: 80%;
+  }
+  }
+
+#Div_ZeichnenI {
+	height: 30%;
+	width: 30%;
+	left: 5%;
+	right: 5%;
+	top: 2%;
+		bottom: 2%;
+ 	 background-color: white;
+ 	 border: 1px solid black;
+ 	 margin-top: 20px;
+	  position: absolute;
+ 	 z-index: 100;
+ 	 display: none;
+ 	 overflow: auto;
+}
+
+#Div_ZeichnenII {
+	position:absolute;
+		width:50%;
+ 	 background-color: white;
+ 	 border: 1px solid black;
+ 	 z-index: 100;
+ 	 display: none;
+ 	 overflow: auto;
+ 	 overflow-x:hidden;
+}
+
+
+#Div_ZeichnenII_2 {
+	position:absolute;
+		width:50%;
+ 	 background-color: white;
+ 	 border: 1px solid black;
+ 	 z-index: 100;
+ 	 display: none;
+ 	 overflow: auto;
+ 	 overflow-x:hidden;
+}
+
+@media (max-width: 600px) {
+  #Div_ZeichnenII {
+    width: 80%; /* Adjust the width to take up 90% of the screen width */
+  }
+
+   #Div_ZeichnenII_2 {
+    width: 80%; /* Adjust the width to take up 90% of the screen width */
+  }
+  }
+
+
+#Div_ArchPos {
+	height: 90%;
+	width: 90%;
+	left: 5%;
+	right: 5%;
+	top: 2%;
+		bottom: 2%;
+ 	 background-color: white;
+ 	 border: 1px solid black;
+ 	 margin-top: 20px;
+	  position: absolute;
+ 	 z-index: 100;
+ 	 display: none;
+ 	 overflow: auto;
+ 	 overflow-x:hidden;
+}
+
+#Div_OAB2023 {
+	height: 90%;
+	width: 90%;
+	left: 5%;
+	right: 5%;
+	top: 2%;
+		bottom: 2%;
+ 	 background-color: white;
+ 	 border: 1px solid black;
+ 	 margin-top: 20px;
+	  position: absolute;
+ 	 z-index: 100;
+ 	 display: none;
+ 	 overflow: auto;
+ 	 overflow-x: hidden;
+}
+
+#Div_Alpina {
+	height: 90%;
+	width: 90%;
+	left: 5%;
+	right: 5%;
+	top: 2%;
+		bottom: 2%;
+ 	 background-color: white;
+ 	 border: 1px solid black;
+ 	 margin-top: 20px;
+	  position: absolute;
+ 	 z-index: 100;
+ 	 display: none;
+ 	 overflow: auto;
+ 	 overflow-x: hidden;
+}
+
+#Div_ISM {
+	height: 90%;
+	width: 90%;
+	left: 5%;
+	right: 5%;
+	top: 2%;
+		bottom: 2%;
+ 	 background-color: white;
+ 	 border: 1px solid black;
+ 	 margin-top: 20px;
+	  position: absolute;
+ 	 z-index: 100;
+ 	 display: none;
+ 	 overflow: auto;
+ 	  overflow-x: hidden;
+}
+
+#Div_InteractiveDesign {
+	height: 90%;
+	width: 90%;
+	left: 5%;
+	right: 5%;
+	top: 2%;
+		bottom: 2%;
+ 	 background-color: white;
+ 	 border: 1px solid black;
+	  position: absolute;
+ 	 z-index: 100;
+ 	 display: none;
+ 	 overflow: auto;
+ 	 overflow-x:hidden;
+}
+
+#Div_CantBreathe {
+	height: 90%;
+	width: 90%;
+	left: 5%;
+	right: 5%;
+	top: 2%;
+		bottom: 2%;
+ 	 background-color: white;
+ 	 border: 1px solid black;
+	  position: absolute;
+ 	 z-index: 100;
+ 	 display: none;
+ 	 overflow: auto;
+ 	 overflow-x:hidden;
+}
+
+#Div_CancelCulture {
+ 	 background-color: white;
+ 	 border: 1px solid black;
+ 	 width:60%;
+	  position: absolute;
+    top: 50%; /* Move the top edge of the container to the middle of the page */
+    left:25%;
+ 	 z-index: 100;
+ 	 display: none;
+ 	 overflow: auto;
+ 	 overflow-x:hidden;
+}
+
+@media (max-width: 600px) {
+  #Div_CancelCulture {
+    width: 80%; /* Adjust the width to take up 90% of the screen width */
+    left:15%;
+  }
+}
+
+#Div_Moving_Horror {
+		width: 70%;
+	right: 5%;
+	top: 10%;
+ 	 background-color: white;
+ 	 border: 1px solid black;
+	  position: absolute;
+ 	 z-index: 100;
+ 	 display: none;
+ 	 overflow: auto;
+ 	 overflow-x:hidden;
+}
+
+#Div_Rentner {
+	width: 70%;
+	right: 5%;
+	top: 10%;
+ 	 background-color: white;
+ 	 border: 1px solid black;
+	  position: absolute;
+ 	 z-index: 100;
+ 	 display: none;
+ 	 overflow: auto;
+ 	 overflow-x:hidden;
+}
+
+#Div_Midnight {
+	width: 70%;
+	right: 5%;
+	top: 10%;
+ 	 background-color: white;
+ 	 border: 1px solid black;
+	  position: absolute;
+ 	 z-index: 100;
+ 	 display: none;
+ 	 overflow: auto;
+ 	 overflow-x:hidden;
+}
+
+#Div_Eerie {
+	width: 70%;
+	right: 7%;
+	top: 12%;
+ 	 background-color: white;
+ 	 border: 1px solid black;
+	  position: absolute;
+ 	 z-index: 100;
+ 	 display: none;
+ 	 overflow: auto;
+ 	 overflow-x:hidden;
+}
+
+@media (max-width: 600px) {
+  #Div_Rentner, #Div_Eerie, #Div_Midnight {
+    width: 90%; /* Adjust the width to take up 90% of the screen width */
+  }
+}
+
+
+#Div_Illus {
+	position:absolute;
+	width:90%;
+ 	 background-color: white;
+ 	 border: 1px solid black;
+ 	 margin-top: 20px;
+ 	 z-index: 100;
+ 	 display: none;
+ 	 overflow: auto;
+ 	 overflow-x:hidden;
+}
+
+/* Media query for bigger screens (adjust the width as per your requirements) */
+@media screen and (min-width: 768px) {
+  #Div_Illus {
+    width: 80%; /* You can change this value to set the desired width for bigger screens */
+  }
+}
+
+#Div_Photo_1 {
+	height: 50%;
+	left: 5%;
+	right: 5%;
+	top: 20%;
+ 	 background-color: white;
+ 	 border: 1px solid black;
+	  position: absolute;
+ 	 z-index: 100;
+ 	 display: none;
+ 	 overflow: hidden;
+ 	 overflow-x:visible;
+
+}
+
+
+
+#Div_Photo2 {
+	height: 90%;
+	width: 90%;
+	left: 5%;
+	right: 5%;
+	top: 2%;
+		bottom: 2%;
+ 	 background-color: white;
+ 	 border: 1px solid black;
+ 	 margin-top: 20px;
+	  position: absolute;
+ 	 z-index: 100;
+ 	 display: none;
+ 	 overflow: auto;
+}
+
+#Div_IntoTheVoid {
+	height: 90%;
+	width: 90%;
+	left: 5%;
+	right: 5%;
+	top: 2%;
+		bottom: 2%;
+ 	 background-color: white;
+ 	 border: 1px solid black;
+ 	 margin-top: 20px;
+	  position: absolute;
+ 	 z-index: 100;
+ 	 display: none;
+ 	 overflow: auto;
+}
+
+#Div_TrashGold {
+	height: 90%;
+	width: 90%;
+	left: 5%;
+	right: 5%;
+	top: 2%;
+		bottom: 2%;
+ 	 background-color: white;
+ 	 border: 1px solid black;
+ 	 margin-top: 20px;
+	  position: absolute;
+ 	 z-index: 100;
+ 	 display: none;
+ 	 overflow: auto;
+}
+
+#Div_InteractiveDesign_Vid1 {
+	height: 57%;
+	width: 50%;
+	left: 5%;
+	right: 5%;
+	top: 2%;
+		bottom: 2%;
+ 	 background-color: white;
+ 	 border: 1px solid black;
+ 	 margin-top: 20px;
+	  position: absolute;
+ 	 z-index: 100;
+ 	 display: none;
+ 	 overflow: auto;
+}
+
+#Div_Typo2 {
+	height: 45%;
+	width: 60%;
+	left: 5%;
+	right: 5%;
+	top: 2%;
+		bottom: 2%;
+ 	 background-color: white;
+ 	 border: 1px solid black;
+ 	 margin-top: 20px;
+	  position: absolute;
+ 	 z-index: 100;
+ 	 display: none;
+ 	 overflow: auto;
+}
+
+#Div_Chesa {
+	height: 90%;
+	width: 70%;
+	left: 5%;
+	right: 5%;
+	top: 2%;
+		bottom: 2%;
+ 	 background-color: white;
+ 	 border: 1px solid black;
+ 	 margin-top: 20px;
+	  position: absolute;
+ 	 z-index: 100;
+ 	 display: none;
+ 	 overflow: auto;
+ 	 overflow-x:hidden;
+}
+
+#Div_Posterslam_1 {
+	height: 90%;
+	width: 95%;
+	left: 5%;
+	right: 5%;
+	top: 2%;
+		bottom: 2%;
+ 	 background-color: white;
+ 	 border: 1px solid black;
+ 	 margin-top: 20px;
+	  position: absolute;
+ 	 z-index: 100;
+ 	 display: none;
+ 	 overflow: auto;
+ 	 overflow-x: hidden;
+}
+
+#Div_JustDont {
+	width: 95%;
+	left: 3%;
+	top: 2%;
+ 	 background-color: white;
+ 	 border: 1px solid black;
+ 	 margin-top: 20px;
+	  position: absolute;
+ 	 z-index: 100;
+ 	 display: none;
+ 	 overflow: auto;
+ 	 overflow-x: hidden;
+}
+
+#Div_PAX_1 {
+	width: 90%;
+	left: 5%;
+	top: 2%;
+ 	 background-color: white;
+ 	 border: 1px solid black;
+	  position: absolute;
+ 	 z-index: 100;
+ 	 display: none;
+ 	 overflow: auto;
+ 	 overflow-x: hidden;
+}
+
+    @media (max-width: 600px) {
+            #Div_PAX_1, #Div_JustDont, #Div_Posterslam_1 {
+            		left: 1.5%;
+                	height:90%;
+            }
+          }
+
+#Div_PAX_2 {
+position:absolute;
+	width: 35%;
+	top: 3%;
+	right:6%;
+ 	 background-color: white;
+ 	 border: 1px solid black;
+	  position: absolute;
+ 	 z-index: 100;
+ 	 display: none;
+ 	 overflow: auto;
+ 	 overflow-x: hidden;
+}
+
+#Div_PAX_3 {
+	position:absolute;
+	width: 35%;
+	top: 3%;
+	right:3%;
+ 	 background-color: white;
+ 	 border: 1px solid black;
+	  position: absolute;
+ 	 z-index: 100;
+ 	 display: none;
+ 	 overflow: auto;
+ 	 overflow-x: hidden;
+}
+
+
+/*TEXT*/
+
+h1{
+	font-size: 35px;
+
+}
+
+.textstyle {
+			text-align: center;
+			color:black;
+			font-size: 10px;
+			font-family: 'IBM Plex Mono', monospace;
+			padding-left: 10px;
+			padding-right: 10px;
+			}
+
+		.textstyle2 {
+			text-align: left;
+			color:black;
+			font-size: 12px;
+			font-family: 'IBM Plex Mono', monospace;
+			padding-left: 2%;
+			padding-right: 2%;
+			overflow-wrap: break-word;
+			}
+
+			.textstyle3 {
+			text-align: left;
+			color:black;
+			font-size: 12px;
+			font-family: 'IBM Plex Mono', monospace;
+			padding-left: 15%;
+			padding-right: 15%;
+			overflow-wrap: break-word;
+			}
+
+			.textstyle4 {
+			text-align: center;
+			color:black;
+			font-size: 12px;
+			font-family: 'IBM Plex Mono', monospace;
+			padding-left: 5%;
+			padding-right: 5%;
+			overflow-wrap: break-word;
+			}
+
+			/*BUTTONS*/
+
+.button_black {
+  background-color: white;
+  border: 1px solid black;
+  color: black;
+  padding-right: 10px;
+  text-align: center;
+  text-decoration: none;
+  font-family: 'IBM Plex Mono', monospace;
+  margin-top: 4px;
+  height: 50px;
+  width: 200px;
+  position: fixed;
+  text-transform: uppercase;
+}
+
+/* Styles for phones (up to 600px wide) */
+@media (max-width: 600px) {
+  .button_black {
+    width: 150px; /* Adjust the width to take up 90% of the screen width */
+  }
+}
+
+.button_black:hover,
+.button_black.active {
+  background-color: black;
+  border: 1px solid black;
+    box-shadow: inset 0 0 0 1px white;
+
+  color: white;
+}
+
+.button_close{
+  background-color: white;
+  border: 1px solid black;
+  color: black;
+  padding-left: 10px;
+  padding-right: 10px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 9px;
+  font-family: 'IBM Plex Mono', monospace;
+  height: 19px;
+  position: absolute;
+  z-index: 1000;
+  left: 0px;
+
+}
+
+.button_close:hover {
+  background-color: black;
+  border: 1px solid black;
+      box-shadow: inset 0 0 0 1px white;
+
+  color: white;
+}
+
+/*IMAGES*/
+
+.lightbox {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(90, 90, 90, 0.9);
+    z-index: 9999;
+}
+
+/* Style for the lightbox image */
+.lightbox-img {
+    display: block;
+    max-width: 90%;
+    max-height: 90%;
+    object-fit: contain; /* Maintain aspect ratio without stretching */
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.lightbox-video {
+    max-width: 90%;
+    max-height: 90%;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+      /* Flexbox styles to display videos side by side on larger screens */
+.video-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.video-wrapper {
+    flex: 1 0 25%; /* Each video takes up 33.33% of the container's width */
+    padding: 5px; /* Add some spacing between videos */
+}
+
+.video {
+    width: 100%;
+}
+
+/* Media query for small screens */
+@media (max-width: 600px) {
+    .video-wrapper {
+        flex-basis: 100%; /* Videos take up full width on small screens */
+    }
+}
+
+        .image-gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        .image-item-two {
+            width: calc(50% - 5px); /* Two images per row with a 5px gap in between */
+        }
+
+			.image-item-three {
+            width: calc(33.3% - 5px); /* Two images per row with a 5px gap in between */
+        }
+
+        img {
+            width: 100%;
+        }
+
+        @media (max-width: 600px) {
+            .image-item-two, .image-item-three {
+                width: 100%; /* Display images as full-width on small screens */
+                	height:95%;
+
+            }
+        }
+
+
+.centered-container {
+    display: flex;
+    justify-content: center; /* Center items horizontally */
+    align-items: center; /* Center items vertically */
+    /* Additional styles for the container, if needed */
+}

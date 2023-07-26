@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+
+
+
+	<style>
+
+	@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;700&family=Major+Mono+Display&display=swap');
+
+[id^=modal] {
+  display: none;
+  border: 1px solid black;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  min-height: 90%;
+  min-width: 90%;
+  background-color: white;
+  }
+input[type=checkbox] {
+  position: absolute;
+  clip: rect(0 0 0 0);
+  }
+#modal1:target {
+  display: block;
+  }
+#modal2:target {
+  display: block;
+  }
+  #modal3:target {
+  display: block;
+  }
+[id^=modal] a {
+  }
+
+  .button_div {
+background-color: white;
+    border: 1px solid black;
+  color: black;
+  padding-left: 10px;
+  padding-right: 10px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 9px;
+  font-family: 'IBM Plex Mono', monospace;
+  height: 19px;
+  position: absolute;
+  z-index: 1000;
+  left: 0px;
+  }
+
+  .button_div:hover{
+    background-color: black;
+    color: white;
+  }
+
+	</style>
+</head>
+<body>
+
+<div id="content">
+    <p>This is the content-container</p>
+    <a href="#modal1">Open first modal</a><br>
+    <a href="#modal2">Open second modal</a>
+    <a href="#modal3">third</a>
+
+  <div id="modal1">
+  	
+    <a href="#"><div class="button_div">X</div></a>
+    <div style="color:white; background-color: black; position:absolute; width:100%; text-align:center; font-family: 'IBM Plex Mono', monospace;font-size: 14px; height:20px; border: 1px solid white;">SEMIOTIK I</div>
+    <br><br>Testtest
+    
+  </div>
+
+  <div id="modal2"><a href="#">Close</a>This is the second modal</div>
+   <div id="modal3"><a href="#">Close</a>This is the second modal</div>
+</div>
+</body>
+</html>

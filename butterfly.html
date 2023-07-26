@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Butterfly_sofar</title>
+	<meta charset="utf-8">
+	<!-- Compiled w/ P5LIVE, http://github.com/ffd8/p5live -->
+	<style type="text/css">
+		body{
+			margin:0;
+			overflow:hidden;
+		}
+		canvas{
+			position:fixed;
+			top:0;
+			left:0;
+			z-index:-1;
+			width:100vw;
+			height:100vh;
+			margin:0;
+		}
+	</style>
+	<script type="text/javascript">
+		// eco-mode = only render if window focused
+		window.onblur = function () {
+			noLoop();
+		};
+		window.onfocus = function () {
+			loop();
+		};
+	</script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.3.1/p5.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.3.1/addons/p5.sound.min.js"></script>
+</head>
+<body>
+
+<script type="text/javascript">
+//Butterfly_sofar
+
+/* CUSTOM FUNCTIONS FOR P5LIVE */
+// keep fullscreen if window resized
+function windowResized() {
+	resizeCanvas(windowWidth, windowHeight);
+}
+
+// custom ease function
+function ease(iVal, oVal, eVal){
+	return oVal += (iVal - oVal) * eVal;
+}
+
+// processing compatibility
+function println(msg){
+	print(msg);
+}
+
+
+let credits = {
+	"initial_sketch_creators": "Andri Stoisser, Sofia Camprubi",
+	"creator_name": "Andri Stoisser",
+	"recode_artist": "Bruno Sonderegger",
+	"recode_title": "Schmetterling",
+	"recode_year": 1971
+};
+
+let animation1;
+let animation2;
+let animation31;
+let animation32;
+let animation4;
+let animation5;
+let animation6;
+let animation7;
+let animation8;
+let animation9;
+let animation10;
+let animation11;
+let animation12;
+let animation131;
+let animation132;
+let animation14;
+let animation15;
+let animation16;
+let animation17;
+let animation18;
+let animation191;
+let animation192;
+let animation20;
+
+let k;
+let m;
+
+function setup() {
+	createCanvas(windowWidth, windowHeight);
+	background(255);
+	angleMode(DEGREES);
+	setupAudio();
+
+	// SLIDERS
+
+	sliderWidth = createSlider(0, 100, 0); // minValue, maxValue, defaultValue, stepSize
+	sliderWidth.position(50, 500);
+	sliderWidth.size(200);
+	sliderWidth.style('cursor', 'pointer');
+
+	// hi slider
+	hiS = createSlider(0.5, 1, 0.5, 0.001);
+	hiS.position(50, 525);
+	hiS.size(200);
+	hiS.style('cursor', 'pointer');
+
+	// larger wing span
+	wingspan = createSlider(0.005, 1.65, 1, 0.005);
+	wingspan.position(50, 550);
+	wingspan.size(200);
+	wingspan.style('cursor', 'pointer');
+
+
+	// SLIDER I DON'T LIKE / ASSYMETRY
+	sliWidthBig = createSlider(-0.25, 0.25, 0, 0);
+	sliWidthBig.position(width - 250, 825);
+	sliWidthBig.size(200);
+	sliWidthBig.style('cursor', 'pointer');
+
+	sliderHight = createSlider(0, 300, 0);
+	sliderHight.position(50, 175);
+	sliderHight.size(200);
+	sliderHight.style('cursor', 'pointer');
+
+	// n slider
+	nS = createSlider(1, 19, 19, 0.5);
+	nS.position(50, 200);
+	nS.size(200);
+	nS.style('cursor', 'pointer');
+
+	// stokeWeight slider
+	sliderStrokeWeight = createSlider(0, 10, 0.5, 0);
+	sliderStrokeWeight.position(50, 250);
+	sliderStrokeWeight.size(200);
+	sliderStrokeWeight.style('cursor', 'pointer');
+
+	// fill alpha slider
+	alphaS = createSlider(0, 400, 0, 20);
+	alphaS.position(50, 275);
+	alphaS.size(200);
+	alphaS.style('cursor', 'pointer');
+
+	// red color slider
+	redS = createSlider(0, 255, 0, 1);
+	redS.position(50, 325);
+	redS.size(200);
+	redS.style('cursor', 'pointer');
+
+	// yellow color slider
+	yellowS = createSlider(0, 255, 0, 1);
+	yellowS.position(50, 350);
+	yellowS.size(200);
+	yellowS.style('cursor', 'pointer');
+
+	// blue color slider
+	blueS = createSlider(0, 255, 0, 1);
+	blueS.position(50, 375);
+	blueS.size(200);
+	blueS.style('cursor', 'pointer');
+
+	// background color slider
+	backgroundS = createSlider(0, 255, 255, 1);
+	backgroundS.position(width - 250, 50);
+	backgroundS.size(200);
+	backgroundS.style('cursor', 'pointer');
+
+	// background alpa slider
+	sliderPaint = createSlider(0, 100, 100, 1);
+	sliderPaint.position(width - 250, 75);
+	sliderPaint.size(200);
+	sliderPaint.style('cursor', 'pointer');
+
+	// amp1 loudness width
+	sliderAmp1 = createSlider(0, 1.0, 0, 0.01);
+	sliderAmp1.position(width - 250, 125);
+	sliderAmp1.size(200);
+	sliderAmp1.style('cursor', 'pointer');
+
+	// amp1 loudness height
+	sliderAmpHeight = createSlider(0, 1.0, 0, 0.01);
+	sliderAmpHeight.position(width - 250, 150);
+	sliderAmpHeight.size(200);
+	sliderAmpHeight.style('cursor', 'pointer');
+
+	// AMP shakyness
+	sliderFft = createSlider(0, 1.0, 0, 0);
+	sliderFft.position(width - 250, 175);
+	sliderFft.size(200);
+	sliderFft.style('cursor', 'pointer');
+
+	// stroke opiacity
+	sliderOpi = createSlider(0, 100, 100, 0);
+	sliderOpi.position(width - 250, 225);
+	sliderOpi.size(200);
+	sliderOpi.style('cursor', 'pointer');
+
+	// AMP stroke thickness
+	sliderAmpThick = createSlider(0, 3, 0, 0.01);
+	sliderAmpThick.position(width - 250, 250);
+	sliderAmpThick.size(200);
+	sliderAmpThick.style('cursor', 'pointer');
+
+
+	// CHECKBOX 
+	// first row small  'butterfly' movements, second row big movements
+
+	//  Checkboxes Color
+	a21 = createCheckbox('');
+	a21.changed(wingAnimation);
+	a21.position(50, 400);
+	a21.style('cursor', 'pointer');
+
+	a22 = createCheckbox('');
+	a22.changed(wingAnimation);
+	a22.position(140, 400);
+	a22.style('cursor', 'pointer');
+
+	a23 = createCheckbox('');
+	a23.changed(wingAnimation);
+	a23.position(230, 400);
+	a23.style('cursor', 'pointer');
+
+	a24 = createCheckbox('');
+	a24.changed(wingAnimation);
+	a24.position(50, 425);
+	a24.style('cursor', 'pointer');
+
+	a25 = createCheckbox('');
+	a25.changed(wingAnimation);
+	a25.position(140, 425);
+	a25.style('cursor', 'pointer');
+
+	a26 = createCheckbox('');
+	a26.changed(wingAnimation);
+	a26.position(230, 425);
+	a26.style('cursor', 'pointer');
+
+
+
+	//  Sinus Codes
+
+	a1 = createCheckbox('');
+	a1.changed(wingAnimation);
+	a1.position(width - 250, 300);
+	a1.style('cursor', 'pointer');
+
+	a2 = createCheckbox('');
+	a2.changed(wingAnimation);
+	a2.position(width - 230, 300);
+	a2.style('cursor', 'pointer');
+
+	a3 = createCheckbox('');
+	a3.changed(wingAnimation);
+	a3.position(width - 210, 300);
+	a3.style('cursor', 'pointer');
+
+	a4 = createCheckbox('');
+	a4.changed(wingAnimation);
+	a4.position(width - 190, 300);
+	a4.style('cursor', 'pointer');
+
+	a5 = createCheckbox('');
+	a5.changed(wingAnimation);
+	a5.position(width - 170, 300);
+	a5.style('cursor', 'pointer');
+
+	a6 = createCheckbox('');
+	a6.changed(wingAnimation);
+	a6.position(width - 150, 300);
+	a6.style('cursor', 'pointer');
+
+	a7 = createCheckbox('');
+	a7.changed(wingAnimation);
+	a7.position(width - 130, 300);
+	a7.style('cursor', 'pointer');
+
+	a8 = createCheckbox('');
+	a8.changed(wingAnimation);
+	a8.position(width - 110, 300);
+	a8.style('cursor', 'pointer');
+
+	a9 = createCheckbox('');
+	a9.changed(wingAnimation);
+	a9.position(width - 90, 300);
+	a9.style('cursor', 'pointer');
+
+	a10 = createCheckbox('');
+	a10.changed(wingAnimation);
+	a10.position(width - 70, 300);
+	a10.style('cursor', 'pointer');
+
+	a11 = createCheckbox('');
+	a11.changed(wingAnimation);
+	a11.position(width - 250, 325);
+	a11.style('cursor', 'pointer');
+
+	a12 = createCheckbox('');
+	a12.changed(wingAnimation);
+	a12.position(width - 230, 325);
+	a12.style('cursor', 'pointer');
+
+	a13 = createCheckbox('');
+	a13.changed(wingAnimation);
+	a13.position(width - 210, 325);
+	a13.style('cursor', 'pointer');
+
+	a14 = createCheckbox('');
+	a14.changed(wingAnimation);
+	a14.position(width - 190, 325);
+	a14.style('cursor', 'pointer');
+
+	a15 = createCheckbox('');
+	a15.changed(wingAnimation);
+	a15.position(width - 170, 325);
+	a15.style('cursor', 'pointer');
+
+	a16 = createCheckbox('');
+	a16.changed(wingAnimation);
+	a16.position(width - 150, 325);
+	a16.style('cursor', 'pointer');
+
+	a17 = createCheckbox('');
+	a17.changed(wingAnimation);
+	a17.position(width - 130, 325);
+	a17.style('cursor', 'pointer');
+
+	a18 = createCheckbox('');
+	a18.changed(wingAnimation);
+	a18.position(width - 110, 325);
+	a18.style('cursor', 'pointer');
+
+	a19 = createCheckbox('');
+	a19.changed(wingAnimation);
+	a19.position(width - 90, 325);
+	a19.style('cursor', 'pointer');
+
+	a20 = createCheckbox('');
+	a20.changed(wingAnimation);
+	a20.position(width - 70, 325);
+	a20.style('cursor', 'pointer');
+
+}
+
+function doubleClicked() {
+
+	sliderWidth.hide()
+	hiS.hide()
+	wingspan.hide()
+	sliWidthBig.hide()
+	sliderHight.hide()
+	nS.hide()
+	sliderStrokeWeight.hide()
+	alphaS.hide()
+	yellowS.hide()
+	blueS.hide()
+	redS.hide()
+	sliderAmp1.hide()
+	sliderFft.hide()
+	sliderPaint.hide()
+	backgroundS.hide()
+	sliderOpi.hide()
+	sliderAmpThick.hide()
+	sliderAmpHeight.hide()
+	a1.hide()
+	a2.hide()
+	a3.hide()
+	a4.hide()
+	a5.hide()
+	a6.hide()
+	a7.hide()
+	a8.hide()
+	a9.hide()
+	a10.hide()
+	a11.hide()
+	a12.hide()
+	a13.hide()
+	a14.hide()
+	a15.hide()
+	a16.hide()
+	a17.hide()
+	a18.hide()
+	a19.hide()
+	a20.hide()
+	a21.hide()
+	a22.hide()
+	a23.hide()
+	a24.hide()
+	a25.hide()
+	a26.hide()
+}
+
+function mouseClicked() {
+
+	sliderWidth.show()
+	hiS.show()
+	wingspan.show()
+	sliWidthBig.show()
+	sliderHight.show()
+	nS.show()
+	sliderStrokeWeight.show()
+	alphaS.show()
+	yellowS.show()
+	blueS.show()
+	redS.show()
+	sliderAmp1.show()
+	sliderFft.show()
+	sliderPaint.show()
+	backgroundS.show()
+	sliderOpi.show()
+	sliderAmpThick.show()
+	sliderAmpHeight.show()
+	a1.show()
+	a2.show()
+	a3.show()
+	a4.show()
+	a5.show()
+	a6.show()
+	a7.show()
+	a8.show()
+	a9.show()
+	a10.show()
+	a11.show()
+	a12.show()
+	a13.show()
+	a14.show()
+	a15.show()
+	a16.show()
+	a17.show()
+	a18.show()
+	a19.show()
+	a20.show()
+	a21.show()
+	a22.show()
+	a23.show()
+	a24.show()
+	a25.show()
+	a26.show()
+}
+
+
+function draw() {
+	/* audio vars: amp, ampEase, fft, waveform */
+
+	let sliWidth = sliderWidth.value();
+	let sliHi = sliderHight.value();
+	let sliAmp1 = sliderAmp1.value();
+	let sliStrokeWeight = sliderStrokeWeight.value();
+	let sliPaint = sliderPaint.value();
+	let slWidthBig = sliWidthBig.value();
+	let ws = wingspan.value();
+	let opi = sliderOpi.value();
+	let sliThick = sliStrokeWeight + sliderAmpThick.value() + ampEase / 40;
+	let sliAmpHi = sliderAmpHeight.value();
+
+
+	updateAudio();
+	background(backgroundS.value(), sliPaint);
+	translate(width / 2 + animation191, 0 + animation192);
+
+	n = nS.value() - animation5 + animation15; // anzahl "streifen"
+
+	hi = (hiS.value() + (sliAmpHi * ampEase / 20));
+	swidth = -0.3 + k + animation2 + (ampEase * sliAmp1 / 50) + sliWidth / 420 - slWidthBig;
+	swidth_big = 0.3 * animation6 * ws * animation16 + slWidthBig;
+
+	s_length = 0.47 + sliHi / 50 + animation10 + animation20;
+	y1 = 0.02;
+	y2 = 0.05;
+
+	swidth2 = 0.3 - k - animation2 - (ampEase * sliAmp1 / 50) - sliWidth / 420 - slWidthBig;
+	swidth_big2 = -0.3 * animation6 * ws * animation16 + slWidthBig;
+	
+	print(sin(frameCount%255)*100)
+
+	//ANIMATION
+
+
+
+	if(a2.checked()) {
+		k = 0.1;
+		animation2 = cos(frameCount) / ampEase;
+	} else {
+		k = 0;
+		animation2 = 0;
+	}
+
+	if(a5.checked()) {
+		animation5 = sin(frameCount) * ampEase;
+	} else {
+		animation5 = 0;
+	}
+
+	if(a6.checked()) {
+		animation6 = abs(sin(frameCount) - .1);
+	} else {
+		animation6 = 1;
+	}
+
+	if(a7.checked()) {
+		animation7 = abs(sin(frameCount));
+	} else {
+		animation7 = 0;
+	}
+
+	if(a10.checked()) {
+		animation10 = abs(sin(frameCount)) / 1.99
+	} else {
+		animation10 = 0;
+	}
+
+	if(a15.checked()) {
+		animation15 = abs(sin(frameCount)) * 60;
+	} else {
+		animation15 = 0;
+	}
+
+	if(a16.checked()) {
+		animation16 = sin(frameCount) * 1.65;
+	} else {
+		animation16 = 1;
+	}
+
+	if(a17.checked()) {
+		animation17 = abs(sin(frameCount)) * 16;
+	} else {
+		animation17 = 0;
+	}
+
+	if(a19.checked()) {
+		animation191 = cos(frameCount) * 200;
+		animation192 = sin(frameCount) * 50;
+	} else {
+		animation191 = 0;
+		animation192 = 0;
+	}
+
+	if(a20.checked()) {
+		animation20 = sin(frameCount) * ampEase / 6;
+	} else {
+		animation20 = 0;
+	}
+
+
+	//COLOR CHECKBOXES AMP
+
+	if(a21.checked()) {
+		redCheck = ampEase % 255;
+	} else {
+		redCheck = 0;
+	}
+
+
+	if(a22.checked()) {
+		yellowCheck = ampEase % 255/20;
+	} else {
+		yellowCheck = 0;
+	}
+
+	if(a23.checked()) {
+		blueCheck = ampEase % 255;
+	} else {
+		blueCheck = 0;
+	}
+
+	//COLOR CHECKBOXES SINUS
+
+	if(a24.checked()) {
+		redCheckSin = sin(ampEase) * 100;
+	} else {
+		redCheckSin = 0;
+	}
+
+
+	if(a25.checked()) {
+		yellowCheckSin = sin(ampEase) * 100;
+	} else {
+		yellowCheckSin = 0;
+	}
+
+	if(a26.checked()) {
+		blueCheckSin = sin(ampEase) * 100;
+	} else {
+		blueCheckSin = 0;
+	}
+
+
+
+	slFft = sliderFft.value();
+
+	fill(backgroundS.value(), alphaS.value());
+	stroke(redS.value() + yellowCheck + redCheckSin, yellowS.value() + blueCheck + yellowCheckSin, blueS.value() + redCheck + blueCheckSin, opi);
+	strokeWeight(sliThick + animation7 + animation17);
+
+	wingAnimation(true);
+	wingAnimation(false);
+
+	push();
+	translate(0, height);
+	rotate(180);
+	wingAnimation(true);
+	wingAnimation(false);
+	pop();
+
+}
+
+
+function wingAnimation(mirror) {
+	beginShape();
+	for(i = 0; i < n; i++) {
+		let waveformSel = waveform[floor(map(i, 0, n, 0, waveform.length))]; // -1, 1
+		// +waveformSel*50
+		let fftSel = fft[floor(map(i, 0, n, 0, fft.length))]; // 0 - 255
+		// + fftSel
+
+
+		if(mirror) {
+			vertex(width * m * animation12 * swidth + slFft * waveformSel * 500,
+				height * hi * animation8 * animation18);
+			vertex(width * animation31 * animation131 * swidth_big + slFft * waveformSel * 500,
+				height * (y1 * animation4 * animation14 + i / (n + animation9) + animation1 + animation11) * s_length);
+			vertex(width * animation32 * animation132 * swidth_big + slFft * waveformSel * 500,
+				height * (y2 * animation4 * animation14 + i / (n + animation9) + animation1 + animation11) * s_length);
+		} else {
+			vertex(width * m * animation12 * swidth2 + slFft * waveformSel * 500,
+				height * hi * animation8 * animation18);
+			vertex(width * animation31 * animation131 * swidth_big2 + slFft * waveformSel * 500,
+				height * (y1 * animation4 * animation14 + i / (n + animation9) + animation1 + animation11) * s_length);
+			vertex(width * animation32 * animation132 * swidth_big2 + slFft * waveformSel * 500,
+				height * (y2 * animation4 * animation14 + i / (n + animation9) + animation1 + animation11) * s_length);
+		}
+	}
+	endShape(CLOSE);
+
+
+	if(a1.checked()) {
+		animation1 = abs(sin(frameCount) * ampEase) / 300;
+	} else {
+		animation1 = 0;
+	}
+
+	if(a3.checked()) {
+		animation31 = abs(cos(frameCount / 2));
+		animation32 = abs(cos(frameCount)) / 60;
+	} else {
+		animation31 = 1;
+		animation32 = 1;
+	}
+
+	if(a4.checked()) {
+		animation4 = abs(sin(frameCount) * ampEase * 1.5);
+	} else {
+		animation4 = 1;
+	}
+
+	if(a8.checked()) {
+		animation8 = abs(sin(frameCount)) * ampEase / 60;
+	} else {
+		animation8 = 1;
+	}
+
+	if(a9.checked()) {
+		animation9 = abs(sin(frameCount)) * 2;
+	} else {
+		animation9 = 0;
+	}
+
+	if(a11.checked()) {
+		animation11 = sin(frameCount);
+	} else {
+		animation11 = 0;
+	}
+
+	if(a12.checked()) {
+		m = 1.65
+		animation12 = cos(frameCount);
+	} else {
+		m = 1
+		animation12 = 1;
+	}
+
+	if(a13.checked()) {
+		animation131 = cos(frameCount / 2) * 1.65;
+		animation132 = cos(frameCount) * 1.65;
+	} else {
+		animation131 = 1;
+		animation132 = 1;
+	}
+
+	if(a14.checked()) {
+		animation14 = sin(frameCount) * 5;
+	} else {
+		animation14 = 1;
+	}
+
+	if(a18.checked()) {
+		animation18 = sin(frameCount) * 3;
+	} else {
+		animation18 = 1;
+	}
+
+}
+
+
+/* AUDIO INIT */
+let mic, fftRaw, fft = [],
+	waveform = [],
+	amp = 0.0,
+	ampStereo = {
+		l: 0.0,
+		r: 0.0
+	},
+	ampEase = 0.0,
+	numBins = 512,
+	bands = 12;
+
+function setupAudio() {
+	userStartAudio();
+	mic = new p5.AudioIn();
+	mic.start();
+	fftRaw = new p5.FFT(0.75, numBins);
+	fftRaw.setInput(mic);
+}
+
+function updateAudio() {
+	fftRaw.analyze();
+	amp = mic.getLevel() * 500; // average mixed amplitude
+	ampStereo.l = mic.amplitude.getLevel(0) * 500; // average left amplitude
+	ampStereo.r = mic.amplitude.getLevel(1) * 500; // average right amplitude
+	ampEase = ease(amp, ampEase, 0.1); // smooth 'amp'
+	waveform = fftRaw.waveform(); // array (-1, 1)
+	fft = fftRaw.logAverages(fftRaw.getOctaveBands(bands)); // array (0, 255)
+}
+</script>
+
+</body>
+</html>

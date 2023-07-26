@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="css_1_copy.css">
+
+<!-- P5 SKETCH -->
+<!-- 	<script src="https://cdn.jsdelivr.net/npm/p5@1.3.1/lib/p5.js"></script>
+	<script src="cubes.js"></script> -->
+
+<!-- P5 LOAD JQUERY -->
+	<script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+
+</head>
+<body>
+
+<div class="titleDIV">andri bonsai stoisser</div>
+
+
+
+<button class="button_black" onclick="portfolio()" style="top:72px; left:0px;z-index:10;">portfolio</button>
+<button class="button_black" onclick="aboutme()" style="top:121px; left:0px;z-index:10;">about me</button>
+<button class="button_black" onclick="contact()" style="top:170px; left:0px;z-index:10;">contact</button>
+
+
+<div id="myDIV1">
+
+
+<div onclick="showport()" style="color:white; background-color: black; position:fixed; width:90%; text-align:center; font-family: 'IBM Plex Mono', monospace;font-size: 14px; height:20px; left:0px; z-index:10;"><button class="button_close" onclick="closeport()" style="z-index:11;left:0;">X</button> PORTFOLIO</div>
+
+  <br>
+  <br>
+
+
+    <div style="border: 2 px solid black; width: 98%; padding-left:1%; padding-right:1%;">
+      <a href="butterfly.html" target="_blank"><img class="two" src="data/p5.jpg"></img></a>
+      <div class="textstyle" style="text-align: left; padding-top: 5px;"><b>Butterfly</b> <br>Test</div> </div>
+      <br>
+
+
+<div style="text-align:center;">
+ <a href="#modal1"><img class="two" src="data/Sem_2_small.jpg" style="display:inline-block; margin-left: auto; margin-right: auto; width: 49%; "></img></a>
+<img class="two" src="data/Sem_2_small.jpg" onclick="semII()" style="display:inline-block; margin-left: auto; margin-right: auto; width: 49%"></img>
+</div>
+
+
+      <div style="text-align: left; padding-top:10px; color:black;font-size: 10px;
+      font-family: 'IBM Plex Mono', monospace; padding-left: 10px; padding-right: 10px;float:left; width:49%"><b>Semiotik I</b> <br>Test.</div>
+
+       <div style="text-align: left; padding-top:10px; color:black;font-size: 10px;
+      font-family: 'IBM Plex Mono', monospace; padding-left: 10px; padding-right: 10px;float:left; width:45%"><b>Semiotik II</b> <br>A visual experimentation.<br></div>
+      <div style="clear:both;"></div>
+
+      <br>
+
+      <div style="text-align:center;">
+ <img class="two" src="data/Sem_2_small.jpg" onclick="arbeiten()" style="display:inline-block; margin-left: auto; margin-right: auto; width: 49%; "></img>
+<img class="two" src="data/Sem_2_small.jpg" onclick="arbeiten()" style="display:inline-block; margin-left: auto; margin-right: auto; width: 49%"></img>
+</div>
+      <div style="text-align: left; padding-top:10px; color:black;font-size: 10px;
+      font-family: 'IBM Plex Mono', monospace; padding-left: 10px; padding-right: 10px;float:left; width:49%"><b>Grafisches Formulieren I</b> <br>Test.</div>
+
+       <div style="text-align: left; padding-top:10px; color:black;font-size: 10px;
+      font-family: 'IBM Plex Mono', monospace; padding-left: 10px; padding-right: 10px;float:left; width:45%"><b>Grafisches Formulieren II</b> <br>A visual experimentation.<br></div>
+      <div style="clear:both;"></div>
+      
+<br>
+      <div style="border: 2 px solid black; width: 98%; padding-left:1%; padding-right:1%;"><br><img class="two" src="data/ap.jpg"></img> 
+      <div class="textstyle"><b>Architektonische Positionen</b> <br>TK & TBM II Module</div> </div><br>
+</div>
+
+<div id="myDIV4"><div style="color:white; background-color: black; position:absolute; width:99.8%; text-align:center; font-family: 'IBM Plex Mono', monospace;font-size: 14px; height:20px; border: 1px solid white;">SEMIOTIK I<button class="button_close" onclick="closesemI()">X</button></div><div class="textstyle"><br><br>INHALT SEMIOTIK I</div></div>
+
+<div id="myDIV5"><div style="color:white; background-color: black; position:absolute; width:99.8%; text-align:center; font-family: 'IBM Plex Mono', monospace;font-size: 14px; height:20px; border: 1px solid white;">SEMIOTIK II<button class="button_close" onclick="closesemII()">X</button></div><div class="textstyle"><br><br>INHALT SEMIOTIK II</div></div>
+
+  <div id="modal1">
+    
+    <a href="#"><div class="button_div">X</div></a>
+    <div style="color:white; background-color: black; position:absolute; width:100%; text-align:center; font-family: 'IBM Plex Mono', monospace;font-size: 14px; height:20px; border: 1px solid white;">SEMIOTIK I</div>
+    <br><br>Testtest
+
+
+
+
+
+
+<div id="myDIV2">
+
+  <div onclick="showaboutme()" style="color:white; background-color: black; position:absolute; width:100%; text-align:center; font-family: 'IBM Plex Mono', monospace;font-size: 14px; height:20px;">ABOUT ME <button class="button_close" onclick="closeabout()">X</button></div>
+ <div style="padding-top:20px; width: 50%; height: 95.2%; float: left; overflow:auto;"><img class="one" src="data/selfie.jpg"></img></div>
+      <div class="textstyle" style="padding-top:30px;"><b>Mein Name ist Hase.</b><br>Und ich weiss von nichts.</div>
+    </div>
+</div>
+
+<div id="myDIV3">
+
+  <button class="button_close" onclick="closecontact()">X</button><div onclick="showcontact()" style="color:white; background-color: black; position:absolute; width:100%; text-align:center; font-family: 'IBM Plex Mono', monospace;font-size: 14px; height:20px;">CONTACT</div>
+<div class="textstyle" style="padding-top: 20px"><h2>Andri Stoisser</h2>
+      Visual Communications @ HGK Basel<br>
+    andri.stoisser@gmx.ch</div>
+</div>
+  <br>
+
+
+
+<!-- BUTTON SCRIPTS -->
+
+<script>
+function portfolio() {
+  var x = document.getElementById("myDIV1");
+  if (x.style.display === "block") {
+    x.style.display = "none";
+  } else {
+    x.style.display = "block";
+  }
+  x.style.zIndex = "1";
+  document.getElementById("myDIV2").style.zIndex = "0";
+  document.getElementById("myDIV3").style.zIndex = "0";
+}
+</script>
+
+<script>
+function aboutme() {
+  var x = document.getElementById("myDIV2");
+  if (x.style.display === "block") {
+    x.style.display = "none";
+  } else {
+    x.style.display = "block";
+  }
+  x.style.zIndex = "1";
+  document.getElementById("myDIV1").style.zIndex = "0";
+  document.getElementById("myDIV3").style.zIndex = "0";
+}
+</script>
+
+<script>
+function semI() {
+  var x = document.getElementById("myDIV4");
+  if (x.style.display === "block") {
+    x.style.display = "none";
+  } else {
+    x.style.display = "block";
+  }
+}
+</script>
+
+<script>
+function semII() {
+  var x = document.getElementById("myDIV5");
+  if (x.style.display === "block") {
+    x.style.display = "none";
+  } else {
+    x.style.display = "block";
+  }
+}
+</script>
+
+<script>
+function contact() {
+  var x = document.getElementById("myDIV3");
+  if (x.style.display === "block") {
+    x.style.display = "none";
+  } else {
+    x.style.display = "block";
+  }
+  x.style.zIndex = "1";
+  document.getElementById("myDIV1").style.zIndex = "0";
+  document.getElementById("myDIV2").style.zIndex = "0";
+}
+</script>
+
+<script>
+  function showport(){
+  var x = document.getElementById("myDIV1");
+      x.style.zIndex++;
+  document.getElementById("myDIV2").style.zIndex = "0";
+  document.getElementById("myDIV3").style.zIndex = "0";
+}
+;</script>
+
+<script>
+function showaboutme() {
+  var x = document.getElementById("myDIV2");
+  x.style.zIndex++;
+  document.getElementById("myDIV1").style.zIndex = "1";
+  document.getElementById("myDIV3").style.zIndex = "0";
+}
+</script>
+
+<script>
+function showcontact() {
+  var x = document.getElementById("myDIV3");
+  x.style.zIndex++;
+  document.getElementById("myDIV1").style.zIndex = "1";
+  document.getElementById("myDIV2").style.zIndex = "0";
+}
+</script>
+
+<script>
+function closeport() {
+  var x = document.getElementById("myDIV1");
+  if (x.style.display === "block") {
+    x.style.display = "none";
+  } else {
+    x.style.display = "block";
+  }
+  }
+</script>
+
+<script>
+function closeabout() {
+  var x = document.getElementById("myDIV2");
+  if (x.style.display === "block") {
+    x.style.display = "none";
+  } else {
+    x.style.display = "block";
+  }
+  }
+</script>
+
+<script>
+function closecontact() {
+  var x = document.getElementById("myDIV3");
+     if (x.style.display === "block") {
+    x.style.display = "none";
+  } else {
+    x.style.display = "block";
+  }
+  }
+</script>
+
+<script>
+function closesemI() {
+  var x = document.getElementById("myDIV4");
+     if (x.style.display === "block") {
+    x.style.display = "none";
+  } else {
+    x.style.display = "block";
+  }
+  }
+</script>
+
+<script>
+function closesemII() {
+  var x = document.getElementById("myDIV5");
+     if (x.style.display === "block") {
+    x.style.display = "none";
+  } else {
+    x.style.display = "block";
+  }
+  }
+</script>
+
+
+
+
+</body>
+</html>
+
+

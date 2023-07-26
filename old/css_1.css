@@ -1,0 +1,385 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;700&family=Major+Mono+Display&display=swap');
+
+		* {
+   			cursor: crosshair;
+		}
+
+ body { 
+ 	padding: 0; 
+ 	margin: 0;
+ 	overflow: hidden;
+ } 
+
+ /*PRELOAD*/
+
+ #preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: white;
+  /* change if the mask should have another color then white */
+  z-index: 2000;
+  /* makes sure it stays on top */
+}
+
+#status {
+  width: 200px;
+  height: 200px;
+  position: absolute;
+  left: 50%;
+  /* centers the loading animation horizontally one the screen */
+  top: 50%;
+  /* centers the loading animation vertically one the screen */
+  background-image: url(https://raw.githubusercontent.com/niklausgerber/PreLoadMe/master/img/status.gif);
+  /* path to your loading animation */
+  background-repeat: no-repeat;
+  background-position: center;
+  margin: -100px 0 0 -100px;
+  /* is width and height divided by two */
+}
+
+ /*SCROLLBAR STYLING*/
+
+::-webkit-scrollbar {
+  -webkit-appearance: none;
+  width: 10px;
+}
+/* Track */
+::-webkit-scrollbar-track {
+  background: #white; 
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: black; 
+  border: 1px solid white;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555; 
+}
+
+/*TITLE AND SOCIAL MEDIA*/
+
+.titleDIV {
+	height: 12%;
+	width: 100%;
+	left: 0px;
+ 	 background-color: black;
+ 	 border: 1px solid black;
+	  position: absolute;
+			text-align: center;
+			color:white;
+			font-size: 30px;
+			font-family: 'Major Mono Display', monospace;
+			line-height: 75px;
+			height:  75px;
+			z-index: 0;
+}
+
+.social {
+background: white; 
+border: 1px solid black; 
+right:0px; 
+height: 35px; 
+width: 75px;
+text-align:center;
+top:76px; 
+position:absolute;
+font-family: 'IBM Plex Mono', monospace;
+font-size: 9px;
+        display: -ms-flexbox;
+      display: -webkit-flex;
+    display: flex;
+       -ms-flex-align: center;
+    -webkit-align-items: center;
+       -webkit-box-align: center;
+       align-items: center;
+       z-index: 0;
+}
+
+
+/*MENU DIVS*/
+
+
+#myDIV1 {
+	height: 80%;
+	width: 75%;
+	left: 10.5%;
+	right: 12.5%;
+	top: 13%;
+	bottom: 5%;
+ 	 background-color: white;
+ 	 border: 1px solid black;
+ 	 margin-top: 20px;
+	  position: absolute;
+ 	 display: none;
+ 	 z-index: 1;
+  overflow: auto;
+
+}
+
+#myDIV2 {
+	height: 60%;
+	width: 50%;
+	left: 40%;
+	top: 17%;
+	bottom: 5%;
+ 	 background-color: white;
+ 	 border: 1px solid black;
+ 	 margin-top: 20px;
+	  position: absolute;
+ 	 display: none;
+ 	 z-index: 1;
+ 	 overflow:auto;
+ 	 overflow-x: hidden;
+}
+
+#myDIV3 {
+	height: 40%;
+	width: 30%;
+	left: 5%;
+	bottom: 5%;
+ 	 background-color: white;
+ 	 border: 1px solid black;
+ 	 margin-top: 20px;
+	  position: absolute;
+ 	 display: none;
+ 	 z-index: 1;
+ 	 	 overflow:auto;
+ 	 overflow-x: hidden;
+}
+
+/*ARBEITEN DIVS*/
+
+#myDIV4 {
+	height: 90%;
+	width: 90%;
+	left: 5%;
+	right: 5%;
+	top: 2%;
+		bottom: 2%;
+ 	 background-color: white;
+ 	 border: 1px solid black;
+ 	 margin-top: 20px;
+	  position: absolute;
+ 	 z-index: 100;
+ 	 display: none;
+ 	 overflow: auto;
+}
+
+#myDIV5 {
+	height: 90%;
+	width: 90%;
+	left: 5%;
+	right: 5%;
+	top: 2%;
+		bottom: 2%;
+ 	 background-color: white;
+ 	 border: 1px solid black;
+ 	 margin-top: 20px;
+	  position: absolute;
+ 	 z-index: 100;
+ 	 display: none;
+ 	 overflow: auto;
+}
+
+#myDIV6 {
+	height: 90%;
+	width: 90%;
+	left: 5%;
+	right: 5%;
+	top: 2%;
+		bottom: 2%;
+ 	 background-color: white;
+ 	 border: 1px solid black;
+ 	 margin-top: 20px;
+	  position: absolute;
+ 	 z-index: 100;
+ 	 display: none;
+ 	 overflow: auto;
+}
+
+#myDIV7 {
+	height: 90%;
+	width: 90%;
+	left: 5%;
+	right: 5%;
+	top: 2%;
+		bottom: 2%;
+ 	 background-color: white;
+ 	 border: 1px solid black;
+ 	 margin-top: 20px;
+	  position: absolute;
+ 	 z-index: 100;
+ 	 display: none;
+ 	 overflow: auto;
+}
+
+#myDIV8 {
+	height: 90%;
+	width: 90%;
+	left: 5%;
+	right: 5%;
+	top: 2%;
+		bottom: 2%;
+ 	 background-color: white;
+ 	 border: 1px solid black;
+ 	 margin-top: 20px;
+	  position: absolute;
+ 	 z-index: 100;
+ 	 display: none;
+ 	 overflow: auto;
+}
+
+#myDIV9 {
+	height: 90%;
+	width: 90%;
+	left: 5%;
+	right: 5%;
+	top: 2%;
+		bottom: 2%;
+ 	 background-color: white;
+ 	 border: 1px solid black;
+ 	 margin-top: 20px;
+	  position: absolute;
+ 	 z-index: 100;
+ 	 display: none;
+ 	 overflow: auto;
+}
+
+#myDIV10 {
+	height: 90%;
+	width: 90%;
+	left: 5%;
+	right: 5%;
+	top: 2%;
+		bottom: 2%;
+ 	 background-color: white;
+ 	 border: 1px solid black;
+ 	 margin-top: 20px;
+	  position: absolute;
+ 	 z-index: 100;
+ 	 display: none;
+ 	 overflow: auto;
+}
+
+#myDIV11 {
+	height: 90%;
+	width: 90%;
+	left: 5%;
+	right: 5%;
+	top: 2%;
+		bottom: 2%;
+ 	 background-color: white;
+ 	 border: 1px solid black;
+ 	 margin-top: 20px;
+	  position: absolute;
+ 	 z-index: 100;
+ 	 display: none;
+ 	 overflow: auto;
+}
+
+/*TEXT*/
+
+h1{
+	font-size: 35px;
+
+}
+
+.textstyle {
+			text-align: center;
+			color:black;
+			font-size: 10px;
+			font-family: 'IBM Plex Mono', monospace;
+			padding-left: 10px;
+			padding-right: 10px;
+			}
+
+			.textstyle2 {
+			text-align: left;
+			color:black;
+			font-size: 10px;
+			font-family: 'IBM Plex Mono', monospace;
+			padding-left: 10px;
+			padding-right: 10px;
+			}
+
+			/*BUTTONS*/
+
+.button_black{
+  background-color: white;
+  border: 1px solid black;
+  color: black;
+  padding-left: 10px;
+  padding-right: 10px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 15px;
+  font-family: 'IBM Plex Mono', monospace;
+  margin: 4px 2px;
+  height: 50px;
+  position: fixed;
+
+}
+
+.button_black:hover {
+  background-color: black;
+  border: 1px solid black;
+  color: white;
+}
+
+.button_close{
+  background-color: white;
+    border: 1px solid black;
+  color: black;
+  padding-left: 10px;
+  padding-right: 10px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 9px;
+  font-family: 'IBM Plex Mono', monospace;
+  height: 19px;
+  position: absolute;
+  z-index: 1000;
+  left: 0px;
+
+}
+
+.button_close:hover {
+  background-color: black;
+  border: 1px solid black;
+  color: white;
+}
+
+/*IMAGES*/
+
+         img.one{
+        max-height: 100%;
+        display: block; /* remove extra space below image */
+    }
+
+       img.two{
+       	max-width: 100%;
+        display: block; /* remove extra space below image */
+        overflow: hidden;
+        transition: all .5s ease;
+       
+    }
+
+           img.two:hover{
+				transform: scale(1.015);
+				opacity: 0.8;
+       	max-width: 100%;
+        display: block; /* remove extra space below image */
+
+    }
+
+    input {
+  width:80%;
+  box-sizing: border-box;
+  border: 1px solid black;
+}
