@@ -252,7 +252,7 @@ h2 {
     height:80%;
     left: 35%; /* Center the div horizontally by adjusting the left property */
     right: 5%; /* Center the div horizontally by adjusting the right property */
-    top: 10%; /* Adjust the top position to better fit on smaller screens */
+    top: 15%; /* Adjust the top position to better fit on smaller screens */
   }
   }
 
