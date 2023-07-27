@@ -113,7 +113,7 @@ letter-spacing: 0.5px;}
  /*PRELOAD*/
 
  #preloader {
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   right: 0;
@@ -173,7 +173,8 @@ letter-spacing: 0.5px;}
 	  position: absolute;
 			text-align: center;
 			color:white;
-			font-size: 4vh;
+			font-weight: bold;
+			font-size: 20px;
 			font-family: 'Major Mono Display', monospace;
 			line-height: 75px;
 			height:  75px;
@@ -247,6 +248,17 @@ h2 {
   overflow-x:hidden;
 }
 
+#Div_Banner {
+	left: 5%;
+bottom:5%;
+background-color: white;
+ 	 border: 1px solid black;
+	  position: absolute;
+ 	 z-index: 1;
+  overflow: auto;
+  overflow-x:hidden;
+}
+
 /* Styles for phones (up to 600px wide) */
 @media (max-width: 600px) {
   #Div_Portfolio {
@@ -259,13 +271,12 @@ h2 {
   }
 
 #Div_AboutMe {
-	height: 60%;
 	width: 50%;
+	height:50%;
 	left: 40%;
 	top: 17%;
  	 background-color: white;
  	 border: 1px solid black;
- 	 margin-top: 20px;
 	  position: absolute;
  	 display: none;
  	 z-index: 1;
@@ -273,20 +284,52 @@ h2 {
  	 overflow-x: hidden;
 }
 
+.flex-container {
+  display: flex;
+}
+
+.image-container {
+  flex: 1;
+  overflow: hidden;
+}
+
+.image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+    position:sticky;
+
+}
+
+/* Styles for phones (up to 600px wide) */
+@media (max-width: 600px) {
+  #Div_AboutMe {
+    width: 80%; /* Adjust the width to take up 90% of the screen width */
+    left: 15%; /* Center the div horizontally by adjusting the left property */
+    top: 35%; /* Adjust the top position to better fit on smaller screens */
+  }
+  }
+
 #Div_Contact {
-	height: 40%;
-	width: 30%;
-	top:30%;
-	left: 10%;
+	width: 25%;
+	top:75%;
+	left: 60%;
  	 background-color: white;
  	 border: 1px solid black;
- 	 margin-top: 20px;
 	  position: absolute;
  	 display: none;
  	 z-index: 1;
  	 	 overflow:auto;
  	 overflow-x: hidden;
 }
+
+/* Styles for phones (up to 600px wide) */
+@media (max-width: 600px) {
+  #Div_Contact {
+    width: 50%; /* Adjust the width to take up 90% of the screen width */
+    left: 40%; /* Center the div horizontally by adjusting the left property */
+  }
+  }
 
 /*ARBEITEN DIVS*/
 
@@ -295,6 +338,8 @@ h2 {
 	width: 90%;
 	left: 5%;
 	right: 5%;
+	top: 2%;
+		bottom: 2%;
  	 background-color: white;
  	 border: 1px solid black;
 	  position: absolute;
@@ -309,6 +354,8 @@ h2 {
 	width: 90%;
 	left: 5%;
 	right: 5%;
+	top: 2%;
+		bottom: 2%;
  	 background-color: white;
  	 border: 1px solid black;
 	  position: absolute;
@@ -319,10 +366,12 @@ h2 {
 }
 
 #Div_GrafFormI {
-	height: 90%;
+		height: 90%;
 	width: 90%;
 	left: 5%;
 	right: 5%;
+	top: 2%;
+		bottom: 2%;
  	 background-color: white;
  	 border: 1px solid black;
 	  position: absolute;
@@ -336,9 +385,8 @@ h2 {
 #Div_GrafFormII {
 	height: 80%;
 	width: 30%;
-	left: 5%;
-	right: 5%;
-	top: 2%;
+	left: 10%;
+	top: 12%;
 		bottom: 2%;
  	 background-color: white;
  	 border: 1px solid black;
@@ -353,6 +401,7 @@ h2 {
 /* Styles for phones (up to 600px wide) */
 @media (max-width: 600px) {
   #Div_GrafFormII {
+  	left:25%;
     width: 60%; /* Adjust the width to take up 90% of the screen width */
 	height: 80%;
   }
@@ -376,6 +425,8 @@ h2 {
 
 #Div_ZeichnenII {
 	position:absolute;
+	top:25%;
+	left:35%;
 		width:50%;
  	 background-color: white;
  	 border: 1px solid black;
@@ -388,6 +439,8 @@ h2 {
 
 #Div_ZeichnenII_2 {
 	position:absolute;
+	top:28%;
+	left:38%;
 		width:50%;
  	 background-color: white;
  	 border: 1px solid black;
@@ -443,7 +496,7 @@ h2 {
 }
 
 #Div_Alpina {
-	height: 90%;
+		height: 90%;
 	width: 90%;
 	left: 5%;
 	right: 5%;
@@ -460,7 +513,7 @@ h2 {
 }
 
 #Div_ISM {
-	height: 90%;
+		height: 90%;
 	width: 90%;
 	left: 5%;
 	right: 5%;
@@ -477,10 +530,12 @@ h2 {
 }
 
 #Div_InteractiveDesign {
-	height: 90%;
+		height: 90%;
 	width: 90%;
 	left: 5%;
 	right: 5%;
+	top: 2%;
+		bottom: 2%;
  	 background-color: white;
  	 border: 1px solid black;
 	  position: absolute;
@@ -491,10 +546,12 @@ h2 {
 }
 
 #Div_CantBreathe {
-	height: 90%;
+		height: 90%;
 	width: 90%;
 	left: 5%;
 	right: 5%;
+	top: 2%;
+		bottom: 2%;
  	 background-color: white;
  	 border: 1px solid black;
 	  position: absolute;
@@ -519,8 +576,8 @@ h2 {
 
 @media (max-width: 600px) {
   #Div_CancelCulture {
-    width: 80%; /* Adjust the width to take up 90% of the screen width */
-    left:15%;
+    width: 85%; /* Adjust the width to take up 90% of the screen width */
+    left:10%;
   }
 }
 
@@ -536,6 +593,8 @@ h2 {
  	 overflow: auto;
  	 overflow-x:hidden;
 }
+
+
 
 #Div_Rentner {
 	width: 70%;
@@ -579,12 +638,16 @@ h2 {
 @media (max-width: 600px) {
   #Div_Rentner, #Div_Eerie, #Div_Midnight {
     width: 90%; /* Adjust the width to take up 90% of the screen width */
+    top:35%;
+    left:5%;
   }
 }
 
 
 #Div_Illus {
 	position:absolute;
+	top:20%;
+	left:5%;
 	width:90%;
  	 background-color: white;
  	 border: 1px solid black;
@@ -599,6 +662,8 @@ h2 {
 @media screen and (min-width: 768px) {
   #Div_Illus {
     width: 80%; /* You can change this value to set the desired width for bigger screens */
+  top:20%;
+	left:10%;
   }
 }
 
@@ -617,13 +682,13 @@ h2 {
 
 }
 
-
-
 #Div_Photo2 {
 		height: 90%;
 	width: 90%;
 	left: 5%;
 	right: 5%;
+	top: 2%;
+		bottom: 2%;
  	 background-color: white;
  	 border: 1px solid black;
 	  position: absolute;
@@ -634,10 +699,12 @@ h2 {
 }
 
 #Div_IntoTheVoid {
-	height: 90%;
+		height: 90%;
 	width: 90%;
 	left: 5%;
 	right: 5%;
+	top: 2%;
+		bottom: 2%;
  	 background-color: white;
  	 border: 1px solid black;
 	  position: absolute;
@@ -652,6 +719,8 @@ h2 {
 	width: 90%;
 	left: 5%;
 	right: 5%;
+	top: 2%;
+		bottom: 2%;
  	 background-color: white;
  	 border: 1px solid black;
 	  position: absolute;
@@ -662,42 +731,33 @@ h2 {
 }
 
 #Div_InteractiveDesign_Vid1 {
-	height: 57%;
-	width: 50%;
-	left: 5%;
-	right: 5%;
-	top: 2%;
-		bottom: 2%;
+		width: 70%;
+	right: 7%;
+	top: 12%;
  	 background-color: white;
  	 border: 1px solid black;
- 	 margin-top: 20px;
 	  position: absolute;
  	 z-index: 100;
  	 display: none;
  	 overflow: auto;
+ 	 overflow-x:hidden;
 }
 
-#Div_Typo2 {
-	height: 45%;
-	width: 60%;
-	left: 5%;
-	right: 5%;
-	top: 2%;
-		bottom: 2%;
- 	 background-color: white;
- 	 border: 1px solid black;
- 	 margin-top: 20px;
-	  position: absolute;
- 	 z-index: 100;
- 	 display: none;
- 	 overflow: auto;
+@media (max-width: 600px) {
+  #Div_Moving_Horror, #Div_InteractiveDesign_Vid1 {
+    width: 90%; /* Adjust the width to take up 90% of the screen width */
+    top:35%;
+    left:5%;
+  }
 }
 
 #Div_Chesa {
 	height: 90%;
-	width: 70%;
+	width: 90%;
 	left: 5%;
 	right: 5%;
+	top: 2%;
+		bottom: 2%;
  	 background-color: white;
  	 border: 1px solid black;
  	 margin-top: 20px;
@@ -710,9 +770,11 @@ h2 {
 
 #Div_Posterslam_1 {
 	height: 90%;
-	width: 95%;
+	width: 90%;
 	left: 5%;
+	right: 5%;
 	top: 2%;
+		bottom: 2%;
  	 background-color: white;
  	 border: 1px solid black;
  	 margin-top: 20px;
@@ -814,6 +876,20 @@ h1{
 			overflow-wrap: break-word;
 			font-weight: unset;
 			}
+
+			.textstyle5 {
+  flex: 1;
+  overflow: scroll;
+  text-align: center;
+  text-align: center;
+			color:black;
+			font-size: 12px;
+			font-family: 'IBM Plex Mono', monospace;
+			padding-left: 5%;
+			padding-right: 5%;
+			overflow-wrap: break-word;
+			font-weight: unset;
+}
 
 			/*BUTTONS*/
 
@@ -964,3 +1040,147 @@ h1{
     align-items: center; /* Center items vertically */
     /* Additional styles for the container, if needed */
 }
+
+
+.glitch {
+  color: black;
+  background-color: white;
+  font-size: 25px;
+  position: relative;
+  margin: 0 auto;
+  text-align: center;
+    font-family: 'IBM Plex Mono', monospace;
+}
+
+
+.glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  left: 10px;
+  text-shadow: -1px 0 black;
+  top: 0;
+  color: black;
+  background-color: white;
+  overflow: hidden;
+  clip: rect(0, 900px, 0, 0);
+  animation: animate-glitch 3s infinite linear alternate-reverse;
+}
+
+.glitch::before {
+  content: attr(data-text);
+  position: absolute;
+  left: -10px;
+  text-shadow: 1px 0 black;
+  top: 0;
+  color: black;
+  background-color: white;
+  overflow: hidden;
+  clip: rect(0, 900px, 0, 0);
+  animation: animate-glitch 5s infinite linear alternate-reverse;
+}
+
+.glitch2 {
+  color: black;
+  background-color: white;
+  font-size: 14px;
+  position: relative;
+  margin: 0 auto;
+    text-align: center;
+
+    font-family: 'IBM Plex Mono', monospace;
+}
+
+
+.glitch2::after {
+  content: attr(data-text);
+  position: absolute;
+  left: 10px;
+  text-shadow: -0.5px 0 black;
+  top: 0;
+  color: black;
+  background-color: white;
+  overflow: hidden;
+  clip: rect(0, 900px, 0, 0);
+  animation: animate-glitch 7s infinite linear alternate-reverse;
+}
+
+.glitch2::before {
+  content: attr(data-text);
+  position: absolute;
+  left: -10px;
+  text-shadow: 0.5px 0 black;
+  top: 0;
+  color: black;
+  background-color: white;
+  overflow: hidden;
+  clip: rect(0, 900px, 0, 0);
+  animation: animate-glitch 5s infinite linear alternate-reverse;
+}
+
+@keyframes animate-glitch {
+  0% {
+    clip: rect(99px, 9999px, 45px, 0);
+  }
+  5% {
+    clip: rect(7px, 9999px, 49px, 0);
+  }
+  10% {
+    clip: rect(52px, 9999px, 79px, 0);
+  }
+  15% {
+    clip: rect(51px, 9999px, 42px, 0);
+  }
+  20% {
+    clip: rect(37px, 9999px, 43px, 0);
+  }
+  25% {
+    clip: rect(38px, 9999px, 9px, 0);
+  }
+  30% {
+    clip: rect(34px, 9999px, 93px, 0);
+  }
+  35% {
+    clip: rect(18px, 9999px, 84px, 0);
+  }
+  40% {
+    clip: rect(100px, 9999px, 75px, 0);
+  }
+  45% {
+    clip: rect(15px, 9999px, 4px, 0);
+  }
+  50% {
+    clip: rect(14px, 9999px, 10px, 0);
+  }
+  55% {
+    clip: rect(4px, 9999px, 75px, 0);
+  }
+  60% {
+    clip: rect(17px, 9999px, 55px, 0);
+  }
+  65% {
+    clip: rect(75px, 9999px, 57px, 0);
+  }
+  70% {
+    clip: rect(39px, 9999px, 84px, 0);
+  }
+  75% {
+    clip: rect(96px, 9999px, 54px, 0);
+  }
+  80% {
+    clip: rect(45px, 9999px, 25px, 0);
+  }
+  85% {
+    clip: rect(60px, 9999px, 100px, 0);
+  }
+  90% {
+    clip: rect(5px, 9999px, 6px, 0);
+  }
+  95% {
+    clip: rect(49px, 9999px, 57px, 0);
+  }
+  100% {
+    clip: rect(54px, 9999px, 90px, 0);
+  }
+}
+
+

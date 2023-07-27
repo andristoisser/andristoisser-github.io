@@ -119,6 +119,7 @@ function closeLightbox() {
     $("#Div_Rentner").draggable({ scroll: false });
     $("#Div_CantBreathe").draggable({ scroll: false });
     $("#Div_Midnight").draggable({ scroll: false });
+    $("#Div_Banner").draggable({ scroll: false });
 
      }
   
@@ -138,6 +139,17 @@ window.open('butterfly.html', '_blank','toolbar:no');
 }
 </script>
 
+<script>function applyGlitchAnimation() {
+  const glitchElements = document.querySelectorAll('.glitch');
+  glitchElements.forEach((element) => {
+    element.style.animation = 'noise-anim 1s infinite linear alternate-reverse';
+  });
+}
+
+// Trigger the glitch animation
+applyGlitchAnimation();
+</script>
+
 <title>VISUAL BONSAI</title>
 
 
@@ -154,7 +166,7 @@ window.open('butterfly.html', '_blank','toolbar:no');
 
   <div class="titleDIV">andri bonsai stoisser</div>
 
-  <div class="social"><a href="https://www.instagram.com/visual.bonsai/" target="_blank"><img class="two" src="data/insta.png" style="display:inline-block; margin-left: auto; margin-right: auto; width: 60%; "></img></a>
+  <div class="social"><a href="https://www.instagram.com/andri.bonsai/" target="_blank"><img class="two" src="data/insta.png" style="display:inline-block; margin-left: auto; margin-right: auto; width: 60%; "></img></a>
 <a href="https://ch.linkedin.com/in/andri-stoisser-2180a71b7" target="_blank"><img class="two" src="data/linkedin.png"  style="display:inline-block; margin-left: auto; margin-right: auto; width: 60%;vertical-align: center;"></img></a></div>
 
   <!-- MENU BAR -->
@@ -325,29 +337,34 @@ DIVIDER HERE
 
 
 <p> <div onclick="gfI()"class="tooltip">> CASA SPERIMENTALE
-  <span class="tooltiptext" style="font-size:12px;"><b>GRAPHICAL FORMULATION I</b><p>An visual examination/experimentation of how to use a photography as a 'root' image for illustrations.</p></span>
+  <span class="tooltiptext"><div id="informationtext">GRAPHICAL FORMULATION<br>ILLUSTRATOR / PHOTOSHOP</div><div class="textstyle4"><p>An visual examination/experimentation of how to use a photography as a 'root' image for illustrations.</p></div></span>
 </div> </p>
 
+
+
 <p><div onclick="illus()"class="tooltip">> ILL(U)STRATIONS
-  <span class="tooltiptext" style="font-size:12px;"><b>PERSONAL</b><p>A compilation of personal illustrations and drawings.</span></p>
+  <span class="tooltiptext"><div id="informationtext">PERSONAL<br>HANDDRAWN</div><div class="textstyle4"><p>A compilation of personal illustrations and drawings.</p></div></span>
 </div>
 
 <p><div onclick="semII()"class="tooltip">> ALCHEMY
-  <span class="tooltiptext" style="font-size:12px;"><b>SEMIOTICS II</b><p>Study. Interpretation.</span>
+ <span class="tooltiptext"><div id="informationtext">SEMIOTICS<br>HANDDRAWN / ILLUSTRATOR</div><div class="textstyle4"><p>Study. Interpretation.</p></div></span>
 </div></p> 
 
  <p><div onclick="gfII()"class="tooltip">> HOW NOT TO MAKE TEA
-  <span class="tooltiptext" style="font-size:12px;"><b>GRAPHICAL FORMULATION II</b><p>A handdrawn visualization of how NOT <br>to make tea.</span>
+  <span class="tooltiptext"><div id="informationtext">GRAPHICAL FORMULATION<br>HANDDRAWN / ILLUSTRATOR</div><div class="textstyle4"><p>A handdrawn visualization of how NOT to make tea.</p></div></span>
 </div> </p>
 
-<p> <div onclick="zeichII();"class="tooltip">> GIF NEEN
-  <span class="tooltiptext" style="font-size:12px;"><b>DRAWING II</b><p>GIFs created for the course with<br>Leander Eisenmann.</span>
+
+<p> <div onclick="zeichII();"class="tooltip"> NEEN
+  <span class="tooltiptext"><div id="informationtext">ANIMATION<br>HANDDRAWN / GIF</div><div class="textstyle4"><p>Neen Williams iconic Kickflip.</p></div></span>
 </div>
-<div class="tooltip" onclick="zeichII_2()" style=" padding-left:5px;padding-right:5px;">GIF SELFIE
+</p>
+
+<p>
+<div class="tooltip" onclick="zeichII_2()"> SELFIE
+  <span class="tooltiptext"><div id="informationtext">ANIMATION<br>HANDDRAWN / GIF</div><div class="textstyle4"><p>Maybe me.</p></div></span>
 </div></p>
 
-
- 
 <br>
 
 <div style="clear:both"></div>
@@ -358,16 +375,22 @@ DIVIDER HERE
  <div style="text-align: left;"><h2>POSTERSDESIGN</h2></div>
 
  <p><div onclick="justdont()"class="tooltip">> JUST DON'T DO IT
-  <span class="tooltiptext" style="font-size:12px;"><b>PERSONAL</b><p>Posters created for different music genres.</span>
+ <span class="tooltiptext"><div id="informationtext">MOVING POSTER<br>ILLUSTRATOR / AFTER EFFECTS</div><div class="textstyle4"><p>Topic: Intervention.</p></div></span>
 </div>
+
+
 
  <p><div onclick="posterslam22()"class="tooltip">> POSTERSLAM
-  <span class="tooltiptext" style="font-size:12px;"><b>PERSONAL</b><p>Topic: 7.</span>
+ <span class="tooltiptext"><div id="informationtext">COMPILATION</div><div class="textstyle4"><p>Free posters created for Basel's Posterslam. Different topics, just having fun.</p></div></span>
 </div></p>
 
+
+
  <p><div onclick="pax1()"class="tooltip">> PAX MUSIC
-  <span class="tooltiptext" style="font-size:12px;"><b>PERSONAL</b><p>Posters created for different music genres.</span>
+ <span class="tooltiptext"><div id="informationtext">POSTERS</div><div class="textstyle4"><p>Posters created for an imaginary series of concerts at the 'PAX Denkmal'.</p></div></span>
 </div>
+
+
 
 <br>
 
@@ -378,7 +401,7 @@ DIVIDER HERE
    <div style="text-align: left;"><h2>WEBSITES</h2></div>
 
  <div onclick="linkfunktion()"class="tooltip">ANDRISTOISSER.CH
-  <span class="tooltiptext" style="font-size:12px;"><b>WEBDESIGN</b><p>This very website.</span>
+  <span class="tooltiptext"><div id="informationtext">WEBSITE</div><div class="textstyle4"><p>Handcoded this very website.</p></div></span>
 </div>
 
 
@@ -391,13 +414,10 @@ DIVIDER HERE
    <div style="text-align: left;"><h2>OTHER</h2></div>
 
  <p> <div onclick="semI()"class="tooltip">> BAHNHOF DELSBERG
-  <span class="tooltiptext" style="font-size:12px;"><b>SEMIOTICS I</b><p>Study. Interpretation.</span>
+ <span class="tooltiptext"><div id="informationtext">SEMIOTICS</div><div class="textstyle4"><p>Studi. Interpretation.</p></div></span>
 </div> </p> 
 
-
-
 </div>
-<br><br><br>
 </div>
 
 
@@ -405,6 +425,17 @@ DIVIDER HERE
 
 
 <!-- ARBEITEN BIG HERE -->
+
+<!-- BANNER -->
+
+ <div id="Div_Banner">
+    <div id="blackbars">
+        <button class="button_close" onclick="banner()" style="z-index:1;left:1px;position: absolute;">X</button>
+          Hi!</div>
+ <div class="glitch" data-text="IT'S&nbsp;GOOD&nbsp;TO&nbsp;SEE&nbsp;YOU.">IT'S GOOD TO SEE YOU.</div>
+ <div class="glitch2" data-text="I&nbsp;HOPE&nbsp;YOU'RE&nbsp;HAVING&nbsp;A&nbsp;GREAT&nbsp;TIME.
+">I HOPE YOU'RE HAVING A GREAT TIME.</div>
+</div>
 
 <!-- ARBEIT ARCHITEKTONISCHE POSITIONEN -->
 
@@ -1003,7 +1034,7 @@ This new world can be seen and interpreted by each viewer differently, as everyo
         <button class="button_close" onclick="p5_1()" style="z-index:11;left:1px;position: absolute;">X</button>
           WOODKID - GOLIATH_</div>
 
-  <div style="padding-top:20px"><video width="100%" height="100%" controls>
+  <div><video width="100%" height="100%" controls>
   <source src="data/p5/goliath.mov" type="video/mp4">
 Your browser does not support the video tag.
 </video></div>
@@ -1139,44 +1170,40 @@ Your browser does not support the video tag.
 
 <!-- ABOUT ME -->
 
-<div onclick="showaboutme()" id=Div_AboutMe class="ui-widget-content">
-
+<div onclick="showaboutme()" id="Div_AboutMe">
   <div id="blackbars">ABOUT ME<button class="button_close" onclick="closeabout()">X</button></div>
- <div style="height: 100%; width: 50%; float: left; overflow:hidden;"><img class="one" src="data/selfie.jpg"></img></div>
-      <div class="textstyle" style="overflow:scroll;text-align: center; padding-top:20px;margin-left:30px;"><h2>I haven't got a clue.</h2><b>And that's alright.</b><p>Born in the Engadin in 1990, living in Samedan & Basel.<p>Heavely influenced by music & snowboarding culture.<p>
-        <b>Probably a little trashy.</b><p>
-        ____
-        <p>
-        September 2020<br><b>Visual Communication</b><br> FHNW Basel<p><p>
-          2019-20<br><b>Internship Graphics Designer</b><br> Si-De Concept & Design Silvaplana<p>
-        2018-19<br><b>Vocational school-leaving certificate</b><br> GBM Chur<p></div>
-        
-        
+  <div class="flex-container">
+    <div class="image-container"><img src="data/selfie.jpg" alt="Selfie"></div>
+    <div class="textstyle5">
+     <b> <p>Hi. My name is Andri, but most people call me Bonsai. <br>Don't hesitate to ask me why..</p></b>
+
+<p>I was born in the beautiful Engadin and am a dedicated man of the mountains. I am heavily inspired by snowboard culture, the internet and all kinds of music.</p>
+
+<p>I'm heavily invested in finding creative ways to combine the digital world, coding and graphic design.</p>
+      <hr>
+
+      <h2><p>CV:</p></h2>
+      <p>2020 - 23<br><b>Visual Communication and Digital Spaces</b><br> FHNW Basel</p>
+      <p>2019 - 20<br><b>Internship Graphics Designer</b><br> Si-De Concept & Design Silvaplana</p>
+      <p>2018 - 19<br><b>Vocational school-leaving certificate</b><br> GBM Chur</p>
+    </div>
+  </div>
 </div>
+
 
 
 <!-- CONTACT ME -->
 
-<div onclick="showcontact()" id="Div_Contact" class="ui-widget-content">
+<div onclick="showcontact()" id="Div_Contact">
+   <div id="blackbars">CONTACT ME<button class="button_close" onclick="contact()">X</button></div>
+<div class="textstyle5"><h2>ANDRI STOISSER</h2>
+    <p><b><a href="mailto:andri.stoisser@gmx.ch">andri.stoisser@gmx.ch</a></b></p>
 
-   <div id="blackbars">CONTACT ME<button class="button_close" onclick="showcontact()">X</button></div>
-<div class="textstyle" style="padding-top: 20px"><h2>Andri Stoisser</h2>
-    andri.stoisser@gmx.ch
+    7503 Samedan<br>
+
+    +41 79 715 19 90
 <p>
-  <form action="https://getform.io/f/b6f7f022-aa8e-4fa2-89d8-93a10d0f10cf" method="POST">
-
-Name<br>
-  <input type="text" name="name"><br>
-E-Mail<br>
-  <input type="email" name="email"><br>
-  Message<br>
-  <input type="text" name="message" rows="5" style="height:60px"><br>
-  <button class="button_black" type="submit" style="z-index:10; font-size:9px;height:20px;position:sticky;left:20%;">Drop in</button></div>
-
-
-</form>
 </div>
-  <br>
 
 <div id="lightbox" class="lightbox" onclick="closeLightbox()">
     <div class="lightbox-content">
@@ -1203,8 +1230,10 @@ function portfolio() {
     x.style.display = "block";
   }
   x.style.zIndex = "1";
-  document.getElementById(Div_AboutMe).style.zIndex = "0";
+  document.getElementById("Div_AboutMe").style.zIndex = "0";
   document.getElementById("Div_Contact").style.zIndex = "0";
+      document.getElementById("Div_Banner").style.zIndex = "0";
+
 }
 </script>
 
@@ -1224,6 +1253,8 @@ function aboutme() {
   x.style.zIndex = "5";
   document.getElementById("Div_Portfolio").style.zIndex = "0";
   document.getElementById("Div_Contact").style.zIndex = "0";
+      document.getElementById("Div_Banner").style.zIndex = "0";
+
 }
 </script>
 
@@ -1242,6 +1273,8 @@ function contact() {
   x.style.zIndex = "1";
   document.getElementById("Div_Portfolio").style.zIndex = "0";
   document.getElementById("Div_AboutMe").style.zIndex = "0";
+    document.getElementById("Div_Banner").style.zIndex = "0";
+
 }
 </script>
 
@@ -1423,6 +1456,17 @@ function rentner() {
     x.style.display = "none";
   } else {
     x.style.display = "block";
+  }
+}
+</script>
+
+<script>
+function banner() {
+  var x = document.getElementById("Div_Banner");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
   }
 }
 </script>
