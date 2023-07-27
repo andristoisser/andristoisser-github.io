@@ -42,7 +42,6 @@ box-shadow:
 }
 
 .tooltip {
-  position: static;
   float: left;
   color: white;
   background-color: black;
@@ -52,7 +51,7 @@ box-shadow:
 }
 
 
-.tooltiptext {
+.tooltip .tooltiptext {
 	    box-sizing: border-box;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
@@ -72,7 +71,11 @@ border:1.5px solid black;
   position: absolute;
   bottom: 10px; /* Position the tooltip 10px from the bottom of the viewport */
   right: 10px; /* Position the tooltip 10px from the right side of the viewport */
-  z-index: 99;
+  z-index: 9999;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
 }
 
 #informationtext {
@@ -93,9 +96,7 @@ border:1.5px solid black;
   }
   }
 
-.tooltip:hover .tooltiptext {
-  visibility: visible;
-}
+
 
 
  /*PRELOAD*/
