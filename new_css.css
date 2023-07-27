@@ -65,12 +65,13 @@ border:1.5px solid black;
   text-align: center;
    word-wrap:break-word;
    width: 30%;
+   bottom:0%;
   /* Position the tooltip */
   padding-left:0px;
   padding-right:0px;
-  position: absolute;
-  bottom: 10px; /* Position the tooltip 10px from the bottom of the viewport */
-  right: 10px; /* Position the tooltip 10px from the right side of the viewport */
+  position: fixed;
+  bottom:5%;
+  left:29.2%;
   z-index: 9999;
 }
 
@@ -93,6 +94,8 @@ border:1.5px solid black;
 @media (max-width: 600px) {
   .tooltip .tooltiptext {
      width: 50%;
+       bottom:9%;
+  left:43%;
   }
   }
 
@@ -240,7 +243,7 @@ h2 {
  	 background-color: white;
  	 border: 1px solid black;
  	 margin-top: 20px;
-	  position: fixed;
+	  position: absolute;
  	 display: none;
  	 z-index: 1;
   overflow: auto;
@@ -866,7 +869,7 @@ h1{
   margin-top: 4px;
   height: 50px;
   width: 200px;
-  position: fixed;
+  position: absolute;
   text-transform: uppercase;
 }
 
@@ -915,7 +918,7 @@ h1{
 
 .lightbox {
     display: none;
-    position: fixed;
+    position: absolute;
     top: 0;
     left: 0;
     width: 100%;
@@ -930,7 +933,7 @@ h1{
     max-width: 90%;
     max-height: 90%;
     object-fit: contain; /* Maintain aspect ratio without stretching */
-    position: fixed;
+    position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
