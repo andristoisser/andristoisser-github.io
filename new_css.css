@@ -42,42 +42,47 @@ box-shadow:
 }
 
 .tooltip {
-  float: left;
+	  position: relative;
   color: white;
+  width:100%;
   background-color: black;
   padding:5px;
-  margin-top:3px;
-  margin-left:5px;
+  padding-left: 15px;
+  overflow-wrap: break-word;
 }
 
+/* Styles for phones (up to 600px wide) */
+@media (max-width: 600px) {
+  .tooltip {
+    width: 100%; /* Adjust the width to take up 90% of the screen width */
+  }
+  }
 
-.tooltip .tooltiptext {
-	    box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-     letter-spacing: 0px; /* You can adjust this value as needed */
-     font-weight:normal;
-border:1.5px solid black;
+.tooltiptext {
   visibility: hidden;
+  position: absolute;
   background-color: white;
-  font-size: 12px;
   color: black;
-  text-align: center;
-   word-wrap:break-word;
-   width: 30%;
-   bottom:0%;
-  /* Position the tooltip */
-  padding-left:0px;
-  padding-right:0px;
-  position: fixed;
-  bottom:5%;
-  left:29.2%;
   z-index: 9999;
+  width:100%;
+  left:0;
+  top:25px;
+  box-shadow: 
+  inset 1px 0 0 0 black,   /* Left border */
+  inset -1px 0 0 0 black,  /* Right border */
+  inset 0 1px 0 0 black,   /* Top border */
+  inset 0 -1px 0 0 black;  /* Bottom border */
 }
+
+.tooltip:hover {
+  visibility: visible;
+font-weight:bold;
+letter-spacing: 0.5px;}
 
 .tooltip:hover .tooltiptext {
   visibility: visible;
 }
+
 
 #informationtext {
 	font-size: 12px;
@@ -90,16 +95,9 @@ border:1.5px solid black;
 	text-transform: uppercase;
 }
 
-/* Styles for phones (up to 600px wide) */
-@media (max-width: 600px) {
-  .tooltip .tooltiptext {
-     width: 50%;
-       bottom:9%;
-  left:43%;
-  }
-  }
-
-
+.hidden {
+  display: none;
+}
 
 
  /*PRELOAD*/
@@ -235,14 +233,11 @@ h2 {
 
 #Div_Portfolio {
 	height: 80%;
-	width: 50%;
-	left: 10.5%;
-	right: 12.5%;
+	width: 40%;
+	left: 42%;
 	top: 13%;
-	bottom: 5%;
  	 background-color: white;
  	 border: 1px solid black;
- 	 margin-top: 20px;
 	  position: absolute;
  	 display: none;
  	 z-index: 1;
@@ -253,9 +248,9 @@ h2 {
 /* Styles for phones (up to 600px wide) */
 @media (max-width: 600px) {
   #Div_Portfolio {
-    width: 90%; /* Adjust the width to take up 90% of the screen width */
+    width: 60%; /* Adjust the width to take up 90% of the screen width */
     height:80%;
-    left: 5%; /* Center the div horizontally by adjusting the left property */
+    left: 35%; /* Center the div horizontally by adjusting the left property */
     right: 5%; /* Center the div horizontally by adjusting the right property */
     top: 10%; /* Adjust the top position to better fit on smaller screens */
   }
@@ -833,6 +828,16 @@ h1{
 			font-family: 'IBM Plex Mono', monospace;
 			padding-left: 2%;
 			padding-right: 2%;
+			overflow-wrap: break-word;
+			}
+
+			.textstylePort {
+			text-align: left;
+			color:black;
+			font-size: 12px;
+			font-family: 'IBM Plex Mono', monospace;
+			padding-left: 10px;
+			padding-right: 25px;
 			overflow-wrap: break-word;
 			}
 

@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
+      <meta charset="UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="new_css.css">
 
@@ -75,216 +77,59 @@ function closeLightbox() {
 <!-- MOVABLE DIVS -->
 
 <script>
-  $( function() {
-    $( "#Div_Alpina" ).draggable({  scroll: false });
+  // Function to check if the screen size corresponds to a mobile device
+  function isMobileScreenSize() {
+    return window.matchMedia("(max-width: 767px)").matches;
   }
-  );
-  </script>
 
-     <script>
-  $( function() {
-    $( "#Div_Portfolio" ).draggable({  scroll: false });
+  // Function to enable draggable on desktop browsers
+  function enableDraggable() {
+    $("#Div_Alpina").draggable({ scroll: false });
+    $("#Div_Portfolio").draggable({ scroll: false });
+    $("#Div_AboutMe").draggable({ scroll: false });
+    $("#Div_Contact").draggable({ scroll: false });
+    $("#Div_SemI").draggable({ scroll: false });
+    $("#Div_SemII").draggable({ scroll: false });
+    $("#Div_GrafFormI").draggable({ scroll: false });
+    $("#Div_GrafFormII").draggable({ scroll: false });
+    $("#Div_ZeichnenI").draggable({ scroll: false });
+    $("#Div_ZeichnenII").draggable({ scroll: false });
+    $("#Div_ZeichnenII_2").draggable({ scroll: false });
+    $("#Div_ArchPos").draggable({ scroll: false });
+    $("#Div_InteractiveDesign").draggable({ scroll: false });
+    $("#Div_Moving_Horror").draggable({ scroll: false });
+    $("#Div_Illus").draggable({ scroll: false });
+    $("#Div_Photo_1").draggable({ scroll: false });
+    $("#Div_Photo2").draggable({ scroll: false });
+    $("#Div_IntoTheVoid").draggable({ scroll: false });
+    $("#Div_TrashGold").draggable({ scroll: false });
+    $("#Div_InteractiveDesign_Vid1").draggable({ scroll: false });
+    $("#Div_InteractiveDesign_Vid2").draggable({ scroll: false });
+    $("#Div_Chesa").draggable({ scroll: false });
+    $("#Div_Posterslam_1").draggable({ scroll: false });
+    $("#Div_PAX_1").draggable({ scroll: false });
+    $("#Div_PAX_2").draggable({ scroll: false });
+    $("#Div_PAX_3").draggable({ scroll: false });
+    $("#myDIV25").draggable({ scroll: false });
+    $("#Div_CancelCulture").draggable({ scroll: false });
+    $("#Div_OAB2023").draggable({ scroll: false });
+    $("#Div_ISM").draggable({ scroll: false });
+    $("#Div_Eerie").draggable({ scroll: false });
+    $("#Div_JustDont").draggable({ scroll: false });
+    $("#Div_Rentner").draggable({ scroll: false });
+    $("#Div_CantBreathe").draggable({ scroll: false });
+    $("#Div_Midnight").draggable({ scroll: false });
+
+     }
+  
+
+  // Check if the screen size is not that of a mobile device, and then enable draggable
+  if (!isMobileScreenSize()) {
+    $(function() {
+      enableDraggable();
+    });
   }
-  );
-  </script>
-
-    <script>
-  $( function() {
-    $( "#Div_AboutMe" ).draggable({  scroll: false });
-  } );
-  </script>
-
-     <script>
-  $( function() {
-    $( "#Div_Contact" ).draggable({  scroll: false });
-  } );
-  </script>
-
-       <script>
-  $( function() {
-    $( "#Div_SemI" ).draggable({  scroll: false });
-  } );
-  </script>
-
-        <script>
-  $( function() {
-    $( "#Div_SemII" ).draggable({  scroll: false });
-  } );
-  </script>
-
-          <script>
-  $( function() {
-    $( "#Div_GrafFormI" ).draggable({  scroll: false });
-  } );
-  </script>
-
-            <script>
-  $( function() {
-    $( "#Div_GrafFormII" ).draggable({  scroll: false });
-  } );
-  </script>
-
-              <script>
-  $( function() {
-    $( "#Div_ZeichnenI" ).draggable({  scroll: false });
-  } );
-  </script>
-
-              <script>
-  $( function() {
-    $( "#Div_ZeichnenII" ).draggable({  scroll: false });
-  } );
-  </script>
-
-                <script>
-  $( function() {
-    $( "#Div_ZeichnenII_2" ).draggable({  scroll: false });
-  } );
-  </script>
-
-   <script>
-  $( function() {
-    $( "#Div_ArchPos" ).draggable({  scroll: false });
-  } );
-  </script>
-
-         <script>
-  $( function() {
-    $( "#Div_InteractiveDesign" ).draggable({  scroll: false });
-  } );
-  </script>
-
-           <script>
-  $( function() {
-    $( "#Div_Moving_Horror" ).draggable({  scroll: false });
-  } );
-  </script>
-
-             <script>
-  $( function() {
-    $( "#Div_Illus" ).draggable({  scroll: false });
-  } );
-  </script>
-
-               <script>
-  $( function() {
-    $( "#Div_Photo_1" ).draggable({  scroll: false });
-  } );
-  </script>
-
-      <script>
-  $( function() {
-    $( "#Div_Photo2" ).draggable({  scroll: false });
-  } );
-  </script>
-
-<script>
-  $( function() {
-    $( "#Div_IntoTheVoid" ).draggable({  scroll: false });
-  } );
-  </script>
-
-  <script>
-  $( function() {
-    $( "#Div_TrashGold" ).draggable({  scroll: false });
-  } );
-  </script>
-
-    <script>
-  $( function() {
-    $( "#Div_InteractiveDesign_Vid1" ).draggable({  scroll: false });
-  } );
-  </script>
-
-      <script>
-  $( function() {
-    $( "#Div_InteractiveDesign_Vid2" ).draggable({  scroll: false });
-  } );
-  </script>
-
-        <script>
-  $( function() {
-    $( "#Div_Chesa" ).draggable({  scroll: false });
-  } );
-  </script>
-
-          <script>
-  $( function() {
-    $( "#Div_Posterslam_1" ).draggable({  scroll: false });
-  } );
-  </script>
-
-            <script>
-  $( function() {
-    $( "#Div_PAX_1" ).draggable({  scroll: false });
-  } );
-  </script>
-
-            <script>
-  $( function() {
-    $( "#Div_PAX_2" ).draggable({  scroll: false });
-  } );
-  </script>
-
-            <script>
-  $( function() {
-    $( "#Div_PAX_3" ).draggable({  scroll: false });
-  } );
-  </script>
-
-              <script>
-  $( function() {
-    $( "#myDIV25" ).draggable({  scroll: false });
-  } );
-  </script>
-
-  <script>
-  $( function() {
-    $( "#Div_CancelCulture" ).draggable({  scroll: false });
-  } );
-  </script>
-
-  <script>
-  $( function() {
-    $( "#Div_OAB2023" ).draggable({  scroll: false });
-  } );
-  </script>
-
-   <script>
-  $( function() {
-    $( "#Div_ISM" ).draggable({  scroll: false });
-  } );
-  </script>
-
-     <script>
-  $( function() {
-    $( "#Div_Eerie" ).draggable({  scroll: false });
-  } );
-  </script>
-
-    <script>
-  $( function() {
-    $( "#Div_JustDont" ).draggable({  scroll: false });
-  } );
-  </script>
-
-    <script>
-  $( function() {
-    $( "#Div_Rentner" ).draggable({  scroll: false });
-  } );
-  </script>
-
-  <script>
-  $( function() {
-    $( "#Div_CantBreathe" ).draggable({  scroll: false });
-  } );
-  </script>
-
-<script>
-  $( function() {
-    $( "#Div_Midnight" ).draggable({  scroll: false });
-  } );
-  </script>
+</script>
 
  <!--  SCRIPT URL -->
 
@@ -321,6 +166,12 @@ window.open('butterfly.html', '_blank','toolbar:no');
   <button class="button_black" onClick="window.location.reload();" style="top:219px; left:0px;z-index:10; font-size:9px;height:20px;z-index:1;">refresh_</button>
 
 
+<!-- Hidden div to display the tooltip content -->
+<div id="tooltipContent" class="hidden">
+  <!-- Content from the tooltip will be shown here -->
+</div>
+
+
 <!-- PORTFOLIO -->
 
 <div onclick="showport()" id="Div_Portfolio" class="ui-widget-content">
@@ -340,15 +191,15 @@ DIVIDER HERE
 
 -->
 
+ 
 
 
-
-<div class="textstyle2">
+<div class="textstylePort">
 
    <div style="text-align: left;"><h2>WORK</h2></div>
 
      <p><div onclick="oab2023()" class="tooltip">> OPEN AIR BIVIO 2023
-  <span class="tooltiptext" style="font-size:12px;"><div id="informationtext">INTERACTIVE<br>bachelor-thesis</div><p>ABC</span>
+ <div class="tooltiptext" style="font-size:12px;"><div id="informationtext">INTERACTIVE<br>bachelor-thesis</div><p>ABC</div>
 </div></p> 
 
  <p><div onclick="alpinaevents()" class="tooltip">> ALPINA EVENTS
