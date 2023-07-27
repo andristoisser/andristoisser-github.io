@@ -261,7 +261,6 @@ h2 {
 	width: 50%;
 	left: 40%;
 	top: 17%;
-	bottom: 5%;
  	 background-color: white;
  	 border: 1px solid black;
  	 margin-top: 20px;
@@ -275,8 +274,8 @@ h2 {
 #Div_Contact {
 	height: 40%;
 	width: 30%;
-	left: 5%;
-	bottom: 5%;
+	top:30%;
+	left: 10%;
  	 background-color: white;
  	 border: 1px solid black;
  	 margin-top: 20px;
@@ -290,35 +289,31 @@ h2 {
 /*ARBEITEN DIVS*/
 
 #Div_SemI {
-	height: 90%;
+		height: 90%;
 	width: 90%;
 	left: 5%;
 	right: 5%;
-	top: 2%;
-		bottom: 2%;
  	 background-color: white;
  	 border: 1px solid black;
- 	 margin-top: 20px;
 	  position: absolute;
  	 z-index: 100;
  	 display: none;
  	 overflow: auto;
+ 	 overflow-x:hidden;
 }
 
 #Div_SemII {
-	height: 90%;
+		height: 90%;
 	width: 90%;
 	left: 5%;
 	right: 5%;
-	top: 2%;
-		bottom: 2%;
  	 background-color: white;
  	 border: 1px solid black;
- 	 margin-top: 20px;
 	  position: absolute;
  	 z-index: 100;
  	 display: none;
  	 overflow: auto;
+ 	 overflow-x:hidden;
 }
 
 #Div_GrafFormI {
@@ -326,21 +321,19 @@ h2 {
 	width: 90%;
 	left: 5%;
 	right: 5%;
-	top: 2%;
-		bottom: 2%;
  	 background-color: white;
  	 border: 1px solid black;
- 	 margin-top: 20px;
 	  position: absolute;
  	 z-index: 100;
  	 display: none;
  	 overflow: auto;
+ 	 overflow-x:hidden;
 
 }
 
 #Div_GrafFormII {
 	height: 80%;
-	width: 25%;
+	width: 30%;
 	left: 5%;
 	right: 5%;
 	top: 2%;
@@ -358,7 +351,7 @@ h2 {
 /* Styles for phones (up to 600px wide) */
 @media (max-width: 600px) {
   #Div_GrafFormII {
-    width: 50%; /* Adjust the width to take up 90% of the screen width */
+    width: 60%; /* Adjust the width to take up 90% of the screen width */
 	height: 80%;
   }
   }
@@ -486,8 +479,6 @@ h2 {
 	width: 90%;
 	left: 5%;
 	right: 5%;
-	top: 2%;
-		bottom: 2%;
  	 background-color: white;
  	 border: 1px solid black;
 	  position: absolute;
@@ -502,8 +493,6 @@ h2 {
 	width: 90%;
 	left: 5%;
 	right: 5%;
-	top: 2%;
-		bottom: 2%;
  	 background-color: white;
  	 border: 1px solid black;
 	  position: absolute;
@@ -629,19 +618,17 @@ h2 {
 
 
 #Div_Photo2 {
-	height: 90%;
+		height: 90%;
 	width: 90%;
 	left: 5%;
 	right: 5%;
-	top: 2%;
-		bottom: 2%;
  	 background-color: white;
  	 border: 1px solid black;
- 	 margin-top: 20px;
 	  position: absolute;
  	 z-index: 100;
  	 display: none;
  	 overflow: auto;
+ 	 overflow-x:hidden;
 }
 
 #Div_IntoTheVoid {
@@ -649,31 +636,27 @@ h2 {
 	width: 90%;
 	left: 5%;
 	right: 5%;
-	top: 2%;
-		bottom: 2%;
  	 background-color: white;
  	 border: 1px solid black;
- 	 margin-top: 20px;
 	  position: absolute;
  	 z-index: 100;
  	 display: none;
  	 overflow: auto;
+ 	 overflow-x:hidden;
 }
 
 #Div_TrashGold {
-	height: 90%;
+		height: 90%;
 	width: 90%;
 	left: 5%;
 	right: 5%;
-	top: 2%;
-		bottom: 2%;
  	 background-color: white;
  	 border: 1px solid black;
- 	 margin-top: 20px;
 	  position: absolute;
  	 z-index: 100;
  	 display: none;
  	 overflow: auto;
+ 	 overflow-x:hidden;
 }
 
 #Div_InteractiveDesign_Vid1 {
@@ -713,8 +696,6 @@ h2 {
 	width: 70%;
 	left: 5%;
 	right: 5%;
-	top: 2%;
-		bottom: 2%;
  	 background-color: white;
  	 border: 1px solid black;
  	 margin-top: 20px;
@@ -729,9 +710,7 @@ h2 {
 	height: 90%;
 	width: 95%;
 	left: 5%;
-	right: 5%;
 	top: 2%;
-		bottom: 2%;
  	 background-color: white;
  	 border: 1px solid black;
  	 margin-top: 20px;
@@ -775,34 +754,6 @@ h2 {
                 	height:90%;
             }
           }
-
-#Div_PAX_2 {
-position:absolute;
-	width: 35%;
-	top: 3%;
-	right:6%;
- 	 background-color: white;
- 	 border: 1px solid black;
-	  position: absolute;
- 	 z-index: 100;
- 	 display: none;
- 	 overflow: auto;
- 	 overflow-x: hidden;
-}
-
-#Div_PAX_3 {
-	position:absolute;
-	width: 35%;
-	top: 3%;
-	right:3%;
- 	 background-color: white;
- 	 border: 1px solid black;
-	  position: absolute;
- 	 z-index: 100;
- 	 display: none;
- 	 overflow: auto;
- 	 overflow-x: hidden;
-}
 
 
 /*TEXT*/
