@@ -8,6 +8,11 @@
  	padding: 0; 
  	margin: 0;
  	overflow: hidden;
+
+ 	  -webkit-user-select: none; /* For Safari */
+  -moz-user-select: none; /* For Firefox */
+  -ms-user-select: none; /* For Internet Explorer/Edge */
+  user-select: none;
  } 
 
 a {
@@ -49,7 +54,6 @@ box-shadow:
   padding:5px;
   padding-left: 15px;
   overflow-wrap: break-word;
-
 }
 
 /* Styles for phones (up to 600px wide) */
@@ -95,8 +99,10 @@ letter-spacing: 0.5px;}
 	color:white;
 	padding-left:0px;
 	padding-right:0px;
-	background-color: pink;
-	text-transform: uppercase;
+	padding-top:2px;
+	padding-bottom:2px;
+	background-color: black;
+	 text-transform: uppercase;
 }
 
 .hidden {
@@ -198,14 +204,6 @@ font-size: 9px;
 
 /*MENU DIVS*/
 
-#informationtext {
-	font-size: 12px;
-	font-weight: bold;
-	position:relative;
-	color:white;
-	background-color: black;
-	text-transform: uppercase;
-}
 
 h2 {
   font-size: 14px; /* Adjust the font size as needed */
