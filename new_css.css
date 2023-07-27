@@ -49,6 +49,7 @@ box-shadow:
   padding:5px;
   padding-left: 15px;
   overflow-wrap: break-word;
+
 }
 
 /* Styles for phones (up to 600px wide) */
@@ -59,6 +60,7 @@ box-shadow:
   }
 
 .tooltiptext {
+	 text-align: center;
   visibility: hidden;
   position: absolute;
   background-color: white;
@@ -72,6 +74,7 @@ box-shadow:
   inset -1px 0 0 0 black,  /* Right border */
   inset 0 1px 0 0 black,   /* Top border */
   inset 0 -1px 0 0 black;  /* Bottom border */
+  font-weight: normal;
 }
 
 .tooltip:hover {
@@ -87,11 +90,12 @@ letter-spacing: 0.5px;}
 #informationtext {
 	font-size: 12px;
 	font-weight: bold;
+	justify-content: center;
 	position:relative;
 	color:white;
 	padding-left:0px;
 	padding-right:0px;
-	background-color: black;
+	background-color: pink;
 	text-transform: uppercase;
 }
 
@@ -110,7 +114,7 @@ letter-spacing: 0.5px;}
   bottom: 0;
   background-color: white;
   /* change if the mask should have another color then white */
-  z-index: 2000;
+  z-index: 9999;
   /* makes sure it stays on top */
 }
 
@@ -810,6 +814,7 @@ h1{
 			padding-left: 5%;
 			padding-right: 5%;
 			overflow-wrap: break-word;
+			font-weight: unset;
 			}
 
 			/*BUTTONS*/
@@ -923,6 +928,8 @@ h1{
 @media (max-width: 600px) {
     .video-wrapper {
         flex-basis: 100%; /* Videos take up full width on small screens */
+            padding: 0px; /* Add some spacing between videos */
+
     }
 }
 
