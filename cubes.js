@@ -1,10 +1,6 @@
 let tx, ty, tz, gap, rows, cols, depths;
 let w3D, h3D, d3D;
 
-function mouseWheel() {
-  g = g + 10;
-
-}
 
 
 function setup() {
