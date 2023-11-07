@@ -1,0 +1,249 @@
+body {
+    font-family: 'Mohave', sans-serif; /* Apply "Mohave" font to the entire page */
+    background: black;
+     cursor: crosshair; /* Change the cursor to a crosshair */
+  cursor: 16 16, crosshair; /* Use a custom crosshair cursor (replace 'path-to-your-cross-cursor.png' with the actual path to your cursor image) */
+padding:0;
+margin:0;
+width:100vw;
+}
+
+/* Hide the horizontal scrollbar for the whole page */
+body::-webkit-scrollbar {
+    width: 0;
+}
+
+/* Remove the default link styles */
+a {
+    text-decoration: none; /* Remove underlines */
+    color: inherit; /* Use the text color of the parent element (e.g., black) */
+}
+
+/* Add underlines on mouseover */
+a:hover {
+    text-decoration: underline; /* Add underlines when hovering over links */
+}
+
+
+b {
+    font-weight: 600; /* Set the desired font weight (e.g., 600 for Semi-bold) */
+}
+
+
+#p5-canvas-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+
+/* New styles for the initial overlay */
+#initial-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 1); /* Semi-transparent background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999; /* Ensure it's on top of everything else */
+}
+
+.centered-circle {
+    width: 150px; /* Adjust the circle size as needed */
+    height: 150px;
+    background-color: #fff; /* Circle background color */
+    border-radius: 50%; /* Make it a circle */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.enter-text {
+    font-size: 24px; /* Adjust the font size as needed */
+    color: #000; /* Text color */
+    font-weight: bold;
+}
+
+
+
+#news {
+    position: sticky;
+    background-color: white;
+    width: 100vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.news-section {
+    flex: 1;
+    text-align: left;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center child elements horizontally and vertically */
+}
+
+.news-image {
+    width: 45vw;
+    height: 50vh; /* Set a specific height for the image container on mobile */
+    background-image: url('nebula_1.png'); /* Set the background image */
+    background-size: cover; /* Crop the background image to cover the container */
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+@media (max-width: 768px) {
+    #news {
+        flex-direction: column; /* Stack child sections vertically on mobile devices */
+    }
+    .news-image {width:100vw;};
+}
+
+
+
+#artists {
+    background-color: black;
+    position: sticky;
+    color: white;
+    width: 100vw;
+    height: 7vh;
+    display: flex; /* Use flexbox to arrange child sections */
+    justify-content: space-between; /* Distribute child sections evenly */
+    align-items: center; /* Vertically center child sections */
+}
+
+.artists-section {
+    flex: 1; /* Equal distribution of space among child sections */
+    text-align: center; /* Center text within child sections */
+}
+
+#footer {
+    background-color: black;
+    position: sticky;
+    color: white;
+    width: 100vw;
+    height: 7vh;
+    display: flex; /* Use flexbox to arrange child sections */
+    justify-content: space-between; /* Distribute child sections evenly */
+    align-items: center; /* Vertically center child sections */
+}
+
+.footer-section {
+    flex: 1; /* Equal distribution of space among child sections */
+    text-align: center; /* Center text within child sections */
+}
+
+
+
+#content-1 {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#background-video,
+#background-video2 {
+    width: 100vw;
+    position: absolute;
+    top: 50%; /* Move the videos 50% down the viewport */
+    transform: translateY(-50%); /* Adjust to vertically center the videos */
+    left: 0;
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 1s;
+}
+
+.page-header {
+    position: fixed;
+    z-index: 99;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 10vh;
+    background: black;
+    text-align: center;
+    font-size: 24px;
+    color: white; /* Text color */
+    opacity: 0; /* Initially hide the header */
+    transition: opacity 2s; /* Add a transition for smooth appearance */
+    display: flex; /* Use flexbox layout */
+    align-items: center; /* Vertically align the text to the middle */
+}
+
+.header-icons {
+    display: flex;
+    gap: 30px; /* Adjust the gap between icons */
+    margin-left: auto; /* Push the icons to the right side */
+    margin-right: 30px;
+}
+
+.header-icons img {
+    width: 30px; /* Adjust the initial width of the icons */
+        height: 30px; /* Adjust the initial width of the icons */
+
+    transform: scale(1); /* Initial scale (no change) */
+    transition: transform 0.3s ease; /* Add a smooth transition for the transform property */
+}
+
+.header-icons img:hover {
+    transform: scale(1.25); /* Adjust the scale on hover (e.g., 1.25 for 25% increase) */
+}
+
+
+
+
+
+.content {
+    position: relative;
+    z-index: 10;
+    text-align: center;
+    color: #fff;
+    font-size: 24px;  opacity: 0; /* Initially hide the header */
+    transition: opacity 2s; /* Add a transition for smooth appearance */
+    top:75%;
+}
+
+.arrow-container {
+    position: relative; /* Use relative positioning on the container */
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0; /* Initially hide the arrow */
+    transition: opacity 1s; /* Add a transition for smooth appearance */
+    height: 90vh; /* Ensure the container covers the full viewport height */
+}
+
+.arrow {
+    position: absolute; /* Use absolute positioning for the arrow image */
+    bottom: 0; /* Position it at the bottom of the container */
+}
+
+.arrow img {
+    width: 30px; /* Adjust the width and height of the image as needed */
+    height: 30px;
+    opacity: 0; /* Initially hide the arrow */
+    animation: arrowAnimation 1s infinite alternate ease-in-out;
+}
+
+
+
+
+
+@keyframes arrowAnimation {
+    0% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-10px);
+        opacity: 1;
+    }
+}
