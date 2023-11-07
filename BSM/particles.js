@@ -27,10 +27,10 @@ class Particle {
   constructor(x, y) {
     this.x = x;
     this.y = y;
-    this.velocityX = random(-1, 1); // Adjust the range for slower particles
-    this.velocityY = random(-1, 1); // Adjust the range for slower particles
+    this.velocityX = random(-1, 2); // Adjust the range for slower particles
+    this.velocityY = random(-1, 3); // Adjust the range for slower particles
     this.alpha = random(50, 255);
-    this.size = random(1, 3);
+    this.size = random(2, 5);
     this.lifespan = random(30, 100);
   }
 
@@ -39,7 +39,7 @@ class Particle {
     this.y += this.velocityY;
     this.alpha -= random(0.5, 5);
     this.size -= random(0.01, 0.03);
-    this.lifespan -= 1;
+    this.lifespan -= 0.5;
   }
 
   display() {

@@ -5,7 +5,8 @@ body {
     padding: 0;
     margin: 0;
     width: 100vw;
-    overflow-x: hidden;
+    overflow:hidden;
+    font-size: 14px;
 }
 
 a {
@@ -21,13 +22,32 @@ b {
     font-weight: 600;
 }
 
+/* Hide scrollbars for the entire document */
+::-webkit-scrollbar {
+    width: 0 !important;
+}
+
+/* Hide scrollbar track for webkit browsers */
+::-webkit-scrollbar-track {
+    display: none !important;
+}
+
+/* Hide scrollbar thumb for webkit browsers */
+::-webkit-scrollbar-thumb {
+    display: none !important;
+}
+
+/* Hide scrollbars for Firefox */
+scrollbar-width: none;
+
+
 #p5-canvas-container {
     position: absolute;
     top: 0;
     left: 0;
 }
 
-/* New styles for the initial overlay */
+/* Additional styles for the overlay */
 #initial-overlay {
     position: fixed;
     top: 0;
@@ -40,6 +60,7 @@ b {
     align-items: center;
     z-index: 999;
 }
+
 
 .enter-text {
     animation: glitch 1s linear infinite;
@@ -151,7 +172,6 @@ b {
 #news {
     position: sticky;
     background-color: white;
-    width: 100vw;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -159,7 +179,7 @@ b {
 
 .news-section {
     flex: 1;
-    text-align: left;
+    text-align: center;
     padding: 20px;
     display: flex;
     flex-direction: column;
@@ -167,7 +187,7 @@ b {
 }
 
 .news-image {
-    width: 45vw;
+    width: 50vw;
     height: 50vh; /* Set a specific height for the image container on mobile */
     background-image: url('nebula_1.png'); /* Set the background image */
     background-size: cover; /* Crop the background image to cover the container */
@@ -200,7 +220,7 @@ b {
 
 
 @media (max-width: 768px) {
-    #news, #edition {
+    #news, #edition, #artists{
         flex-direction: column; /* Stack child sections vertically on mobile devices */
     }
     .news-image,.edition-section {width:100vw;};
@@ -215,7 +235,7 @@ b {
     width: 100vw;
     display: flex;
     justify-content: space-between;
-    align-items: center;
+
 }
 
 .artists-section {
@@ -223,14 +243,61 @@ b {
     text-align: center;
     display: flex;
     flex-direction: column;
-    align-items: center; /* Center child elements horizontally and vertically */
-    background-color: white; /* Add a white background color to each section */
+    background-color: black; /* Add a white background color to each section */
+                text-align: left;
+
 }
 
 .artists-section img {
-    width: 100%; /* Ensure the image takes up the full width of the section */
-    height: auto; /* Maintain the aspect ratio */
+    width: 100%;
+    height: 100%;
+    transition: transform 0.5s ease, filter 1s ease; /* Add transitions for both transform and filter properties */
+    filter: grayscale(100%); /* Apply a grayscale filter to non-hovered images */
+
 }
+
+.artists-section img:hover {
+    filter: grayscale(0%); /* Apply a grayscale filter to non-hovered images */
+    transform: scale(0.95); /* Zoom in the image on hover */
+    transform-origin: center center; /* Set the transformation origin to the center of the image */
+}
+
+
+.artists-section2 {
+    flex: 1;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    background-color: black; /* Add a white background color to each section */
+    text-align: center;
+
+}
+
+.artists-section2 img {
+    width: 100%;
+    height: 100%;
+        filter: grayscale(100%); /* Apply a grayscale filter to non-hovered images */
+            transition: filter 1s ease; /* Add transitions for both transform and filter properties */
+
+
+}
+
+.artists-section2 img:hover {
+    filter: grayscale(0%); /* Apply a grayscale filter to non-hovered images */
+}
+
+#aboutus {
+    position: sticky;
+    background-color: black;
+    color:white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    padding-left:5%;
+    padding-right:5%; 
+}
+
 
 #footer {
     background-color: black;
@@ -313,39 +380,38 @@ b {
     padding-bottom: 10px;
         padding-left: 10px;
     padding-right: 10px;
-
     position: relative;
     color: #fff;
-    font-size: 20px;  
+    font-size: 25px;  
     text-transform: uppercase;
+    letter-spacing: 7px;
+    font-weight: 500;
 }
 
 
 .content {
-    position: relative;
+    position: absolute;
     z-index: 10;
     text-align: center;
     color: #fff;
     font-size: 20px;  opacity: 0; /* Initially hide the header */
     transition: opacity 2s; /* Add a transition for smooth appearance */
-    top:70vh;
+    top:70%;
     text-transform: uppercase;
 }
 
 .arrow-container {
-    position: relative; /* Use relative positioning on the container */
+    position: absolute; /* Use relative positioning on the container */
     z-index: 2;
     display: flex;
     justify-content: center;
     align-items: center;
     opacity: 0; /* Initially hide the arrow */
     transition: opacity 1s; /* Add a transition for smooth appearance */
-    height: 80vh; /* Ensure the container covers the full viewport height */
+    top: 80%; /* Ensure the container covers the full viewport height */
 }
 
 .arrow {
-    position: absolute; /* Use absolute positioning for the arrow image */
-    bottom: 0; /* Position it at the bottom of the container */
 }
 
 .arrow img {

@@ -9,17 +9,22 @@ document.addEventListener("DOMContentLoaded", function() {
     const content = document.querySelector(".content");
     const enterCircle = document.getElementById("initial-overlay");
 
+
     // Initially hide the second video, header, and content
     video2.style.display = "none";
     header.style.opacity = 0;
     arrow.style.opacity = 0;
     content.style.opacity = 0;
+        document.body.style.overflow = "hidden"; // Enable scrolling
+
 
     // Function to start video playback and hide the "Enter" circle
     function startVideo() {
         video1.pause();
         video1.style.opacity = 1; // Fade in the first video
         enterCircle.style.display = "none"; // Hide the "Enter" circle
+            document.body.style.overflow = "auto"; // Enable scrolling
+
     }
 
     // Add a click event listener to the document to start video on user click
@@ -47,5 +52,5 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     });
 
-    
+
 });
