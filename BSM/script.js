@@ -46,4 +46,6 @@ document.addEventListener("DOMContentLoaded", function() {
             }, 4000); // Set a delay before fading out the first video
         });
     });
+
+    
 });

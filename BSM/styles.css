@@ -6,6 +6,8 @@ body {
 padding:0;
 margin:0;
 width:100vw;
+    overflow-x: hidden;
+
 }
 
 /* Hide the horizontal scrollbar for the whole page */
@@ -51,21 +53,71 @@ b {
     z-index: 999; /* Ensure it's on top of everything else */
 }
 
-.centered-circle {
-    width: 150px; /* Adjust the circle size as needed */
-    height: 150px;
-    background-color: #fff; /* Circle background color */
-    border-radius: 50%; /* Make it a circle */
-    display: flex;
-    align-items: center;
+.enter-text {
+  animation: glitch 1s linear infinite;
+  position: relative;
+  font-size: 40px; /* Adjust the font size as needed */
+  color: white; /* Text color */
+  font-weight: 500;
     justify-content: center;
 }
 
-.enter-text {
-    font-size: 24px; /* Adjust the font size as needed */
-    color: #000; /* Text color */
-    font-weight: bold;
+.enter-text:before,
+.enter-text:after {
+  content: attr(title);
+  position: absolute;
+  left: 0;
 }
+
+.enter-text:before {
+  animation: glitchTop 1s linear infinite;
+  clip-path: polygon(0 0, 100% 0, 100% 33%, 0 33%);
+  -webkit-clip-path: polygon(0 0, 100% 0, 100% 33%, 0 33%);
+}
+
+.enter-text:after {
+  animation: glitchBotom 1.5s linear infinite;
+  clip-path: polygon(0 67%, 100% 67%, 100% 100%, 0 100%);
+  -webkit-clip-path: polygon(0 67%, 100% 67%, 100% 100%, 0 100%);
+}
+
+@keyframes glitch {
+  2%, 64% {
+    transform: translate(2px, 0) skew(0deg);
+  }
+  4%, 60% {
+    transform: translate(-2px, 0) skew(0deg);
+  }
+  62% {
+    transform: translate(0, 0) skew(5deg);
+  }
+}
+
+@keyframes glitchTop {
+  2%, 64% {
+    transform: translate(2px, -2px);
+  }
+  4%, 60% {
+    transform: translate(-2px, 2px);
+  }
+  62% {
+    transform: translate(13px, -1px) skew(-13deg);
+  }
+}
+
+@keyframes glitchBotom {
+  2%, 64% {
+    transform: translate(-2px, 0);
+  }
+  4%, 60% {
+    transform: translate(-2px, 0);
+  }
+  62% {
+    transform: translate(-22px, 5px) skew(21deg);
+  }
+}
+
+
 
 
 
@@ -96,11 +148,35 @@ b {
     background-position: center;
 }
 
+#edition {
+    position: sticky;
+    background-color: white;
+    width: 100vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.edition-section {
+    flex: 1;
+    text-align: left;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center child elements horizontally and vertically */
+}
+
+.edition-section img {
+    width: 50%; /* Set the width to 50% to make both images take 50% of the width */
+    height: auto; /* Maintain the aspect ratio */
+}
+
+
 @media (max-width: 768px) {
-    #news {
+    #news, #edition {
         flex-direction: column; /* Stack child sections vertically on mobile devices */
     }
-    .news-image {width:100vw;};
+    .news-image,.edition-section {width:100vw;};
 }
 
 
@@ -110,15 +186,23 @@ b {
     position: sticky;
     color: white;
     width: 100vw;
-    height: 7vh;
-    display: flex; /* Use flexbox to arrange child sections */
-    justify-content: space-between; /* Distribute child sections evenly */
-    align-items: center; /* Vertically center child sections */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .artists-section {
-    flex: 1; /* Equal distribution of space among child sections */
-    text-align: center; /* Center text within child sections */
+    flex: 1;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center child elements horizontally and vertically */
+    background-color: white; /* Add a white background color to each section */
+}
+
+.artists-section img {
+    width: 100%; /* Ensure the image takes up the full width of the section */
+    height: auto; /* Maintain the aspect ratio */
 }
 
 #footer {
@@ -197,7 +281,17 @@ b {
 }
 
 
+#title {
+    padding-top:30px;
+    padding-bottom: 10px;
+        padding-left: 10px;
+    padding-right: 10px;
 
+    position: relative;
+    color: #fff;
+    font-size: 20px;  
+    text-transform: uppercase;
+}
 
 
 .content {
@@ -205,9 +299,10 @@ b {
     z-index: 10;
     text-align: center;
     color: #fff;
-    font-size: 24px;  opacity: 0; /* Initially hide the header */
+    font-size: 20px;  opacity: 0; /* Initially hide the header */
     transition: opacity 2s; /* Add a transition for smooth appearance */
-    top:75%;
+    top:70vh;
+    text-transform: uppercase;
 }
 
 .arrow-container {
@@ -218,7 +313,7 @@ b {
     align-items: center;
     opacity: 0; /* Initially hide the arrow */
     transition: opacity 1s; /* Add a transition for smooth appearance */
-    height: 90vh; /* Ensure the container covers the full viewport height */
+    height: 80vh; /* Ensure the container covers the full viewport height */
 }
 
 .arrow {
