@@ -1,43 +1,31 @@
 body {
-    font-family: 'Mohave', sans-serif; /* Apply "Mohave" font to the entire page */
+    font-family: 'Mohave', sans-serif;
     background: black;
-     cursor: crosshair; /* Change the cursor to a crosshair */
-  cursor: 16 16, crosshair; /* Use a custom crosshair cursor (replace 'path-to-your-cross-cursor.png' with the actual path to your cursor image) */
-padding:0;
-margin:0;
-width:100vw;
+    cursor: crosshair;
+    padding: 0;
+    margin: 0;
+    width: 100vw;
     overflow-x: hidden;
-
 }
 
-/* Hide the horizontal scrollbar for the whole page */
-body::-webkit-scrollbar {
-    width: 0;
-}
-
-/* Remove the default link styles */
 a {
-    text-decoration: none; /* Remove underlines */
-    color: inherit; /* Use the text color of the parent element (e.g., black) */
+    text-decoration: none;
+    color: inherit;
 }
 
-/* Add underlines on mouseover */
 a:hover {
-    text-decoration: underline; /* Add underlines when hovering over links */
+    text-decoration: underline;
 }
-
 
 b {
-    font-weight: 600; /* Set the desired font weight (e.g., 600 for Semi-bold) */
+    font-weight: 600;
 }
-
 
 #p5-canvas-container {
     position: absolute;
     top: 0;
     left: 0;
 }
-
 
 /* New styles for the initial overlay */
 #initial-overlay {
@@ -46,78 +34,117 @@ b {
     left: 0;
     width: 100vw;
     height: 100vh;
-    background: rgba(0, 0, 0, 1); /* Semi-transparent background */
+    background: rgba(0, 0, 0, 1);
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 999; /* Ensure it's on top of everything else */
+    z-index: 999;
 }
 
 .enter-text {
-  animation: glitch 1s linear infinite;
-  position: relative;
-  font-size: 40px; /* Adjust the font size as needed */
-  color: white; /* Text color */
-  font-weight: 500;
+    animation: glitch 1s linear infinite;
+    position: relative;
+    font-size: 40px;
+    color: white;
+    font-weight: 500;
     justify-content: center;
 }
 
 .enter-text:before,
 .enter-text:after {
-  content: attr(title);
-  position: absolute;
-  left: 0;
+    content: attr(title);
+    position: absolute;
+    left: 0;
 }
 
 .enter-text:before {
-  animation: glitchTop 1s linear infinite;
-  clip-path: polygon(0 0, 100% 0, 100% 33%, 0 33%);
-  -webkit-clip-path: polygon(0 0, 100% 0, 100% 33%, 0 33%);
+    animation: glitchTop 1s linear infinite;
+    clip-path: polygon(0 0, 100% 0, 100% 33%, 0 33%);
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 33%, 0 33%);
 }
 
 .enter-text:after {
-  animation: glitchBotom 1.5s linear infinite;
-  clip-path: polygon(0 67%, 100% 67%, 100% 100%, 0 100%);
-  -webkit-clip-path: polygon(0 67%, 100% 67%, 100% 100%, 0 100%);
+    animation: glitchBotom 1.5s linear infinite;
+    clip-path: polygon(0 67%, 100% 67%, 100% 100%, 0 100%);
+    -webkit-clip-path: polygon(0 67%, 100% 67%, 100% 100%, 0 100%);
 }
 
 @keyframes glitch {
-  2%, 64% {
-    transform: translate(2px, 0) skew(0deg);
-  }
-  4%, 60% {
-    transform: translate(-2px, 0) skew(0deg);
-  }
-  62% {
-    transform: translate(0, 0) skew(5deg);
-  }
+    2%, 64% {
+        transform: translate(2px, 0) skew(0deg);
+    }
+    4%, 60% {
+        transform: translate(-2px, 0) skew(0deg);
+    }
+    62% {
+        transform: translate(0, 0) skew(5deg);
+    }
+}
+
+@-webkit-keyframes glitch {
+    2%, 64% {
+        -webkit-transform: translate(2px, 0) skew(0deg);
+    }
+    4%, 60% {
+        -webkit-transform: translate(-2px, 0) skew(0deg);
+    }
+    62% {
+        -webkit-transform: translate(0, 0) skew(5deg);
+    }
 }
 
 @keyframes glitchTop {
-  2%, 64% {
-    transform: translate(2px, -2px);
-  }
-  4%, 60% {
-    transform: translate(-2px, 2px);
-  }
-  62% {
-    transform: translate(13px, -1px) skew(-13deg);
-  }
+    2%, 64% {
+        transform: translate(2px, -2px);
+    }
+    4%, 60% {
+        transform: translate(-2px, 2px);
+    }
+    62% {
+        transform: translate(13px, -1px) skew(-13deg);
+    }
+}
+
+@-webkit-keyframes glitchTop {
+    2%, 64% {
+        -webkit-transform: translate(2px, -2px);
+    }
+    4%, 60% {
+        -webkit-transform: translate(-2px, 2px);
+    }
+    62% {
+        -webkit-transform: translate(13px, -1px) skew(-13deg);
+    }
 }
 
 @keyframes glitchBotom {
-  2%, 64% {
-    transform: translate(-2px, 0);
-  }
-  4%, 60% {
-    transform: translate(-2px, 0);
-  }
-  62% {
-    transform: translate(-22px, 5px) skew(21deg);
-  }
+    2%, 64% {
+        transform: translate(-2px, 0);
+    }
+    4%, 60% {
+        transform: translate(-2px, 0);
+    }
+    62% {
+        transform: translate(-22px, 5px) skew(21deg);
+    }
 }
 
+@-webkit-keyframes glitchBotom {
+    2%, 64% {
+        -webkit-transform: translate(-2px, 0);
+    }
+    4%, 60% {
+        -webkit-transform: translate(-2px, 0);
+    }
+    62% {
+        -webkit-transform: translate(-22px, 5px) skew(21deg);
+    }
+}
 
+/* Add GPU acceleration for elements with animations */
+.glitch-element {
+    transform: translateZ(0);
+}
 
 
 
