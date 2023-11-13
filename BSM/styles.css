@@ -12,6 +12,8 @@ body {
     width: 100vw;
     overflow:hidden;
     font-size: 16px;
+     font-feature-settings: 'liga' 0; /* Disable ligatures, including emoji substitution */
+    -webkit-font-feature-settings: 'liga' 0; /* For older versions of WebKit browsers */
 }
 
 a {
