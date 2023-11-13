@@ -1,3 +1,8 @@
+html {
+    scroll-behavior: smooth;
+}
+
+
 body {
     font-family: 'Mohave', sans-serif;
     background: black;
@@ -6,17 +11,20 @@ body {
     margin: 0;
     width: 100vw;
     overflow:hidden;
-    font-size: 14px;
+    font-size: 16px;
 }
 
 a {
     text-decoration: none;
     color: inherit;
+    transition: color 0.3s ease, letter-spacing 0.3s ease; /* Add transition for color and letter-spacing */
 }
 
 a:hover {
-    text-decoration: underline;
+    letter-spacing: 2px;
+    color: /* Your hover color */; /* Add the color you want on hover */
 }
+
 
 b {
     font-weight: 600;
@@ -186,14 +194,26 @@ scrollbar-width: none;
     align-items: center; /* Center child elements horizontally and vertically */
 }
 
-.news-image {
-    width: 50vw;
-    height: 50vh; /* Set a specific height for the image container on mobile */
-    background-image: url('nebula_1.png'); /* Set the background image */
-    background-size: cover; /* Crop the background image to cover the container */
-    background-repeat: no-repeat;
-    background-position: center;
-}
+    .news-image {
+        width: 50vw;
+        height: 50vh; /* Set a specific height for the image container on mobile */
+        background-image: url('background_nebula.jpg'); /* Set the background image */
+        background-size: cover; /* Crop the background image to cover the container */
+        background-repeat: no-repeat;
+        background-position: center;
+        animation: moveImage 60s infinite alternate linear; /* Adjust the duration and other properties as needed */
+    }
+
+    @keyframes moveImage {
+        0% {
+            background-position: 0% 0%;
+        }
+        100% {
+            background-position: 100% 100%;
+        }
+    }
+
+
 
 #edition {
     position: sticky;
@@ -211,19 +231,36 @@ scrollbar-width: none;
     display: flex;
     flex-direction: column;
     align-items: center; /* Center child elements horizontally and vertically */
+    margin: 10px; /* Add margin for spacing */
+}
+
+.edition-section a {
+    display: block; /* Make the anchor a block-level element */
+    text-align: center; /* Center the content inside the anchor */
+    transition: transform 0.3s ease; /* Smooth transition for the transform property */
+}
+
+.edition-section a:hover {
+    transform: scale(1.1); /* Scale the image on hover */
 }
 
 .edition-section img {
     width: 50%; /* Set the width to 50% to make both images take 50% of the width */
     height: auto; /* Maintain the aspect ratio */
+    transition: transform 0.3s ease; /* Smooth transition for the transform property */
 }
+
+.edition-section img:hover {
+    transform: scale(1.1); /* Scale the image on hover */
+}
+
 
 
 @media (max-width: 768px) {
     #news, #edition, #artists{
         flex-direction: column; /* Stack child sections vertically on mobile devices */
     }
-    .news-image,.edition-section {width:100vw;};
+    .news-image,.edition-section {width:100%;};
 }
 
 
@@ -262,6 +299,16 @@ scrollbar-width: none;
     transform-origin: center center; /* Set the transformation origin to the center of the image */
 }
 
+#artists2 {
+    background-color: black;
+    position: sticky;
+    color: white;
+    width: 90vw;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap; /* Allow items to wrap onto multiple lines */
+    margin: 0 auto; /* Center the container horizontally */
+}
 
 .artists-section2 {
     flex: 1;
@@ -270,8 +317,9 @@ scrollbar-width: none;
     flex-direction: column;
     background-color: black; /* Add a white background color to each section */
     text-align: center;
-
+    margin: 10px; /* Add margin to create space between the sections */
 }
+
 
 .artists-section2 img {
     width: 100%;
@@ -305,6 +353,8 @@ scrollbar-width: none;
     color: white;
     width: 100vw;
     height: 7vh;
+    font-weight: 600;
+        letter-spacing: 0px;
     display: flex; /* Use flexbox to arrange child sections */
     justify-content: space-between; /* Distribute child sections evenly */
     align-items: center; /* Vertically center child sections */
