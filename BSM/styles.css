@@ -347,6 +347,12 @@ scrollbar-width: none;
     padding-left: 0px; /* Add some padding for spacing */
 }
 
+/* Media query for mobile viewports */
+@media (max-width: 768px) {
+    .back-to-stellar {
+        font-size: 14px; /* Adjust font size for mobile viewports */
+    }
+}
 
 #aboutus {
     position: sticky;
