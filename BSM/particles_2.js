@@ -1,7 +1,7 @@
 let particles = [];
 
 function setup() {
-  canvas = createCanvas(windowWidth, windowHeight);
+  canvas = createCanvas(windowWidth, document.body.scrollHeight);
   canvas.position(0, 0);
   background(0, 0);
 }
@@ -24,7 +24,7 @@ function mouseMoved() {
 }
 
 function windowResized() {
-  resizeCanvas(windowWidth, windowHeight);
+  resizeCanvas(windowWidth, document.body.scrollHeight);
 }
 
 class Particle {
