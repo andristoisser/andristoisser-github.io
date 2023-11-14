@@ -10,7 +10,7 @@ body {
     padding: 0;
     margin: 0;
     width: 100vw;
-    overflow:hidden;
+    overflow-x:hidden;
     font-size: 16px;
      font-feature-settings: 'liga' 0; /* Disable ligatures, including emoji substitution */
     -webkit-font-feature-settings: 'liga' 0; /* For older versions of WebKit browsers */
@@ -310,6 +310,7 @@ scrollbar-width: none;
     justify-content: space-between;
     flex-wrap: wrap; /* Allow items to wrap onto multiple lines */
     margin: 0 auto; /* Center the container horizontally */
+    flex-direction: row; /* Set default direction to row */
 }
 
 .artists-section2 {
@@ -322,19 +323,30 @@ scrollbar-width: none;
     margin: 10px; /* Add margin to create space between the sections */
 }
 
-
 .artists-section2 img {
-    width: 100%;
-    height: 100%;
-        filter: grayscale(100%); /* Apply a grayscale filter to non-hovered images */
-            transition: filter 1s ease; /* Add transitions for both transform and filter properties */
-
-
+    max-width: 100%; /* Ensure images are responsive */
+    height: auto;
+    filter: grayscale(100%); /* Apply a grayscale filter to non-hovered images */
+    transition: filter 1s ease; /* Add transitions for both transform and filter properties */
 }
 
 .artists-section2 img:hover {
-    filter: grayscale(0%); /* Apply a grayscale filter to non-hovered images */
+    filter: grayscale(0%); /* Apply a grayscale filter to hovered images */
 }
+
+/* Media query for mobile devices */
+@media (max-width: 768px) {
+    #artists2 {
+        flex-direction: column; /* Stack items vertically on mobile */
+        align-items: center; /* Center items horizontally on mobile */
+    }
+}
+
+.back-to-stellar {
+    margin-left: auto; /* Push it to the left */
+    padding-left: 0px; /* Add some padding for spacing */
+}
+
 
 #aboutus {
     position: sticky;
@@ -441,16 +453,26 @@ scrollbar-width: none;
 }
 
 
+/* Default styles for the .content */
 .content {
     position: absolute;
     z-index: 10;
     text-align: center;
     color: #fff;
-    font-size: 20px;  opacity: 0; /* Initially hide the header */
+    font-size: 20px;
+    opacity: 0; /* Initially hide the header */
     transition: opacity 2s; /* Add a transition for smooth appearance */
-    top:70%;
+    top: 70%;
     text-transform: uppercase;
 }
+
+/* Media query for mobile viewports */
+@media (max-width: 768px) {
+    .content {
+        font-size: 15px; /* Adjust font size for mobile viewports */
+    }
+}
+
 
 .arrow-container {
     position: absolute; /* Use relative positioning on the container */
