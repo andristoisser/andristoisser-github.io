@@ -1,0 +1,177 @@
+/*
+Theme Name: Zino
+Theme URI: https://maneshtimilsina.com/themes/zino/
+Author: Manesh Timilsina
+Author URI: https://maneshtimilsina.com/
+Description: Zino is a minimal and lightweight Full Site Editing theme. This speed optimized theme utilizes the WordPress blocks editor to create unique and eye-catching layouts. Zino is perfect for blogs, small businesses, startups, law firms and other creative agencies who prefer simple and speed optimized websites.
+Requires at least: 6.0
+Tested up to: 6.4
+Requires PHP: 5.6
+Version: 1.0.9
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: zino
+Tags: one-column, custom-colors, custom-menu, custom-logo, editor-style, featured-images, full-site-editing, rtl-language-support, theme-options, threaded-comments, translation-ready, blog, e-commerce, wide-blocks
+*/
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.alignfull {
+  margin-left: calc(-100vw / 2 + 100% / 2);
+  margin-right: calc(-100vw / 2 + 100% / 2);
+  max-width: 100vw;
+  width: auto;
+}
+
+.wp-block-site-title a,
+.wp-block-query-pagination-numbers a,
+.wp-block-post-excerpt a {
+  text-decoration: inherit;
+}
+
+.wp-block-navigation ul,
+.wp-block-navigation ul li,
+.wp-block-navigation ul li a {
+  color: inherit;
+}
+
+.wp-block-navigation ul.wp-block-navigation-submenu {
+  padding: 0;
+}
+
+.wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation__responsive-container-content .wp-block-navigation-item,
+.wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation__responsive-container-content .wp-block-navigation__container,
+.wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation__responsive-container-content .wp-block-page-list {
+  align-items: flex-start;
+  width: 100%;
+  gap: 30px;
+}
+
+.wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation__responsive-container-content .wp-block-navigation__submenu-icon {
+  display: flex;
+  position: absolute;
+  top: 10px;
+  right: 0;
+  width: auto;
+  height: auto;
+}
+
+.wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation__responsive-container-content .has-child .wp-block-navigation__submenu-container {
+  opacity: 0;
+  visibility: hidden;
+  position: absolute;
+}
+
+.wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation__responsive-container-content .has-child .wp-block-navigation-submenu__toggle:where([aria-expanded="true"]) + .wp-block-navigation__submenu-container {
+  opacity: 1;
+  visibility: visible;
+  position: static;
+  padding-top: 0;
+}
+
+.wp-block-comment-author-name a,
+.wp-block-comment-date a {
+    text-decoration: inherit;
+    color: inherit;
+}
+
+.page .wp-block-template-part,
+.single .wp-block-template-part,
+.archive .wp-block-template-part {
+  margin-top: 0;
+}
+
+footer.wp-block-template-part {
+    margin-top: 0;
+}
+
+footer ul li a {
+  text-decoration: inherit;
+  color: inherit;
+}
+
+.wp-block-query ul li.wp-block-post + li.wp-block-post {
+  margin-top: 6rem;
+}
+
+.wp-block-query ul.is-flex-container li.wp-block-post + li.wp-block-post,
+.wp-block-query ul.is-layout-grid li.wp-block-post + li.wp-block-post {
+  margin-top: 0;
+}
+
+nav.wp-block-query-pagination {
+  margin-top: 6rem;
+}
+
+.entry-content .wp-block-image {
+  margin: 1em 0;
+}
+
+
+
+button,
+.wp-block-search__button,
+input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+  font-family: inherit;
+  font-size: inherit;
+  color: var(--wp--preset--color--white);
+  border: none;
+  border-radius: 5px;
+  background: var(--wp--preset--color--black);
+  line-height: 1;
+  padding: calc(0.667em + 2px) calc(1.333em + 2px);
+  text-decoration: none;
+  cursor: pointer;
+  transition: 0.4s ease-in-out;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="url"],
+input[type="password"],
+input[type="search"],
+input[type="number"],
+input[type="tel"],
+input[type="range"],
+input[type="date"],
+input[type="month"],
+input[type="week"],
+input[type="time"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="color"],
+select,
+textarea {
+  font-family: inherit;
+  font-size: 1em;
+  border: 1px solid #949494;
+  border-radius: 5px;
+  padding: calc(.667em + 2px);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="url"]:focus,
+input[type="password"]:focus,
+input[type="search"]:focus,
+input[type="number"]:focus,
+input[type="tel"]:focus,
+input[type="range"]:focus,
+input[type="date"]:focus,
+input[type="month"]:focus,
+input[type="week"]:focus,
+input[type="time"]:focus,
+input[type="datetime"]:focus,
+input[type="datetime-local"]:focus,
+input[type="color"]:focus,
+select:focus,
+textarea:focus {
+  outline: 1px solid #949494;
+}
